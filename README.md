@@ -1,7 +1,8 @@
 # Projeto Final da disciplina Métodos de Programação
-# Professor: Jan Correa
 
-Integrantes grupo:			Matrícula:
+Professor: Jan Correa
+
+Integrantes grupo:          Matrícula:
 
 Amanda
 Bruno
