@@ -1,0 +1,4 @@
+#Amanda
+
+Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
+
