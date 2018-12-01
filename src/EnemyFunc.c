@@ -146,7 +146,7 @@ void ReadPath(int pathfinderID, int currentX, int currentY, int pixelsPerFrame)
     }
 }
 
-**
+/**
  **************************************************************************
  * @brief Função: Ler o Path X
  *
@@ -210,4 +210,43 @@ int ReadPathY(int pathfinderID, int pathLocation)
 
     }
     return y;
+}
+
+/**
+ **************************************************************************
+ * @brief Função: Mover uma Tropa do PC
+ *
+ * Descrição:
+ * A Função recebe uma struct de uma tropa, o ID dessa tropa e a posição que essa tropa deve chegar. Então move essa tropa.
+ *
+ * Parâmetros:
+ * @param int Troop* t - struct de uma tropa do PC
+ * @param int ID - identificação de qual tropa vai ser movimentada
+ * @param int targetY - coordenada y para onde a tropa deve ir
+ * @param int targetX - coordenada x para onde a tropa deve ir
+ *
+ * Valor retornado:
+ * @return Void - A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Troop* t != NULL
+ * int ID == 0 || ID == 1 || ID == 2
+ * int targetY >= 0
+ * int targetX >= 0
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void moveTroopX(Troop* t, int ID, int targetY, int targetX)
+{
+    if (t->y != targetY || t->x != targetX)
+    {
+        if (pathStatus[ID] == notStarted || pathLocation[ID] == 5)
+        {
+            pathStatus[ID] = FindPath(ID, t->y, t->x, targetY, targetX);
+
+        }
+    }
+
+    if (pathStatus[ID] == found) moveEnemyTroop(t, ID);
 }
