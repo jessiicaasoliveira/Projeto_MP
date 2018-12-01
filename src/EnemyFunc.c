@@ -250,3 +250,49 @@ void moveTroopX(Troop* t, int ID, int targetY, int targetX)
 
     if (pathStatus[ID] == found) moveEnemyTroop(t, ID);
 }
+
+
+/**
+ **************************************************************************
+ * @brief Função: Controla os Movimentos do PC
+ *
+ * Descrição:
+ * A Função inicia a procura de paths e chama uma função de mover as tropas.
+ *
+ * Parâmetros:
+ * @param Troop* t1 - Tropa do tipo 1 do PC
+ * @param Troop* t2 - Tropa do tipo 2 do PC
+ * @param Troop* t3 - Tropa do tipo 3 do PC
+ *
+ * Valor retornado:
+ * @return Void - A Função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Troop* t1 != NULL
+ * Troop* t2 != NULL
+ * Troop* t3 != NULL
+ *
+ * Assertiva de saída:
+ * Função Void
+ ***************************************************************************/
+void enemyMove(Troop* t1, Troop* t2, Troop* t3)
+{
+
+    if(B1_p.defense > 0 && B1_p.hp > 0)
+        moveTroopX(&T1_e, 1, B1_p.y+1, B1_p.x+B1_p.width+1);
+
+    else if(B1_p.defense == 0 && B1_p.hp == -1)
+        moveTroopX(t1, 1, Base_p.y, Base_p.x+Base_p.width+1);
+
+    if(B3_p.defense > 0 && B3_p.hp > 0)
+        moveTroopX(t2, 2, B3_p.y+1, B3_p.x+B3_p.width+1);
+
+    else if(B3_p.defense == 0 && B3_p.hp == -1)
+        moveTroopX(t2, 2, Base_p.y+2, Base_p.x+Base_p.width+1);
+
+    if(B2_p.defense > 0 && B2_p.hp > 0)
+        moveTroopX(t3, 3, B2_p.y+1, B2_p.x+B2_p.width+1);
+
+    else if(B2_p.defense == 0 && B2_p.hp == -1)
+        moveTroopX(t3, 3, Base_p.y+3, Base_p.x+Base_p.width+1);
+}
