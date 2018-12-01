@@ -1,4 +1,4 @@
-#include "MapFunc.h"
+#include "Mapa.h"
 
 /**número de colunas da matriz do mapa*/
 int map_y;
