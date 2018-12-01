@@ -6,3 +6,5 @@ char** map1;
 /*funções*/
 
 char** allocMap(char** map, int y, int x);
+
+char** deallocMap(char** map);
