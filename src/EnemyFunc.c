@@ -468,3 +468,208 @@ void enemyHitControl(Troop* t, Base* b, Build* b1, Build* b2, Build* b3)
         break;
     }
 }
+
+
+
+
+
+
+
+/**
+ **************************************************************************
+ * @brief Função: Mostrar Movimentos das Tropas do PC
+ *
+ * Descrição:
+ * A Função recebe a struct de uma tropa e sua identificação. Então se essa tropa foi movimentanda, a função atualiza a tela de acordo com essa movimentação.
+ *
+ * Parâmetros:
+ * @param Troop* t - Struct da tropa do PC
+ * @param int ID - identificação da tropa
+ *
+ * Valor retornado:
+ * @return Void - A Função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Troop* t != NULL
+ * int ID == 0 || ID == 1 || ID == 2
+ *
+ * Assertiva de saída:
+ * Função Void
+ ***************************************************************************/
+void moveEnemyTroop(Troop* t, int ID)
+{
+    switch(ID)
+    {
+        case 1:
+        if(map1[t->y][t->x] == MAP_TILE || map1[t->y][t->x] == '7')
+            map1[t->y][t->x] = MAP_TILE;
+        break;
+
+    case 2:
+        if(map1[t->y][t->x] == MAP_TILE || map1[t->y][t->x] == '8')
+            map1[t->y][t->x] = MAP_TILE;
+        break;
+
+    case 3:
+        if(map1[t->y][t->x] == MAP_TILE || map1[t->y][t->x] == '9')
+            map1[t->y][t->x] = MAP_TILE;
+        break;
+    }
+
+    ReadPath(ID, t->y, t->x, 1);
+
+    if (t->y > xPath[ID]) t->y--;
+
+    if (t->y < xPath[ID]) t->y++;
+
+    if (t->x > yPath[ID]) t->x--;
+
+    if (t->x < yPath[ID]) t->x++;
+
+    switch(ID)
+    {
+    case 1:
+        if(map1[t->y][t->x] == MAP_TILE) map1[t->y][t->x] = '7';
+        break;
+
+    case 2:
+        if(map1[t->y][t->x] == MAP_TILE) map1[t->y][t->x] = '8';
+        break;
+
+    case 3:
+        if(map1[t->y][t->x] == MAP_TILE) map1[t->y][t->x] = '9';
+        break;
+    }
+}
+
+/**
+ **************************************************************************
+ * @brief Função: Verificar as Redondezas da Tropa do PC
+ *
+ * Descrição:
+ * A Função recebe a struct de uma tropa e verifica as redondezas dessa tropa, e retorna um valor de acordo com o que está do lado dessa tropa.
+ *
+ * Parâmetros:
+ * @param Troop* t - struct da tropa
+ * @param int mode - flag para identificar se a função foi chamada para checar se a tropa está perto do prédio responsável por aumentar tropas (0) ou se foi chamada para checar se há tropas inimigas por perto (1)
+ *
+ * Valor retornado:
+ * @return 0 - caso a tropa não esteja perto de nada
+ * @return 1 - caso a mode = 0 e a tropa esteja perto do prédio responsável por gerar tropas
+ * @return 4 - caso a tropa esteja perto do base 'B'
+ * @return 5 - caso a tropa esteja perto do prédio 'X'
+ * @return 6 - caso a tropa esteja perto do prédio 'Y'
+ * @return 7 - caso a tropa esteja perto do prédio 'Z'
+ *
+ * Assertiva de entrada:
+ * Troop* t != NULL
+ * int mode == 0 || mode == 1
+ *
+ * Assertiva de saída:
+ * A função retorna valores fixos.
+ ***************************************************************************/
+int enemyTroopChecker(Troop* t, int mode)
+{
+    switch(mode)
+    {
+    case 0: /* Caso para gerar tropa */
+
+        if(t->x+1 < map_x && map1[t->y][t->x+1] == 'M')
+            return 1;
+
+        else if(t->x-1 >= 0 && map1[t->y][t->x-1] == 'M')
+            return 1;
+
+        else if(t->y-1 >= 0 && map1[t->y-1][t->x] == 'M')
+            return 1;
+
+        else if(t->y+1 < map_y && map1[t->y+1][t->x] == 'M')
+            return 1;
+
+        break;
+
+    case 1: /* Caso de batalha */
+
+        if(t->x+1 < map_x)
+        {
+            switch(map1[t->y][t->x+1])
+            {
+
+            case 'B':
+                return 4;
+
+            case 'X':
+                return 5;
+
+            case 'Y':
+                return 6;
+
+            case 'Z':
+                return 7;
+            }
+        }
+
+        if(t->x-1 >= 0)
+        {
+            switch(map1[t->y][t->x-1])
+            {
+
+            case 'B':
+                return 4;
+
+            case 'X':
+                return 5;
+
+            case 'Y':
+                return 6;
+
+            case 'Z':
+                return 7;
+
+            }
+        }
+
+        if(t->y-1 >= 0)
+        {
+            switch(map1[t->y-1][t->x])
+            {
+
+            case 'B':
+                return 4;
+
+            case 'X':
+                return 5;
+
+            case 'Y':
+                return 6;
+
+            case 'Z':
+                return 7;
+            }
+        }
+
+        if(t->y+1 < map_y)
+        {
+            switch(map1[t->y+1][t->x])
+            {
+
+            case 'B':
+                return 4;
+
+            case 'X':
+                return 5;
+
+            case 'Y':
+                return 6;
+
+            case 'Z':
+                return 7;
+
+            }
+        }
+
+        break;
+    }
+
+    return 0;
+}
