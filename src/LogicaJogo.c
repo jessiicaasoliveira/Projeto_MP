@@ -269,3 +269,44 @@ void refreshGame()
     printGame();
     refreshWindows(gameWin, statusWin);
 }
+
+/**
+ **************************************************************************
+ * @brief Função: Controlar as Opções no Menu de Pause
+ *
+ * Descrição:
+ * A Função volta ao jogo, salva o jogo ou saí do jogo de acordo com a opção selecionada no menu de Pause.
+ *
+ * Parâmetros:
+ * @param sem parâmetros
+ *
+ * Valor retornado:
+ * @return função void - A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Sem parâmetros
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void pauseGameRoutine()
+{
+    switch(pauseGameMenu())
+    {
+        case 0:
+
+            gameState = GAME_STATE_PLAY;
+            break;
+
+        case 1:
+            saveGame();
+            gameState = GAME_STATE_PLAY;
+            break;
+
+        case 2:
+
+            Base_p.hp = -1;
+            Base_e.hp = -1;
+            break;
+    }
+}
