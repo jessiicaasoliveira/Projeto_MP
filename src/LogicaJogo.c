@@ -310,3 +310,207 @@ void pauseGameRoutine()
             break;
     }
 }
+
+/**
+ **************************************************************************
+ * @brief Função: Printar na Tela o Jogo
+ *
+ * Descrição:
+ * A Função imprime os status do player, do PC e o mapa do jogo.
+ *
+ * Parâmetros:
+ * @param sem parâmetros
+ *
+ * Valor retornado:
+ * @return função void - A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Sem parâmetros
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void printGame()
+{
+    printPlayerStatus(statusWin, &Base_p, &B1_p, &B3_p, &B2_p, &T1_p, &T2_p, &T3_p);
+    printEnemyStatus(statusWin, &Base_e, &B1_e, &B3_e, &B2_e, &T1_e, &T2_e, &T3_e);
+    printMap(gameWin, map1);
+}
+
+/**
+ **************************************************************************
+ * @brief Função: Iniciar e Alocar Pré-Requisitos para o Jogo
+ *
+ * Descrição:
+ * A Função aloca e cria as janelas do jogo e do status, aloca o mapa do jogo e o inicializa.
+ *
+ * Parâmetros:
+ * @param sem parâmetros
+ *
+ * Valor retornado:
+ * @return função void - A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Sem parâmetros
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void allocGame()
+{
+    /* Alocação de windows e mapa */
+    gameWin = gameWindow(termLines, termCols);
+    statusWin = createWin(termLines-(termLines-6), termCols, 0, 0);
+    keypad(statusWin, FALSE);
+    box(statusWin, 0, 0);
+    map1 = allocMap(map1, termLines, termCols);
+    InitializePathfinder();
+    setMap(map1,save);
+    srand(time(NULL));
+}
+
+/**
+ **************************************************************************
+ * @brief Função: Desaloca e Finaliza as Janelas
+ *
+ * Descrição:
+ * A Função desaloca a janela utilizada para o jogo e para o status e desaloca o mapa do jogo. Então limpa o terminal e atualiza a tela.
+ *
+ * Parâmetros:
+ * @param sem parâmetros
+ *
+ * Valor retornado:
+ * @return função void - A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Sem parâmetros
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void destroyGame()
+{
+     /* Desalocando windows e mapa */
+    destroyWin(&gameWin);
+    destroyWin(&statusWin);
+    map1 = deallocMap(map1);
+    EndPathfinder();
+    /* limpando terminal */
+    erase();
+    refresh();
+}
+
+/**
+ **************************************************************************
+ * @brief Função: Salvar o Jogo
+ *
+ * Descrição:
+ * A Função cria um arquivo binário e salva todos os dados da base, dos prédios e das tropas do player e do PC nele.
+ *
+ * Parâmetros:
+ * @param sem parâmetros
+ *
+ * Valor retornado:
+ * @return função void - A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Sem parâmetros
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void saveGame(){
+
+    FILE* fp;
+
+    fp = fopen("save.bin", "wb");
+
+    if (fp == NULL) {
+        fclose(fp);
+        fp = fopen("Relatório_Erros.txt", "a");
+        fprintf(fp, "Erro na saveGame (arquivo GameLogic.c)\n");
+        fclose(fp);
+    }
+
+    /*Dados do player*/
+    fwrite(&Base_p, sizeof(Base),1,fp);
+    fwrite(&B1_p, sizeof(Build),1,fp);
+    fwrite(&B2_p, sizeof(Build),1,fp);
+    fwrite(&B3_p, sizeof(Build),1,fp);
+    fwrite(&T1_p, sizeof(Troop),1,fp);
+    fwrite(&T2_p, sizeof(Troop),1,fp);
+    fwrite(&T3_p, sizeof(Troop),1,fp);
+
+    /*Dados do PC*/
+    fwrite(&Base_e, sizeof(Base),1,fp);
+    fwrite(&B1_e, sizeof(Build),1,fp);
+    fwrite(&B2_e, sizeof(Build),1,fp);
+    fwrite(&B3_e, sizeof(Build),1,fp);
+    fwrite(&T1_e, sizeof(Troop),1,fp);
+    fwrite(&T2_e, sizeof(Troop),1,fp);
+    fwrite(&T3_e, sizeof(Troop),1,fp);
+
+    fclose(fp);
+
+}
+
+/**
+ **************************************************************************
+ * @brief Função: Carregar um Jogo Salvo
+ *
+ * Descrição:
+ * A Função abre o arquivo de save e lê todos os dados da base, prédios e tropas do player e do PC. Caso não exista um save, é mostrado uma mensagem na tela.
+ *
+ * Parâmetros:
+ * @param sem parâmetros
+ *
+ * Valor retornado:
+ * @return 0 - se não existir um arquivo de save válido
+ * @return 1 - se o load ocorrer sem problemas
+ *
+ * Assertiva de entrada:
+ * Sem parâmetros
+ *
+ * Assertiva de saída:
+ * A função retorna valores fixos.
+ ***************************************************************************/
+int loadGame(){
+
+    FILE* fp;
+
+    fp = fopen("save.bin","rb");
+
+    if(fp == NULL)
+    {
+        mvprintw(LINES - 6, 0, "Nao ha jogo salvo!");
+        refresh();
+
+        return 0;
+    }
+
+    else
+    {
+        /*Dados do playes*/
+        fread(&Base_p, sizeof(Base),1,fp);
+        fread(&B1_p, sizeof(Build),1,fp);
+        fread(&B2_p, sizeof(Build),1,fp);
+        fread(&B3_p, sizeof(Build),1,fp);
+        fread(&T1_p, sizeof(Troop),1,fp);
+        fread(&T2_p, sizeof(Troop),1,fp);
+        fread(&T3_p, sizeof(Troop),1,fp);
+
+            /*Dados do PC*/
+        fread(&Base_e, sizeof(Base),1,fp);
+        fread(&B1_e, sizeof(Build),1,fp);
+        fread(&B2_e, sizeof(Build),1,fp);
+        fread(&B3_e, sizeof(Build),1,fp);
+        fread(&T1_e, sizeof(Troop),1,fp);
+        fread(&T2_e, sizeof(Troop),1,fp);
+        fread(&T3_e, sizeof(Troop),1,fp);
+
+        fclose(fp);
+
+        return 1;
+    }
+    return 0;
+}
