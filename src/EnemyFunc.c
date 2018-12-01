@@ -145,3 +145,69 @@ void ReadPath(int pathfinderID, int currentX, int currentY, int pixelsPerFrame)
         yPath[ID] = currentY;
     }
 }
+
+**
+ **************************************************************************
+ * @brief Função: Ler o Path X
+ *
+ * Descrição:
+ * A Função lê a coordenada X do próximo passo do Path.
+ *
+ * Parâmetros:
+ * @param int pathfinderID - identificador da Origem (de onde o path sai)
+ * @param int pathLocation - local onde o path está atualmente
+ *
+ * Valor retornado:
+ * @return int x - coordenada x do próximo passo do Path
+ *
+ * Assertiva de entrada:
+ * int pathfinderID == 0 || pathfinderID == 1 || pathfinderID == 2 || pathfinderID == 3
+ * int pathLocation >= 0
+ *
+ * Assertiva de saída:
+ * int x >= 0
+ ***************************************************************************/
+int ReadPathX(int pathfinderID, int pathLocation)
+{
+    int x = 0;
+    if (pathLocation <= pathLength[pathfinderID])
+    {
+        /* Read coordinate from bank */
+        x = pathBank[pathfinderID][pathLocation*2-2];
+
+    }
+    return x;
+}
+
+/**
+ **************************************************************************
+ * @brief Função: Ler o Path Y
+ *
+ * Descrição:
+ * A Função lê a coordenada y do próximo passo do Path.
+ *
+ * Parâmetros:
+ * @param int pathfinderID - identificador da Origem (de onde o path sai)
+ * @param int pathLocation - local onde o path está atualmente
+ *
+ * Valor retornado:
+ * @return int y - coordenada y do próximo passo do Path
+ *
+ * Assertiva de entrada:
+ * int pathfinderID == 0 || pathfinderID == 1 || pathfinderID == 2 || pathfinderID == 3
+ * int pathLocation >= 0
+ *
+ * Assertiva de saída:
+ * int y >= 0
+ ***************************************************************************/
+int ReadPathY(int pathfinderID, int pathLocation)
+{
+    int y = 0;
+    if (pathLocation <= pathLength[pathfinderID])
+    {
+        /* Read coordinate from bank */
+        y = pathBank[pathfinderID][pathLocation*2-1];
+
+    }
+    return y;
+}
