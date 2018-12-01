@@ -86,3 +86,32 @@ void playerCheckers()
     buildHPChecker(&B1_p, &B2_p, &B3_p, map1);
     troopAmountChecker(&T1_p, &T2_p, &T3_p, map1);
 }
+
+/**
+ **************************************************************************
+ * @brief Função: Chama as Funções Para Atualizar o Jogo
+ *
+ * Descrição:
+ * A Função chama funções de atualizar a tela, mover tropas, verificar recursos e tropas. Ou seja, atualiza tudo dentro do jogo.
+ *
+ * Parâmetros:
+ * @param sem parâmetros
+ *
+ * Valor retornado:
+ * @return função void - A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Sem parâmetros
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void onGameRoutine()
+{
+    refreshGame();
+    moveTroop(gameWin, map1);
+    enemyMove(&T1_e, &T2_e, &T3_e);
+    gameControllers();
+    gameCheckers();
+
+}
