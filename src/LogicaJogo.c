@@ -115,3 +115,31 @@ void onGameRoutine()
     gameCheckers();
 
 }
+
+/**
+ **************************************************************************
+ * @brief Função: Verificar Status dos Prédios e Tropas do PC
+ *
+ * Descrição:
+ * A Função chama funções para verificar a vida dos prédios e a quantidade de tropas do PC.
+ *
+ * Parâmetros:
+ * @param sem parâmetros
+ *
+ * Valor retornado:
+ * @return função void - A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Sem parâmetros
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void enemyCheckers()
+{
+    enemyHitControl(&T1_e, &Base_p, &B1_p, &B2_p, &B3_p);
+    enemyHitControl(&T2_e, &Base_p, &B1_p, &B2_p, &B3_p);
+    enemyHitControl(&T3_e, &Base_p, &B1_p, &B2_p, &B3_p);
+    buildHPChecker(&B1_e, &B2_e, &B3_e, map1);
+    troopAmountChecker(&T1_e, &T2_e, &T3_e, map1);
+}
