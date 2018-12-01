@@ -54,3 +54,42 @@ char** allocMap(char** map, int y, int x) {
 
     return map;
 }
+**************************************************************************
+ * @brief Função: Desalocar o Mapa do Jogo
+ *
+ * Descrição:
+ * A Função recebe uma matriz (mapa do jogo) do tipo char e a desaloca. Então retorna a matriz desalocada.
+ *
+ * Parâmetros:
+ * @param char** map - matriz do tipo char que vai ser desalocada
+ *
+ * Valor retornado:
+ * @return char** map - matriz desalocada
+ *
+ * Assertiva de entrada:
+ * char** map == NULL
+ *
+ * Assertiva de saída:
+ * char** map == NULL
+ ***************************************************************************/
+char** deallocMap(char** map) {
+    FILE* fp;
+    int i;
+
+    for (i = 0; i < map_y; i++) {
+        free(map[i]);
+    }
+    free(map);
+    map = NULL;
+
+    /*Assertiva de saída*/
+    if (map != NULL) {
+        fp = fopen("Relatório_Erros.txt", "a");
+        fprintf(fp, "Erro na liberação do mapa na deallocMap (arquivo MapFunc.c)\n");
+        fclose(fp);
+    }
+
+    return map;
+}
+
+ 
