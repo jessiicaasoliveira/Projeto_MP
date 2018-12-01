@@ -61,3 +61,31 @@ void InitializePathfinder()
     for (x = 0; x < numberPeople+1; x++)
         pathBank[x] = (int*)malloc(4);
 }
+
+
+
+/**
+ **************************************************************************
+ * @brief Função: Finaliza o PathFinder
+ *
+ * Descrição:
+ * A Função desaloca a memória usada pelo Pathfinder.
+ *
+ * Parâmetros:
+ * @param Sem Parâmetros
+ *
+ * Valor retornado:
+ * @return Void - A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Sem parâmetros
+ *
+ * Assertiva de saída:
+ * Função Void
+ ***************************************************************************/
+void EndPathfinder()
+{
+    int x;
+    for (x = 0; x < numberPeople+1; x++)
+        free (pathBank [x]);
+}
