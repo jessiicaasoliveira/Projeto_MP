@@ -498,10 +498,10 @@ void troopController(Troop* t1, Troop* t2, Troop* t3, Build* b3, Base* b) {
  * @return 7 - caso a tropa esteja perto da tropa inimiga '7'
  * @return 8 - caso a tropa esteja perto da tropa inimiga '8'
  * @return 9 - caso a tropa esteja perto da tropa inimiga '9'
- * @return 10 - caso a tropa esteja perto do base 'C'
- * @return 11 - caso a tropa esteja perto do prédio 'L'
- * @return 12 - caso a tropa esteja perto do prédio 'M'
- * @return 13 - caso a tropa esteja perto do prédio 'N'
+ * @return 10 - caso a tropa esteja perto do base 'Y'
+ * @return 11 - caso a tropa esteja perto do prédio 'D'
+ * @return 12 - caso a tropa esteja perto do prédio 'F'
+ * @return 13 - caso a tropa esteja perto do prédio 'E'
  *
  * Assertiva de entrada:
  * Troop* t != NULL
@@ -514,16 +514,16 @@ int troopChecker(Troop* t, int mode) { /* variável mode para checar redondezas 
     switch (mode) {
     case 0: /* Caso para gerar tropa */
 
-        if (t->x+1 < map_x && map1[t->y][t->x+1] == 'Y')
+        if (t->x+1 < map_x && map1[t->y][t->x+1] == 'C')
             return 1;
 
-        else if (t->x-1 >= 0 && map1[t->y][t->x-1] == 'Y')
+        else if (t->x-1 >= 0 && map1[t->y][t->x-1] == 'C')
             return 1;
 
-        else if (t->y-1 >= 0 && map1[t->y-1][t->x] == 'Y')
+        else if (t->y-1 >= 0 && map1[t->y-1][t->x] == 'C')
             return 1;
 
-        else if (t->y+1 < map_y && map1[t->y+1][t->x] == 'Y')
+        else if (t->y+1 < map_y && map1[t->y+1][t->x] == 'C')
             return 1;
 
         break;
@@ -541,16 +541,16 @@ int troopChecker(Troop* t, int mode) { /* variável mode para checar redondezas 
             case '9':
                 return 9;
 
-            case 'C':
+            case 'Y':
                 return 10;
 
-            case 'L':
+            case 'D':
                 return 11;
 
-            case 'M':
+            case 'F':
                 return 12;
 
-            case 'N':
+            case 'E':
                 return 13;
             }
         }
@@ -566,16 +566,16 @@ int troopChecker(Troop* t, int mode) { /* variável mode para checar redondezas 
             case '9':
                 return 9;
 
-            case 'C':
+            case 'Y':
                 return 10;
 
-            case 'L':
+            case 'D':
                 return 11;
 
-            case 'M':
+            case 'F':
                 return 12;
 
-            case 'N':
+            case 'E':
                 return 13;
             }
         }
@@ -591,16 +591,16 @@ int troopChecker(Troop* t, int mode) { /* variável mode para checar redondezas 
             case '9':
                 return 9;
 
-            case 'C':
+            case 'Y':
                 return 10;
 
-            case 'L':
+            case 'D':
                 return 11;
 
-            case 'M':
+            case 'F':
                 return 12;
 
-            case 'N':
+            case 'E':
                 return 13;
             }
         }
@@ -616,16 +616,16 @@ int troopChecker(Troop* t, int mode) { /* variável mode para checar redondezas 
             case '9':
                 return 9;
 
-            case 'C':
+            case 'Y':
                 return 10;
 
-            case 'L':
+            case 'D':
                 return 11;
 
-            case 'M':
+            case 'F':
                 return 12;
 
-            case 'N':
+            case 'E':
                 return 13;
             }
         }
