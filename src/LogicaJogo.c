@@ -143,3 +143,129 @@ void enemyCheckers()
     buildHPChecker(&B1_e, &B2_e, &B3_e, map1);
     troopAmountChecker(&T1_e, &T2_e, &T3_e, map1);
 }
+
+/**
+ **************************************************************************
+ * @brief Função: Atualizar Status Gerais
+ *
+ * Descrição:
+ * A Função chama funções de checagem de mudança de status em tropas e prédios do player e do PC.
+ *
+ * Parâmetros:
+ * @param sem parâmetros
+ *
+ * Valor retornado:
+ * @return função void - A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Sem parâmetros
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void gameCheckers()
+{
+    playerCheckers();
+    enemyCheckers();
+}
+
+/**
+ **************************************************************************
+ * @brief Função: Verificar Criação de Recursos e Tropas do Player
+ *
+ * Descrição:
+ * A Função chama funções para verificar a mineração de recursos e a criação de tropas do player.
+ *
+ * Parâmetros:
+ * @param sem parâmetros
+ *
+ * Valor retornado:
+ * @return função void - A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Sem parâmetros
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void playerControllers()
+{
+    resourceController(&Base_p, &B1_p, &B2_p);
+    troopController(&T1_p, &T2_p, &T3_p, &B3_p, &Base_p);
+}
+
+/**
+ **************************************************************************
+ * @brief Função: Verificar Criação de Recursos e Tropas do PC
+ *
+ * Descrição:
+ * A Função chama funções para verificar a mineração de recursos e a criação de tropas do PC.
+ *
+ * Parâmetros:
+ * @param sem parâmetros
+ *
+ * Valor retornado:
+ * @return função void - A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Sem parâmetros
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void enemyControllers()
+{
+    resourceController(&Base_e, &B1_e, &B2_e);
+    enemyTroopController(&T1_e, &T2_e, &T3_e, &B3_e, &Base_e);
+}
+
+/**
+ **************************************************************************
+ * @brief Função: Atualizar Recursos e Tropas Gerais
+ *
+ * Descrição:
+ * A Função chama funções de verificação da mineração de recursos e da criação de tropas.
+ *
+ * Parâmetros:
+ * @param sem parâmetros
+ *
+ * Valor retornado:
+ * @return função void - A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Sem parâmetros
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void gameControllers()
+{
+    playerControllers();
+    enemyControllers();
+}
+
+/**
+ **************************************************************************
+ * @brief Função: Atualizar a Tela
+ *
+ * Descrição:
+ * A Função atualiza a tela do jogo e dá um refresh.
+ *
+ * Parâmetros:
+ * @param sem parâmetros
+ *
+ * Valor retornado:
+ * @return função void - A função apenas imprime o jogo na tela
+ *
+ * Assertiva de entrada:
+ * Sem parâmetros
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void refreshGame()
+{
+    /* Atualiza windows */
+    printGame();
+    refreshWindows(gameWin, statusWin);
+}
