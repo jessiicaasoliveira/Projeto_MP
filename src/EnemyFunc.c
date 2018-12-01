@@ -296,3 +296,175 @@ void enemyMove(Troop* t1, Troop* t2, Troop* t3)
     else if(B2_p.defense == 0 && B2_p.hp == -1)
         moveTroopX(t3, 3, Base_p.y+3, Base_p.x+Base_p.width+1);
 }
+
+
+
+/**
+ **************************************************************************
+ * @brief Função: Controlar a Criação de Tropas do PC
+ *
+ * Descrição:
+ * A Função recebe as structs da base, das tropas e do prédio responsável pela criação de tropas. Então ela verifica se a tropa está do lado do prédio que gera tropa, e se há recursos para gerar mais tropas. Então essa tropa tem a quantidade aumentada.
+ *
+ * Parâmetros:
+ * @param Troop* t1 - struct da tropa do tipo 1 do PC
+ * @param Troop* t2 - struct da tropa do tipo 2 do PC
+ * @param Troop* t3 - struct da tropa do tipo 3 do PC
+ * @param Build* b3 - struct do prédio do tipo 3 do PC
+ * @param Base* b - struct da base do PC
+ *
+ * Valor retornado:
+ * @return Void. A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Troop* t1 != NULL
+ * Troop* t2 != NULL
+ * Troop* t3 != NULL
+ * Build* b3 != NULL
+ * Base* b != NULL
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void enemyTroopController(Troop* t1, Troop* t2, Troop* t3, Build* b3, Base* b)
+{
+    if(enemyTroopChecker(t1, 0) && b->r1Amount > 0)
+    {
+        t1->amount += (b3->mineSpeed * T1_RATE);
+        b->r1Amount += (-b3->resourceConsume * R1_COST);
+
+        if(b->r1Amount <=0)
+            b->r1Amount = 0;
+    }
+
+    if(enemyTroopChecker(t2, 0) && b->r1Amount > 0)
+    {
+        t2->amount += (b3->mineSpeed * T2_RATE);
+        b->r1Amount += (-b3->resourceConsume * R1_COST);
+
+        if(b->r1Amount <=0)
+            b->r1Amount = 0;
+    }
+
+    if(enemyTroopChecker(t3, 0) && b->r2Amount > 0)
+    {
+        t3->amount += (b3->mineSpeed * T3_RATE);
+        b->r2Amount += (-b3->resourceConsume * R2_COST);
+
+        if(b->r2Amount <=0)
+            b->r2Amount = 0;
+    }
+}
+
+/**
+ **************************************************************************
+ * @brief Função: Controlar o Ataque de Tropas do PC aos Prédios/Base
+ *
+ * Descrição:
+ * A Função recebe as structs dos prédios, da base e de uma tropa. Ela verifica se a tropa está perto de algum prédio/base e se estiver é calculado o dano que essa tropa está dando no prédio/base. Antes de diminuir a vida do prédio/base é necessário diminuir a defesa para 0.
+ *
+ * Parâmetros:
+ * @param Troop* t - struct da tropa do tipo 1 do PC
+ * @param Base* b - struct da base
+ * @param Build* b1 - struct do prédio do tipo 1
+ * @param Build* b2 - struct do prédio do tipo 2
+ * @param Build* b3 - struct do prédio do tipo 3
+ *
+ * Valor retornado:
+ * @return Void. A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Troop* t != NULL
+ * Base* b != NULL
+ * Build* b1 != NULL
+ * Build* b2 != NULL
+ * Build* b3 != NULL
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void enemyHitControl(Troop* t, Base* b, Build* b1, Build* b2, Build* b3)
+{
+    switch(enemyTroopChecker(t, 1))
+    {
+    case 4:
+
+        if(b->defense > 0)
+        {
+            b->defense += (-t->damage);
+
+            if(b->defense < 0)
+                b->defense = 0;
+        }
+
+        else if(b->defense == 0 && b->hp > 0)
+        {
+            b->hp += (-t->damage);
+
+            if(b->hp < 0)
+                b->hp = 0;
+        }
+
+        break;
+
+    case 5:
+
+        if(b1->defense > 0)
+        {
+            b1->defense += (-t->damage);
+
+            if(b1->defense < 0)
+                b1->defense = 0;
+        }
+
+        else if(b1->defense == 0 && b1->hp > 0)
+        {
+            b1->hp += (-t->damage);
+
+            if(b1->hp < 0)
+                b1->hp = 0;
+        }
+
+        break;
+
+    case 7:
+
+        if(b3->defense > 0)
+        {
+            b3->defense += (-t->damage);
+
+            if(b3->defense < 0)
+                b3->defense = 0;
+        }
+
+        else if(b3->defense == 0 && b3->hp > 0)
+        {
+            b3->hp += (-t->damage);
+
+            if(b3->hp < 0)
+                b3->hp = 0;
+        }
+
+        break;
+
+    case 6:
+
+        if(b2->defense > 0)
+        {
+            b2->defense += (-t->damage);
+
+            if(b2->defense < 0)
+                b2->defense = 0;
+        }
+
+        else if(b2->defense == 0 && b2->hp > 0)
+        {
+            b2->hp += (-t->damage);
+
+            if(b2->hp < 0)
+                b2->hp = 0;
+        }
+
+        break;
+    }
+}
