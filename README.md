@@ -52,7 +52,7 @@ Comandos para compilação do programa:
 
 - o jogo será finalizado.
 
-- Os movimentos do pc serão executados seguindo um algoritmo de PathFinder. Link para algoritmo usado: http://www.policyalmanac.org/games/aStarTutorial_port.htm
+- Os movimentos do pc serão executados seguindo um algoritmo de PathFinder.
  
 - Durante a execução do jogo, para entrar no menu para pausar o jogo será utilzando a tecla ESC que se precionada duas vezes seguidas aparecerá mais rapidamente.No menu de pause terá as seguintes funções:
 
