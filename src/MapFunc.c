@@ -148,3 +148,81 @@ void setBaseOnMap(char** map, Base* bc, int x, int y, int width, int height, int
         }
 }
  
+**************************************************************************
+ * @brief Função: Colocar no Mapa um prédio
+ *
+ * Descrição:
+ * A Função recebe uma matriz (mapa do jogo) do tipo char, uma struct de uma prédio, a posição que esse prédio vai ficar, a altura e a largura desse prédio, uma flag para identificar qual o tipo desse prédio, uma flag para identificar se o prédio é do player ou do PC e uma flag para identificar se o prédio é de um jogo novo ou de um save. O prédio é setado e escrito no mapa na posição que foi mandado, que, dependendo das flags, fica como:
+    'X' - prédio de type 0 do player
+    'Y' - prédio do type 1 do player
+    'Z' - prédio do type 2 do player
+    'L' - prédio do type 0 do PC
+    'M' - prédio do type 1 do PC
+    'N' - prédio do type 2 do PC
+ *
+ * Parâmetros:
+ * @param char** map - matriz (mapa) do tipo char
+ * @param Build* b - uma struct para o prédio
+ * @param int x - coordenada x do prédio
+ * @param int y - coordenada y do prédio
+ * @param int width - largura do prédio
+ * @param int height - altura do prédio
+ * @param int type - flag para identificar o tipo do prédio
+ * @param int who - flag para identificar se o prédio é do Player (0) ou do PC (1)
+ * @param int save - flag para identificar se o prédio está sendo carregado de um jogo novo (0) ou de um save (1)
+ *
+ * Valor retornado:
+ * @return função void. Os valores são mudados por referência
+ *
+ * Assertiva de entrada:
+ * char** map != NULL
+ * Build* b != NULL
+ * int x >= 0
+ * int y >= 0
+ * int width > 0
+ * int height > 0
+ * int type == 0 || type == 1 || type == 2
+ * int who == 0 || who == 1
+ * int save == 0 || save == 1
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void setBuildOnMap(char** map, Build* b, int x, int y, int width, int height, int type, int who, int save) {
+    int i, j;
+
+    if (!save) {
+        b = setBuildAtt(b, x, y, height, width, type);
+    }
+
+    for (i = b->y; i <= (b->height + b->y); i++)
+        for (j = b->x; j <= (b->width+b->x); j++) {
+            switch (who) {
+            case 0:
+                    switch (type) {
+                    case 0: map[i][j] = 'A';
+                        break;
+
+                    case 1: map[i][j] = 'C';
+                        break;
+
+                    case 2: map[i][j] = 'B';
+                        break;
+                    }
+                break;
+
+            case 1:
+                    switch (type) {
+                    case 0: map[i][j] = 'D';
+                        break;
+
+                    case 1: map[i][j] = 'F';
+                        break;
+
+                    case 2: map[i][j] = 'E';
+                        break;
+                    }
+                break;
+            }
+        }
+}
