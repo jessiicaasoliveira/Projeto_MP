@@ -366,7 +366,7 @@ void moveTroop(WINDOW* win, char** map) {
  * Função void
  ***************************************************************************/
 void resourceController(Base* b, Build* b1, Build* b2) {
-    if ((rand_r()%101) > RESOURCE_RAND) {
+    if ((rand()%101) > RESOURCE_RAND) {
         if (b1->hp > 0)
             b->r1Amount += (b1->mineSpeed * R1_RATE);
         if (b2->hp > 0)

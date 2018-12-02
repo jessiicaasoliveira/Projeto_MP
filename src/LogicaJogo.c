@@ -428,7 +428,7 @@ void saveGame(){
     if (fp == NULL) {
         fclose(fp);
         fp = fopen("Relatório_Erros.txt", "a");
-        fprintf(fp, "Erro na saveGame (arquivo GameLogic.c)\n");
+        fprintf(fp, "Erro na saveGame (arquivo LogicaJogo.c)\n");
         fclose(fp);
     }
 
