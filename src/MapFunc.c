@@ -148,6 +148,7 @@ void setBaseOnMap(char** map, Base* bc, int x, int y, int width, int height, int
         }
 }
  
+/** 
 **************************************************************************
  * @brief Função: Colocar no Mapa um prédio
  *
@@ -188,6 +189,7 @@ void setBaseOnMap(char** map, Base* bc, int x, int y, int width, int height, int
  * Assertiva de saída:
  * Função void
  ***************************************************************************/
+
 void setBuildOnMap(char** map, Build* b, int x, int y, int width, int height, int type, int who, int save) {
     int i, j;
 
@@ -225,4 +227,167 @@ void setBuildOnMap(char** map, Build* b, int x, int y, int width, int height, in
                 break;
             }
         }
+}
+
+/**
+**************************************************************************
+ * @brief Função: Colocar no Mapa a Tropa
+ *
+ * Descrição:
+ * A Função recebe uma matriz (mapa do jogo) do tipo char, uma struct de uma tropa, a posição que essa tropa vai ficar, uma flag para identificar qual o tipo de tropa, uma flag para identificar se a tropa é do player ou do PC e uma flag para identificar se a tropa é de um jogo novo ou de um save. A tropa é setada e escrita no mapa na posição mandada, que, dependendo das flags, fica como:
+    '1' - tropa de type 0 do player
+    '2' - tropa de type 1 do player
+    '3' - tropa de type 2 do player
+    '7' - tropa de type 0 do PC
+    '8' - tropa de type 1 do PC
+    '9' - tropa de type 2 do PC
+ *
+ * Parâmetros:
+ * @param char** map - matriz (mapa) do tipo char
+ * @param Troop* t - uma struct para a troop
+ * @param int x - coordenada x da base
+ * @param int y - coordenada y da base
+ * @param int type - flag para identificar o tipo de tropa
+ * @param int who - flag para identificar se a tropa é do Player (0) ou do PC (1)
+ * @param int save - flag para identificar se a tropa está sendo carregada de um jogo novo (0) ou de um save (1)
+ *
+ * Valor retornado:
+ * @return função void. Os valores são mudados por referência
+ *
+ * Assertiva de entrada:
+ * char** map != NULL
+ * Troop* t != NULL
+ * int x >= 0
+ * int y >= 0
+ * int type == 0 || type == 1 || type == 2
+ * int who == 0 || who == 1
+ * int save == 0 || save == 1
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+
+void setTroopOnMap(char** map, Troop* t, int x, int y, int type, int who, int save) {
+    if (!save) {
+        t = setTroopAtt(t, x, y, type);
+
+        switch (who) {
+            case 0:
+
+                switch (type) {
+                case 0:
+                    map[y][x] = '1';
+                    break;
+
+                case 1:
+                    map[y][x] = '2';
+                    break;
+
+                case 2:
+                    map[y][x] = '3';
+                    break;
+            }
+                break;
+
+            case 1:
+
+                switch (type) {
+                case 0:
+                    map[y][x] = '7';
+                    break;
+
+                case 1:
+                    map[y][x] = '8';
+                    break;
+
+                case 2:
+                    map[y][x] = '9';
+                    break;
+            }
+
+                break;
+        }
+    } else {
+        switch (who) {
+            case 0:
+
+                switch (type) {
+                case 0:
+                    map[t->y][t->x] = '1';
+                    break;
+
+                case 1:
+                    map[t->y][t->x] = '2';
+                    break;
+
+                case 2:
+                    map[t->y][t->x] = '3';
+                    break;
+            }
+                break;
+
+            case 1:
+
+                switch (type) {
+                case 0:
+                    map[t->y][t->x] = '7';
+                    break;
+
+                case 1:
+                    map[t->y][t->x] = '8';
+                    break;
+
+                case 2:
+                    map[t->y][t->x] = '9';
+                    break;
+            }
+
+                break;
+        }
+    }
+}
+
+/**
+ **************************************************************************
+ * @brief Função: Setar a Matriz do Mapa
+ *
+ * Descrição:
+ * A Função recebe uma matriz (mapa do jogo) do tipo char e uma flag que identifica se o jogo é novo ou um save, então ela preenche o mapa com '.' .Depois é colocado as bases, prédios e tropas do player e do PC
+ *
+ * Parâmetros:
+ * @param char** map - matriz (mapa) do tipo char
+ * @param int save - flag para identificar se o mapa vai ser setado para um jogo novo (0) ou para um save (1)
+ *
+ * Valor retornado:
+ * @return função void. Os valores são mudados por referência
+ *
+ * Assertiva de entrada:
+ * char** map != NULL
+ * int save == 0 || save == 1
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void setMap(char** map, int save) {
+    int i, j;
+
+    for (i = 0; i < map_y; i++)
+        for (j = 0; j < map_x; j++)
+            map[i][j] = MAP_TILE;
+
+    setBaseOnMap(map, &Base_p, 0, (map_y/2)-3, 5, 8, 0, save);
+    setBuildOnMap(map, &B1_p, 0, (map_y/2)-8, 2, 4, 0, 0, save);
+    setBuildOnMap(map, &B2_p, 0, (map_y/2)+5, 2, 4, 1, 0, save);
+    setBuildOnMap(map, &B3_p, 11, (map_y/2)-1, 2, 4, 2, 0, save);
+    setTroopOnMap(map, &T1_p, 17, (map_y/2)-2, 0, 0, save);
+    setTroopOnMap(map, &T2_p, 17, (map_y/2), 1, 0, save);
+    setTroopOnMap(map, &T3_p, 17, (map_y/2)+2, 2, 0, save);
+
+    setBaseOnMap(map, &Base_e, map_x-9, (map_y/2)-3, 5, 8, 1, save);
+    setBuildOnMap(map, &B1_e, map_x-5, (map_y/2)-8, 2, 4, 0, 1, save);
+    setBuildOnMap(map, &B2_e, map_x-5, (map_y/2)+5, 2, 4, 1, 1, save);
+    setBuildOnMap(map, &B3_e, map_x-16, (map_y/2)-1, 2, 4, 2, 1, save);
+    setTroopOnMap(map, &T1_e, map_x-18, (map_y/2)-2, 0, 1, save);
+    setTroopOnMap(map, &T2_e, map_x-18, (map_y/2), 1, 1, save);
+    setTroopOnMap(map, &T3_e, map_x-18, (map_y/2)+2, 2, 1, save);
 }
