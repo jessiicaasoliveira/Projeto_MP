@@ -1,0 +1,258 @@
+\hypertarget{MapFunc_8c}{}\section{Map\+Func.\+c File Reference}
+\label{MapFunc_8c}\index{Map\+Func.\+c@{Map\+Func.\+c}}
+{\ttfamily \#include \char`\"{}Map\+Func.\+h\char`\"{}}\newline
+Include dependency graph for Map\+Func.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=150pt]{MapFunc_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$$\ast$ \mbox{\hyperlink{MapFunc_8c_ad96ef7faf3539ffcf3771457543ba70c}{alloc\+Map}} (char $\ast$$\ast$map, int y, int x)
+\begin{DoxyCompactList}\small\item\em Função\+: Alocar o Mapa do Jogo. \end{DoxyCompactList}\item 
+char $\ast$$\ast$ \mbox{\hyperlink{MapFunc_8c_a94d35ed1335c3aac5b645acb3fa56506}{dealloc\+Map}} (char $\ast$$\ast$map)
+\begin{DoxyCompactList}\small\item\em Função\+: Desalocar o Mapa do Jogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{MapFunc_8c_a5fc3e5c84a92b563265072f42dc861e8}{set\+Base\+On\+Map}} (char $\ast$$\ast$map, Base $\ast$bc, int x, int y, int width, int height, int who, int save)
+\begin{DoxyCompactList}\small\item\em Função\+: Colocar no Mapa a Base. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{MapFunc_8c_aab712fd52de5ba0d8d02ad69e9fe2c62}{set\+Build\+On\+Map}} (char $\ast$$\ast$map, Build $\ast$b, int x, int y, int width, int height, int type, int who, int save)
+\begin{DoxyCompactList}\small\item\em Função\+: Colocar no Mapa um prédio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{MapFunc_8c_a736892c9b435fd3b70467beadb7a3d22}{set\+Troop\+On\+Map}} (char $\ast$$\ast$map, Troop $\ast$t, int x, int y, int type, int who, int save)
+\begin{DoxyCompactList}\small\item\em Função\+: Colocar no Mapa a Tropa. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{MapFunc_8c_a0e1cb1f76b3781662505eccdbe1a40d3}{set\+Map}} (char $\ast$$\ast$map, int save)
+\begin{DoxyCompactList}\small\item\em Função\+: Setar a Matriz do Mapa. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{MapFunc_8c_aa3e05dc8fbb4d9c39fe64dc3241d8e10}{print\+Map}} (W\+I\+N\+D\+OW $\ast$win, char $\ast$$\ast$map)
+\begin{DoxyCompactList}\small\item\em Função\+: Imprimir o Mapa na Window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{MapFunc_8c_a166056ba9deace5bfd048d049a4d282a}{map\+\_\+y}}
+\item 
+int \mbox{\hyperlink{MapFunc_8c_aa7def7b32d142160e043b9b8926b6c5d}{map\+\_\+x}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{MapFunc_8c_ad96ef7faf3539ffcf3771457543ba70c}\label{MapFunc_8c_ad96ef7faf3539ffcf3771457543ba70c}} 
+\index{Map\+Func.\+c@{Map\+Func.\+c}!alloc\+Map@{alloc\+Map}}
+\index{alloc\+Map@{alloc\+Map}!Map\+Func.\+c@{Map\+Func.\+c}}
+\subsubsection{\texorpdfstring{alloc\+Map()}{allocMap()}}
+{\footnotesize\ttfamily char$\ast$$\ast$ alloc\+Map (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{map,  }\item[{int}]{y,  }\item[{int}]{x }\end{DoxyParamCaption})}
+
+
+
+Função\+: Alocar o Mapa do Jogo. 
+
+Descrição\+: A Função recebe uma matriz do tipo char, e o numero de linhas e de colunas que essa matriz (mapa do jogo) vai possuir. A matriz é alocada e retornada.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em char$\ast$$\ast$} & map -\/ matriz do tipo char que vai ser alocada \\
+\hline
+{\em int} & x -\/ número de linhas da matriz \\
+\hline
+{\em int} & y -\/ número de colunas da matriz\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+char$\ast$$\ast$ map -\/ matriz alocada
+\end{DoxyReturn}
+Assertiva de entrada\+: char$\ast$$\ast$ map == N\+U\+LL int x $>$ 0 int y $>$ 0
+
+Assertiva de saída\+: char$\ast$$\ast$ map != N\+U\+LL \mbox{\Hypertarget{MapFunc_8c_a94d35ed1335c3aac5b645acb3fa56506}\label{MapFunc_8c_a94d35ed1335c3aac5b645acb3fa56506}} 
+\index{Map\+Func.\+c@{Map\+Func.\+c}!dealloc\+Map@{dealloc\+Map}}
+\index{dealloc\+Map@{dealloc\+Map}!Map\+Func.\+c@{Map\+Func.\+c}}
+\subsubsection{\texorpdfstring{dealloc\+Map()}{deallocMap()}}
+{\footnotesize\ttfamily char$\ast$$\ast$ dealloc\+Map (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Função\+: Desalocar o Mapa do Jogo. 
+
+Descrição\+: A Função recebe uma matriz (mapa do jogo) do tipo char e a desaloca. Então retorna a matriz desalocada.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em char$\ast$$\ast$} & map -\/ matriz do tipo char que vai ser desalocada\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+char$\ast$$\ast$ map -\/ matriz desalocada
+\end{DoxyReturn}
+Assertiva de entrada\+: char$\ast$$\ast$ map == N\+U\+LL
+
+Assertiva de saída\+: char$\ast$$\ast$ map == N\+U\+LL \mbox{\Hypertarget{MapFunc_8c_aa3e05dc8fbb4d9c39fe64dc3241d8e10}\label{MapFunc_8c_aa3e05dc8fbb4d9c39fe64dc3241d8e10}} 
+\index{Map\+Func.\+c@{Map\+Func.\+c}!print\+Map@{print\+Map}}
+\index{print\+Map@{print\+Map}!Map\+Func.\+c@{Map\+Func.\+c}}
+\subsubsection{\texorpdfstring{print\+Map()}{printMap()}}
+{\footnotesize\ttfamily void print\+Map (\begin{DoxyParamCaption}\item[{W\+I\+N\+D\+OW $\ast$}]{win,  }\item[{char $\ast$$\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Função\+: Imprimir o Mapa na Window. 
+
+Descrição\+: A Função recebe uma matriz (mapa do jogo) do tipo char e uma janela (ncurses). Então ela printa na tela o mapa, com as bases, prédios e tropas. Ela também é responsável pelas cores printadas.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em char$\ast$$\ast$} & map -\/ matriz (mapa) do tipo char \\
+\hline
+{\em W\+I\+N\+D\+O\+W$\ast$} & win -\/ uma janela\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void. É uma função de atualização de tela
+\end{DoxyReturn}
+Assertiva de entrada\+: char$\ast$$\ast$ map != N\+U\+LL
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{MapFunc_8c_a5fc3e5c84a92b563265072f42dc861e8}\label{MapFunc_8c_a5fc3e5c84a92b563265072f42dc861e8}} 
+\index{Map\+Func.\+c@{Map\+Func.\+c}!set\+Base\+On\+Map@{set\+Base\+On\+Map}}
+\index{set\+Base\+On\+Map@{set\+Base\+On\+Map}!Map\+Func.\+c@{Map\+Func.\+c}}
+\subsubsection{\texorpdfstring{set\+Base\+On\+Map()}{setBaseOnMap()}}
+{\footnotesize\ttfamily void set\+Base\+On\+Map (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{map,  }\item[{Base $\ast$}]{bc,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{int}]{who,  }\item[{int}]{save }\end{DoxyParamCaption})}
+
+
+
+Função\+: Colocar no Mapa a Base. 
+
+Descrição\+: A Função recebe uma matriz (mapa do jogo) do tipo char, uma struct de uma base, a posição que essa base vai ficar, a altura e a largura dessa base, uma flag para identificar se a base é do player ou do PC e uma flag para identificar se a base é de um jogo novo ou de um save. A base é setada e escrita no mapa como \textquotesingle{}B\textquotesingle{} ou \textquotesingle{}C\textquotesingle{}, dependendo da flag, na posição que foi mandada.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em char$\ast$$\ast$} & map -\/ matriz (mapa) do tipo char \\
+\hline
+{\em Base$\ast$} & bc -\/ uma struct para a base \\
+\hline
+{\em int} & x -\/ coordenada x da base \\
+\hline
+{\em int} & y -\/ coordenada y da base \\
+\hline
+{\em int} & width -\/ largura da base \\
+\hline
+{\em int} & height -\/ altura da base \\
+\hline
+{\em int} & who -\/ flag para identificar se a base é do Player (0) ou do PC (1) \\
+\hline
+{\em int} & save -\/ flag para identificar se a base está sendo carregada de um jogo novo (0) ou de um save (1)\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void. Os valores são mudados por referência
+\end{DoxyReturn}
+Assertiva de entrada\+: char$\ast$$\ast$ map != N\+U\+LL Base$\ast$ bc != N\+U\+LL int x $>$= 0 int y $>$= 0 int width $>$ 0 int height $>$ 0 int who == 0 $\vert$$\vert$ who == 1 int save == 0 $\vert$$\vert$ save == 1
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{MapFunc_8c_aab712fd52de5ba0d8d02ad69e9fe2c62}\label{MapFunc_8c_aab712fd52de5ba0d8d02ad69e9fe2c62}} 
+\index{Map\+Func.\+c@{Map\+Func.\+c}!set\+Build\+On\+Map@{set\+Build\+On\+Map}}
+\index{set\+Build\+On\+Map@{set\+Build\+On\+Map}!Map\+Func.\+c@{Map\+Func.\+c}}
+\subsubsection{\texorpdfstring{set\+Build\+On\+Map()}{setBuildOnMap()}}
+{\footnotesize\ttfamily void set\+Build\+On\+Map (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{map,  }\item[{Build $\ast$}]{b,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{int}]{type,  }\item[{int}]{who,  }\item[{int}]{save }\end{DoxyParamCaption})}
+
+
+
+Função\+: Colocar no Mapa um prédio. 
+
+Descrição\+: A Função recebe uma matriz (mapa do jogo) do tipo char, uma struct de uma prédio, a posição que esse prédio vai ficar, a altura e a largura desse prédio, uma flag para identificar qual o tipo desse prédio, uma flag para identificar se o prédio é do player ou do PC e uma flag para identificar se o prédio é de um jogo novo ou de um save. O prédio é setado e escrito no mapa na posição que foi mandado, que, dependendo das flags, fica como\+: \textquotesingle{}X\textquotesingle{} -\/ prédio de type 0 do player \textquotesingle{}Y\textquotesingle{} -\/ prédio do type 1 do player \textquotesingle{}Z\textquotesingle{} -\/ prédio do type 2 do player \textquotesingle{}L\textquotesingle{} -\/ prédio do type 0 do PC \textquotesingle{}M\textquotesingle{} -\/ prédio do type 1 do PC \textquotesingle{}N\textquotesingle{} -\/ prédio do type 2 do PC
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em char$\ast$$\ast$} & map -\/ matriz (mapa) do tipo char \\
+\hline
+{\em Build$\ast$} & b -\/ uma struct para o prédio \\
+\hline
+{\em int} & x -\/ coordenada x do prédio \\
+\hline
+{\em int} & y -\/ coordenada y do prédio \\
+\hline
+{\em int} & width -\/ largura do prédio \\
+\hline
+{\em int} & height -\/ altura do prédio \\
+\hline
+{\em int} & type -\/ flag para identificar o tipo do prédio \\
+\hline
+{\em int} & who -\/ flag para identificar se o prédio é do Player (0) ou do PC (1) \\
+\hline
+{\em int} & save -\/ flag para identificar se o prédio está sendo carregado de um jogo novo (0) ou de um save (1)\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void. Os valores são mudados por referência
+\end{DoxyReturn}
+Assertiva de entrada\+: char$\ast$$\ast$ map != N\+U\+LL Build$\ast$ b != N\+U\+LL int x $>$= 0 int y $>$= 0 int width $>$ 0 int height $>$ 0 int type == 0 $\vert$$\vert$ type == 1 $\vert$$\vert$ type == 2 int who == 0 $\vert$$\vert$ who == 1 int save == 0 $\vert$$\vert$ save == 1
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{MapFunc_8c_a0e1cb1f76b3781662505eccdbe1a40d3}\label{MapFunc_8c_a0e1cb1f76b3781662505eccdbe1a40d3}} 
+\index{Map\+Func.\+c@{Map\+Func.\+c}!set\+Map@{set\+Map}}
+\index{set\+Map@{set\+Map}!Map\+Func.\+c@{Map\+Func.\+c}}
+\subsubsection{\texorpdfstring{set\+Map()}{setMap()}}
+{\footnotesize\ttfamily void set\+Map (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{map,  }\item[{int}]{save }\end{DoxyParamCaption})}
+
+
+
+Função\+: Setar a Matriz do Mapa. 
+
+Descrição\+: A Função recebe uma matriz (mapa do jogo) do tipo char e uma flag que identifica se o jogo é novo ou um save, então ela preenche o mapa com \textquotesingle{}.\textquotesingle{} .Depois é colocado as bases, prédios e tropas do player e do PC
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em char$\ast$$\ast$} & map -\/ matriz (mapa) do tipo char \\
+\hline
+{\em int} & save -\/ flag para identificar se o mapa vai ser setado para um jogo novo (0) ou para um save (1)\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void. Os valores são mudados por referência
+\end{DoxyReturn}
+Assertiva de entrada\+: char$\ast$$\ast$ map != N\+U\+LL int save == 0 $\vert$$\vert$ save == 1
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{MapFunc_8c_a736892c9b435fd3b70467beadb7a3d22}\label{MapFunc_8c_a736892c9b435fd3b70467beadb7a3d22}} 
+\index{Map\+Func.\+c@{Map\+Func.\+c}!set\+Troop\+On\+Map@{set\+Troop\+On\+Map}}
+\index{set\+Troop\+On\+Map@{set\+Troop\+On\+Map}!Map\+Func.\+c@{Map\+Func.\+c}}
+\subsubsection{\texorpdfstring{set\+Troop\+On\+Map()}{setTroopOnMap()}}
+{\footnotesize\ttfamily void set\+Troop\+On\+Map (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{map,  }\item[{Troop $\ast$}]{t,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{type,  }\item[{int}]{who,  }\item[{int}]{save }\end{DoxyParamCaption})}
+
+
+
+Função\+: Colocar no Mapa a Tropa. 
+
+Descrição\+: A Função recebe uma matriz (mapa do jogo) do tipo char, uma struct de uma tropa, a posição que essa tropa vai ficar, uma flag para identificar qual o tipo de tropa, uma flag para identificar se a tropa é do player ou do PC e uma flag para identificar se a tropa é de um jogo novo ou de um save. A tropa é setada e escrita no mapa na posição mandada, que, dependendo das flags, fica como\+: \textquotesingle{}1\textquotesingle{} -\/ tropa de type 0 do player \textquotesingle{}2\textquotesingle{} -\/ tropa de type 1 do player \textquotesingle{}3\textquotesingle{} -\/ tropa de type 2 do player \textquotesingle{}7\textquotesingle{} -\/ tropa de type 0 do PC \textquotesingle{}8\textquotesingle{} -\/ tropa de type 1 do PC \textquotesingle{}9\textquotesingle{} -\/ tropa de type 2 do PC
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em char$\ast$$\ast$} & map -\/ matriz (mapa) do tipo char \\
+\hline
+{\em Troop$\ast$} & t -\/ uma struct para a troop \\
+\hline
+{\em int} & x -\/ coordenada x da base \\
+\hline
+{\em int} & y -\/ coordenada y da base \\
+\hline
+{\em int} & type -\/ flag para identificar o tipo de tropa \\
+\hline
+{\em int} & who -\/ flag para identificar se a tropa é do Player (0) ou do PC (1) \\
+\hline
+{\em int} & save -\/ flag para identificar se a tropa está sendo carregada de um jogo novo (0) ou de um save (1)\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void. Os valores são mudados por referência
+\end{DoxyReturn}
+Assertiva de entrada\+: char$\ast$$\ast$ map != N\+U\+LL Troop$\ast$ t != N\+U\+LL int x $>$= 0 int y $>$= 0 int type == 0 $\vert$$\vert$ type == 1 $\vert$$\vert$ type == 2 int who == 0 $\vert$$\vert$ who == 1 int save == 0 $\vert$$\vert$ save == 1
+
+Assertiva de saída\+: Função void 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{MapFunc_8c_aa7def7b32d142160e043b9b8926b6c5d}\label{MapFunc_8c_aa7def7b32d142160e043b9b8926b6c5d}} 
+\index{Map\+Func.\+c@{Map\+Func.\+c}!map\+\_\+x@{map\+\_\+x}}
+\index{map\+\_\+x@{map\+\_\+x}!Map\+Func.\+c@{Map\+Func.\+c}}
+\subsubsection{\texorpdfstring{map\+\_\+x}{map\_x}}
+{\footnotesize\ttfamily int map\+\_\+x}
+
+número de linhas da matriz do mapa \mbox{\Hypertarget{MapFunc_8c_a166056ba9deace5bfd048d049a4d282a}\label{MapFunc_8c_a166056ba9deace5bfd048d049a4d282a}} 
+\index{Map\+Func.\+c@{Map\+Func.\+c}!map\+\_\+y@{map\+\_\+y}}
+\index{map\+\_\+y@{map\+\_\+y}!Map\+Func.\+c@{Map\+Func.\+c}}
+\subsubsection{\texorpdfstring{map\+\_\+y}{map\_y}}
+{\footnotesize\ttfamily int map\+\_\+y}
+
+número de colunas da matriz do mapa 

@@ -1,0 +1,524 @@
+\hypertarget{EnemyFunc_8c}{}\section{Enemy\+Func.\+c File Reference}
+\label{EnemyFunc_8c}\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+{\ttfamily \#include \char`\"{}Enemy\+Func.\+h\char`\"{}}\newline
+Include dependency graph for Enemy\+Func.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{EnemyFunc_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{EnemyFunc_8c_a93990383979b8b9bf74bd8b92cb1a70d}{Initialize\+Pathfinder}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Inicializa o Path\+Finder. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{EnemyFunc_8c_a5a65f2b9eb6ac00383f22a01fffb93cb}{End\+Pathfinder}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Finaliza o Path\+Finder. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{EnemyFunc_8c_abaaae0ea27e28196515a6d59ee30e33e}{Read\+Path}} (int pathfinder\+ID, int currentX, int currentY, int pixels\+Per\+Frame)
+\begin{DoxyCompactList}\small\item\em Função\+: Ler o Path. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{EnemyFunc_8c_ab56151be661f2d16ed8d08ed9721c2ab}{Read\+PathX}} (int pathfinder\+ID, int \mbox{\hyperlink{EnemyFunc_8c_a47048fbd28b4f16e2075ed1500a5ce35}{path\+Location}})
+\begin{DoxyCompactList}\small\item\em Função\+: Ler o Path X. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{EnemyFunc_8c_a1712431bc1f9d86e24fb8362fe5434a2}{Read\+PathY}} (int pathfinder\+ID, int \mbox{\hyperlink{EnemyFunc_8c_a47048fbd28b4f16e2075ed1500a5ce35}{path\+Location}})
+\begin{DoxyCompactList}\small\item\em Função\+: Ler o Path Y. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{EnemyFunc_8c_a0e32ab68340fc10115bdb9cbe0361175}{move\+TroopX}} (Troop $\ast$t, int ID, int targetY, int targetX)
+\begin{DoxyCompactList}\small\item\em Função\+: Mover uma Tropa do PC. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{EnemyFunc_8c_a8284736a04f6600c4efca2c63f3bca04}{enemy\+Move}} (Troop $\ast$t1, Troop $\ast$t2, Troop $\ast$t3)
+\begin{DoxyCompactList}\small\item\em Função\+: Controla os Movimentos do PC. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{EnemyFunc_8c_aa25aa73d1953ca58dec613784df63b50}{enemy\+Troop\+Controller}} (Troop $\ast$t1, Troop $\ast$t2, Troop $\ast$t3, Build $\ast$b3, Base $\ast$b)
+\begin{DoxyCompactList}\small\item\em Função\+: Controlar a Criação de Tropas do PC. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{EnemyFunc_8c_ad20805e8366ccc7932aa5298a1d79ac9}{enemy\+Hit\+Control}} (Troop $\ast$t, Base $\ast$b, Build $\ast$b1, Build $\ast$b2, Build $\ast$b3)
+\begin{DoxyCompactList}\small\item\em Função\+: Controlar o Ataque de Tropas do PC aos Prédios/\+Base. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{EnemyFunc_8c_ae606788538ba3a44647c5629f9a2994e}{move\+Enemy\+Troop}} (Troop $\ast$t, int ID)
+\begin{DoxyCompactList}\small\item\em Função\+: Mostrar Movimentos das Tropas do PC. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{EnemyFunc_8c_ae730304eb738d4e118219dae2fc08683}{Find\+Path}} (int pathfinder\+ID, int startingX, int startingY, int targetX, int targetY)
+\begin{DoxyCompactList}\small\item\em Função\+: Encontra um Path. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{EnemyFunc_8c_a6e1ddb3286368e54f63dffc62f9a8149}{enemy\+Troop\+Checker}} (Troop $\ast$t, int mode)
+\begin{DoxyCompactList}\small\item\em Função\+: Verificar as Redondezas da Tropa do PC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Base \mbox{\hyperlink{EnemyFunc_8c_a5f1823c63772e3cb26f42bf3de7d1ffb}{Base\+\_\+e}}
+\item 
+Build \mbox{\hyperlink{EnemyFunc_8c_a3fdbc37eb9f14d40fe63b611633f8df1}{B1\+\_\+e}}
+\item 
+Build \mbox{\hyperlink{EnemyFunc_8c_abbe13ddd2be6b6adced0e509780d02e2}{B2\+\_\+e}}
+\item 
+Build \mbox{\hyperlink{EnemyFunc_8c_ae2f45c6f02db7c8ab0fcfb05a8adc1dc}{B3\+\_\+e}}
+\item 
+Troop \mbox{\hyperlink{EnemyFunc_8c_a2e00c7c94e8a81cc896bce8956a9a032}{T1\+\_\+e}}
+\item 
+Troop \mbox{\hyperlink{EnemyFunc_8c_aea29d96d5040789995c1e03e8faaa1f9}{T2\+\_\+e}}
+\item 
+Troop \mbox{\hyperlink{EnemyFunc_8c_acb6791b0f5d4c21d96ed588ece080e38}{T3\+\_\+e}}
+\item 
+int \mbox{\hyperlink{EnemyFunc_8c_a6075c92d97c21a49ef8db637371c434a}{not\+Started}} = 0
+\item 
+int \mbox{\hyperlink{EnemyFunc_8c_ac6c6cd839d50c91230f55ed55d0cd635}{found}} = 1
+\item 
+int \mbox{\hyperlink{EnemyFunc_8c_ae4684897fd37cdf40aaa7e1a9737dac2}{nonexistent}} = 2
+\item 
+int \mbox{\hyperlink{EnemyFunc_8c_a49efc706b17c89b3843c99c488ef1f0e}{walkable}} = 0
+\item 
+int \mbox{\hyperlink{EnemyFunc_8c_a5229b2af98af6c573c548b257f4a5eae}{unwalkable}} = 1
+\item 
+int \mbox{\hyperlink{EnemyFunc_8c_ab30aaad137fac858bc09cd595a0e4db7}{number\+People}} = 3
+\item 
+int $\ast$ \mbox{\hyperlink{EnemyFunc_8c_a347ae6c1c2b341b6d2d92bf36d78efaa}{path\+Bank}} \mbox{[}4\mbox{]}
+\item 
+int \mbox{\hyperlink{EnemyFunc_8c_a742dca0a31ff8eb481bf1167597edfcf}{path\+Length}} \mbox{[}4\mbox{]}
+\item 
+int \mbox{\hyperlink{EnemyFunc_8c_a4133acb1b6a57058b57218646b115702}{path\+Status}} \mbox{[}4\mbox{]}
+\item 
+int \mbox{\hyperlink{EnemyFunc_8c_a47048fbd28b4f16e2075ed1500a5ce35}{path\+Location}} \mbox{[}4\mbox{]}
+\item 
+int \mbox{\hyperlink{EnemyFunc_8c_a7bce088cbd7712e387f5a341410fb0e4}{x\+Path}} \mbox{[}4\mbox{]}
+\item 
+int \mbox{\hyperlink{EnemyFunc_8c_a7c2f5bf65183a339ea02ad6966ae0a72}{y\+Path}} \mbox{[}4\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{EnemyFunc_8c_a5a65f2b9eb6ac00383f22a01fffb93cb}\label{EnemyFunc_8c_a5a65f2b9eb6ac00383f22a01fffb93cb}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!End\+Pathfinder@{End\+Pathfinder}}
+\index{End\+Pathfinder@{End\+Pathfinder}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{End\+Pathfinder()}{EndPathfinder()}}
+{\footnotesize\ttfamily void End\+Pathfinder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Finaliza o Path\+Finder. 
+
+Descrição\+: A Função desaloca a memória usada pelo Pathfinder.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Sem} & Parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void -\/ A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: Função Void \mbox{\Hypertarget{EnemyFunc_8c_ad20805e8366ccc7932aa5298a1d79ac9}\label{EnemyFunc_8c_ad20805e8366ccc7932aa5298a1d79ac9}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!enemy\+Hit\+Control@{enemy\+Hit\+Control}}
+\index{enemy\+Hit\+Control@{enemy\+Hit\+Control}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{enemy\+Hit\+Control()}{enemyHitControl()}}
+{\footnotesize\ttfamily void enemy\+Hit\+Control (\begin{DoxyParamCaption}\item[{Troop $\ast$}]{t,  }\item[{Base $\ast$}]{b,  }\item[{Build $\ast$}]{b1,  }\item[{Build $\ast$}]{b2,  }\item[{Build $\ast$}]{b3 }\end{DoxyParamCaption})}
+
+
+
+Função\+: Controlar o Ataque de Tropas do PC aos Prédios/\+Base. 
+
+Descrição\+: A Função recebe as structs dos prédios, da base e de uma tropa. Ela verifica se a tropa está perto de algum prédio/base e se estiver é calculado o dano que essa tropa está dando no prédio/base. Antes de diminuir a vida do prédio/base é necessário diminuir a defesa para 0.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Troop$\ast$} & t -\/ struct da tropa do tipo 1 do PC \\
+\hline
+{\em Base$\ast$} & b -\/ struct da base \\
+\hline
+{\em Build$\ast$} & b1 -\/ struct do prédio do tipo 1 \\
+\hline
+{\em Build$\ast$} & b2 -\/ struct do prédio do tipo 2 \\
+\hline
+{\em Build$\ast$} & b3 -\/ struct do prédio do tipo 3\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void. A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Troop$\ast$ t != N\+U\+LL Base$\ast$ b != N\+U\+LL Build$\ast$ b1 != N\+U\+LL Build$\ast$ b2 != N\+U\+LL Build$\ast$ b3 != N\+U\+LL
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{EnemyFunc_8c_a8284736a04f6600c4efca2c63f3bca04}\label{EnemyFunc_8c_a8284736a04f6600c4efca2c63f3bca04}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!enemy\+Move@{enemy\+Move}}
+\index{enemy\+Move@{enemy\+Move}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{enemy\+Move()}{enemyMove()}}
+{\footnotesize\ttfamily void enemy\+Move (\begin{DoxyParamCaption}\item[{Troop $\ast$}]{t1,  }\item[{Troop $\ast$}]{t2,  }\item[{Troop $\ast$}]{t3 }\end{DoxyParamCaption})}
+
+
+
+Função\+: Controla os Movimentos do PC. 
+
+Descrição\+: A Função inicia a procura de paths e chama uma função de mover as tropas.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Troop$\ast$} & t1 -\/ Tropa do tipo 1 do PC \\
+\hline
+{\em Troop$\ast$} & t2 -\/ Tropa do tipo 2 do PC \\
+\hline
+{\em Troop$\ast$} & t3 -\/ Tropa do tipo 3 do PC\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void -\/ A Função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Troop$\ast$ t1 != N\+U\+LL Troop$\ast$ t2 != N\+U\+LL Troop$\ast$ t3 != N\+U\+LL
+
+Assertiva de saída\+: Função Void \mbox{\Hypertarget{EnemyFunc_8c_a6e1ddb3286368e54f63dffc62f9a8149}\label{EnemyFunc_8c_a6e1ddb3286368e54f63dffc62f9a8149}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!enemy\+Troop\+Checker@{enemy\+Troop\+Checker}}
+\index{enemy\+Troop\+Checker@{enemy\+Troop\+Checker}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{enemy\+Troop\+Checker()}{enemyTroopChecker()}}
+{\footnotesize\ttfamily int enemy\+Troop\+Checker (\begin{DoxyParamCaption}\item[{Troop $\ast$}]{t,  }\item[{int}]{mode }\end{DoxyParamCaption})}
+
+
+
+Função\+: Verificar as Redondezas da Tropa do PC. 
+
+Descrição\+: A Função recebe a struct de uma tropa e verifica as redondezas dessa tropa, e retorna um valor de acordo com o que está do lado dessa tropa.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Troop$\ast$} & t -\/ struct da tropa \\
+\hline
+{\em int} & mode -\/ flag para identificar se a função foi chamada para checar se a tropa está perto do prédio responsável por aumentar tropas (0) ou se foi chamada para checar se há tropas inimigas por perto (1)\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+0 -\/ caso a tropa não esteja perto de nada 
+
+1 -\/ caso a mode = 0 e a tropa esteja perto do prédio responsável por gerar tropas 
+
+4 -\/ caso a tropa esteja perto do base \textquotesingle{}B\textquotesingle{} 
+
+5 -\/ caso a tropa esteja perto do prédio \textquotesingle{}X\textquotesingle{} 
+
+6 -\/ caso a tropa esteja perto do prédio \textquotesingle{}Y\textquotesingle{} 
+
+7 -\/ caso a tropa esteja perto do prédio \textquotesingle{}Z\textquotesingle{}
+\end{DoxyReturn}
+Assertiva de entrada\+: Troop$\ast$ t != N\+U\+LL int mode == 0 $\vert$$\vert$ mode == 1
+
+Assertiva de saída\+: A função retorna valores fixos. \mbox{\Hypertarget{EnemyFunc_8c_aa25aa73d1953ca58dec613784df63b50}\label{EnemyFunc_8c_aa25aa73d1953ca58dec613784df63b50}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!enemy\+Troop\+Controller@{enemy\+Troop\+Controller}}
+\index{enemy\+Troop\+Controller@{enemy\+Troop\+Controller}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{enemy\+Troop\+Controller()}{enemyTroopController()}}
+{\footnotesize\ttfamily void enemy\+Troop\+Controller (\begin{DoxyParamCaption}\item[{Troop $\ast$}]{t1,  }\item[{Troop $\ast$}]{t2,  }\item[{Troop $\ast$}]{t3,  }\item[{Build $\ast$}]{b3,  }\item[{Base $\ast$}]{b }\end{DoxyParamCaption})}
+
+
+
+Função\+: Controlar a Criação de Tropas do PC. 
+
+Descrição\+: A Função recebe as structs da base, das tropas e do prédio responsável pela criação de tropas. Então ela verifica se a tropa está do lado do prédio que gera tropa, e se há recursos para gerar mais tropas. Então essa tropa tem a quantidade aumentada.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Troop$\ast$} & t1 -\/ struct da tropa do tipo 1 do PC \\
+\hline
+{\em Troop$\ast$} & t2 -\/ struct da tropa do tipo 2 do PC \\
+\hline
+{\em Troop$\ast$} & t3 -\/ struct da tropa do tipo 3 do PC \\
+\hline
+{\em Build$\ast$} & b3 -\/ struct do prédio do tipo 3 do PC \\
+\hline
+{\em Base$\ast$} & b -\/ struct da base do PC\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void. A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Troop$\ast$ t1 != N\+U\+LL Troop$\ast$ t2 != N\+U\+LL Troop$\ast$ t3 != N\+U\+LL Build$\ast$ b3 != N\+U\+LL Base$\ast$ b != N\+U\+LL
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{EnemyFunc_8c_ae730304eb738d4e118219dae2fc08683}\label{EnemyFunc_8c_ae730304eb738d4e118219dae2fc08683}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!Find\+Path@{Find\+Path}}
+\index{Find\+Path@{Find\+Path}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{Find\+Path()}{FindPath()}}
+{\footnotesize\ttfamily int Find\+Path (\begin{DoxyParamCaption}\item[{int}]{pathfinder\+ID,  }\item[{int}]{startingX,  }\item[{int}]{startingY,  }\item[{int}]{targetX,  }\item[{int}]{targetY }\end{DoxyParamCaption})}
+
+
+
+Função\+: Encontra um Path. 
+
+Descrição\+: A Função utiliza um algoritmo chamado A$\ast$ ( A star) para encontrar um Path.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em int} & pathfinder\+ID -\/ Identificador da Origem( de onde o path sai) \\
+\hline
+{\em int} & startingX -\/ Coordenada x que a origem está \\
+\hline
+{\em int} & startingY -\/ Coordenada y que a origem está \\
+\hline
+{\em int} & targetX -\/ Coordenada x que o path quer chegar \\
+\hline
+{\em int} & targetY -\/ Coordenada y que o path quer chegar\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+int path -\/ se a função encontra um caminho 
+
+int nonexistent -\/ se a função não encontra nada
+\end{DoxyReturn}
+Assertiva de entrada\+: int pathfinder\+ID == 0 $\vert$$\vert$ pathfinder\+ID == 1 $\vert$$\vert$ pathfinder\+ID == 2 $\vert$$\vert$ pathfinder\+ID == 3 int startingX $>$= 0 int startingY $>$= 0 int targetX $>$= 0 int targetY $>$= 0
+
+Assertiva de saída\+: int path == 1 int noexistent == 0 \mbox{\Hypertarget{EnemyFunc_8c_a93990383979b8b9bf74bd8b92cb1a70d}\label{EnemyFunc_8c_a93990383979b8b9bf74bd8b92cb1a70d}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!Initialize\+Pathfinder@{Initialize\+Pathfinder}}
+\index{Initialize\+Pathfinder@{Initialize\+Pathfinder}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{Initialize\+Pathfinder()}{InitializePathfinder()}}
+{\footnotesize\ttfamily void Initialize\+Pathfinder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Inicializa o Path\+Finder. 
+
+Descrição\+: A Função aloca memória para o Pathfinder.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Sem} & Parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void -\/ A Função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: Função Void \mbox{\Hypertarget{EnemyFunc_8c_ae606788538ba3a44647c5629f9a2994e}\label{EnemyFunc_8c_ae606788538ba3a44647c5629f9a2994e}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!move\+Enemy\+Troop@{move\+Enemy\+Troop}}
+\index{move\+Enemy\+Troop@{move\+Enemy\+Troop}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{move\+Enemy\+Troop()}{moveEnemyTroop()}}
+{\footnotesize\ttfamily void move\+Enemy\+Troop (\begin{DoxyParamCaption}\item[{Troop $\ast$}]{t,  }\item[{int}]{ID }\end{DoxyParamCaption})}
+
+
+
+Função\+: Mostrar Movimentos das Tropas do PC. 
+
+Descrição\+: A Função recebe a struct de uma tropa e sua identificação. Então se essa tropa foi movimentanda, a função atualiza a tela de acordo com essa movimentação.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Troop$\ast$} & t -\/ Struct da tropa do PC \\
+\hline
+{\em int} & ID -\/ identificação da tropa\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void -\/ A Função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Troop$\ast$ t != N\+U\+LL int ID == 0 $\vert$$\vert$ ID == 1 $\vert$$\vert$ ID == 2
+
+Assertiva de saída\+: Função Void \mbox{\Hypertarget{EnemyFunc_8c_a0e32ab68340fc10115bdb9cbe0361175}\label{EnemyFunc_8c_a0e32ab68340fc10115bdb9cbe0361175}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!move\+TroopX@{move\+TroopX}}
+\index{move\+TroopX@{move\+TroopX}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{move\+Troop\+X()}{moveTroopX()}}
+{\footnotesize\ttfamily void move\+TroopX (\begin{DoxyParamCaption}\item[{Troop $\ast$}]{t,  }\item[{int}]{ID,  }\item[{int}]{targetY,  }\item[{int}]{targetX }\end{DoxyParamCaption})}
+
+
+
+Função\+: Mover uma Tropa do PC. 
+
+Descrição\+: A Função recebe uma struct de uma tropa, o ID dessa tropa e a posição que essa tropa deve chegar. Então move essa tropa.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em int} & Troop$\ast$ t -\/ struct de uma tropa do PC \\
+\hline
+{\em int} & ID -\/ identificação de qual tropa vai ser movimentada \\
+\hline
+{\em int} & targetY -\/ coordenada y para onde a tropa deve ir \\
+\hline
+{\em int} & targetX -\/ coordenada x para onde a tropa deve ir\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void -\/ A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Troop$\ast$ t != N\+U\+LL int ID == 0 $\vert$$\vert$ ID == 1 $\vert$$\vert$ ID == 2 int targetY $>$= 0 int targetX $>$= 0
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{EnemyFunc_8c_abaaae0ea27e28196515a6d59ee30e33e}\label{EnemyFunc_8c_abaaae0ea27e28196515a6d59ee30e33e}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!Read\+Path@{Read\+Path}}
+\index{Read\+Path@{Read\+Path}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{Read\+Path()}{ReadPath()}}
+{\footnotesize\ttfamily void Read\+Path (\begin{DoxyParamCaption}\item[{int}]{pathfinder\+ID,  }\item[{int}]{currentX,  }\item[{int}]{currentY,  }\item[{int}]{pixels\+Per\+Frame }\end{DoxyParamCaption})}
+
+
+
+Função\+: Ler o Path. 
+
+Descrição\+: A Função lê o path data e converte em coordendas para a tela.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em int} & pathfinder\+ID -\/ identificador da Origem ( de onde o path sai) \\
+\hline
+{\em int} & currentX -\/ coordenada x atual que o path se encontra \\
+\hline
+{\em int} & currentY -\/ coordenada y atual que o path se encontra \\
+\hline
+{\em int} & pixels\+Per\+Frame -\/ quantidade de pixels atualizados em 1 frame\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void -\/ A Função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: int pathfinder\+ID == 0 $\vert$$\vert$ pathfinder\+ID == 1 $\vert$$\vert$ pathfinder\+ID == 2 $\vert$$\vert$ pathfinder\+ID == 3 int currentX $>$= 0 int currentY $>$= 0 int pixels\+Per\+Frame == 1
+
+Assertiva de saída\+: Função Void \mbox{\Hypertarget{EnemyFunc_8c_ab56151be661f2d16ed8d08ed9721c2ab}\label{EnemyFunc_8c_ab56151be661f2d16ed8d08ed9721c2ab}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!Read\+PathX@{Read\+PathX}}
+\index{Read\+PathX@{Read\+PathX}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{Read\+Path\+X()}{ReadPathX()}}
+{\footnotesize\ttfamily int Read\+PathX (\begin{DoxyParamCaption}\item[{int}]{pathfinder\+ID,  }\item[{int}]{path\+Location }\end{DoxyParamCaption})}
+
+
+
+Função\+: Ler o Path X. 
+
+Descrição\+: A Função lê a coordenada X do próximo passo do Path.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em int} & pathfinder\+ID -\/ identificador da Origem (de onde o path sai) \\
+\hline
+{\em int} & path\+Location -\/ local onde o path está atualmente\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+int x -\/ coordenada x do próximo passo do Path
+\end{DoxyReturn}
+Assertiva de entrada\+: int pathfinder\+ID == 0 $\vert$$\vert$ pathfinder\+ID == 1 $\vert$$\vert$ pathfinder\+ID == 2 $\vert$$\vert$ pathfinder\+ID == 3 int path\+Location $>$= 0
+
+Assertiva de saída\+: int x $>$= 0 \mbox{\Hypertarget{EnemyFunc_8c_a1712431bc1f9d86e24fb8362fe5434a2}\label{EnemyFunc_8c_a1712431bc1f9d86e24fb8362fe5434a2}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!Read\+PathY@{Read\+PathY}}
+\index{Read\+PathY@{Read\+PathY}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{Read\+Path\+Y()}{ReadPathY()}}
+{\footnotesize\ttfamily int Read\+PathY (\begin{DoxyParamCaption}\item[{int}]{pathfinder\+ID,  }\item[{int}]{path\+Location }\end{DoxyParamCaption})}
+
+
+
+Função\+: Ler o Path Y. 
+
+Descrição\+: A Função lê a coordenada y do próximo passo do Path.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em int} & pathfinder\+ID -\/ identificador da Origem (de onde o path sai) \\
+\hline
+{\em int} & path\+Location -\/ local onde o path está atualmente\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+int y -\/ coordenada y do próximo passo do Path
+\end{DoxyReturn}
+Assertiva de entrada\+: int pathfinder\+ID == 0 $\vert$$\vert$ pathfinder\+ID == 1 $\vert$$\vert$ pathfinder\+ID == 2 $\vert$$\vert$ pathfinder\+ID == 3 int path\+Location $>$= 0
+
+Assertiva de saída\+: int y $>$= 0 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{EnemyFunc_8c_a3fdbc37eb9f14d40fe63b611633f8df1}\label{EnemyFunc_8c_a3fdbc37eb9f14d40fe63b611633f8df1}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!B1\+\_\+e@{B1\+\_\+e}}
+\index{B1\+\_\+e@{B1\+\_\+e}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{B1\+\_\+e}{B1\_e}}
+{\footnotesize\ttfamily Build B1\+\_\+e}
+
+struct Prédio 1 do PC \mbox{\Hypertarget{EnemyFunc_8c_abbe13ddd2be6b6adced0e509780d02e2}\label{EnemyFunc_8c_abbe13ddd2be6b6adced0e509780d02e2}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!B2\+\_\+e@{B2\+\_\+e}}
+\index{B2\+\_\+e@{B2\+\_\+e}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{B2\+\_\+e}{B2\_e}}
+{\footnotesize\ttfamily Build B2\+\_\+e}
+
+struct Prédio 2 do PC \mbox{\Hypertarget{EnemyFunc_8c_ae2f45c6f02db7c8ab0fcfb05a8adc1dc}\label{EnemyFunc_8c_ae2f45c6f02db7c8ab0fcfb05a8adc1dc}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!B3\+\_\+e@{B3\+\_\+e}}
+\index{B3\+\_\+e@{B3\+\_\+e}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{B3\+\_\+e}{B3\_e}}
+{\footnotesize\ttfamily Build B3\+\_\+e}
+
+struct Prédio 3 do PC \mbox{\Hypertarget{EnemyFunc_8c_a5f1823c63772e3cb26f42bf3de7d1ffb}\label{EnemyFunc_8c_a5f1823c63772e3cb26f42bf3de7d1ffb}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!Base\+\_\+e@{Base\+\_\+e}}
+\index{Base\+\_\+e@{Base\+\_\+e}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{Base\+\_\+e}{Base\_e}}
+{\footnotesize\ttfamily Base Base\+\_\+e}
+
+struct Base do PC \mbox{\Hypertarget{EnemyFunc_8c_ac6c6cd839d50c91230f55ed55d0cd635}\label{EnemyFunc_8c_ac6c6cd839d50c91230f55ed55d0cd635}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!found@{found}}
+\index{found@{found}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{found}{found}}
+{\footnotesize\ttfamily int found = 1}
+
+constants for path found ou not found \mbox{\Hypertarget{EnemyFunc_8c_ae4684897fd37cdf40aaa7e1a9737dac2}\label{EnemyFunc_8c_ae4684897fd37cdf40aaa7e1a9737dac2}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!nonexistent@{nonexistent}}
+\index{nonexistent@{nonexistent}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{nonexistent}{nonexistent}}
+{\footnotesize\ttfamily int nonexistent = 2}
+
+\mbox{\Hypertarget{EnemyFunc_8c_a6075c92d97c21a49ef8db637371c434a}\label{EnemyFunc_8c_a6075c92d97c21a49ef8db637371c434a}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!not\+Started@{not\+Started}}
+\index{not\+Started@{not\+Started}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{not\+Started}{notStarted}}
+{\footnotesize\ttfamily int not\+Started = 0}
+
+path-\/related constants \mbox{\Hypertarget{EnemyFunc_8c_ab30aaad137fac858bc09cd595a0e4db7}\label{EnemyFunc_8c_ab30aaad137fac858bc09cd595a0e4db7}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!number\+People@{number\+People}}
+\index{number\+People@{number\+People}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{number\+People}{numberPeople}}
+{\footnotesize\ttfamily int number\+People = 3}
+
+number of troops or builds \mbox{\Hypertarget{EnemyFunc_8c_a347ae6c1c2b341b6d2d92bf36d78efaa}\label{EnemyFunc_8c_a347ae6c1c2b341b6d2d92bf36d78efaa}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!path\+Bank@{path\+Bank}}
+\index{path\+Bank@{path\+Bank}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{path\+Bank}{pathBank}}
+{\footnotesize\ttfamily int$\ast$ path\+Bank\mbox{[}4\mbox{]}}
+
+stores numbers of needed paths \mbox{\Hypertarget{EnemyFunc_8c_a742dca0a31ff8eb481bf1167597edfcf}\label{EnemyFunc_8c_a742dca0a31ff8eb481bf1167597edfcf}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!path\+Length@{path\+Length}}
+\index{path\+Length@{path\+Length}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{path\+Length}{pathLength}}
+{\footnotesize\ttfamily int path\+Length\mbox{[}4\mbox{]}}
+
+stores length of the found path for critter \mbox{\Hypertarget{EnemyFunc_8c_a47048fbd28b4f16e2075ed1500a5ce35}\label{EnemyFunc_8c_a47048fbd28b4f16e2075ed1500a5ce35}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!path\+Location@{path\+Location}}
+\index{path\+Location@{path\+Location}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{path\+Location}{pathLocation}}
+{\footnotesize\ttfamily int path\+Location\mbox{[}4\mbox{]}}
+
+stores current position along the chosen path for critter \mbox{\Hypertarget{EnemyFunc_8c_a4133acb1b6a57058b57218646b115702}\label{EnemyFunc_8c_a4133acb1b6a57058b57218646b115702}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!path\+Status@{path\+Status}}
+\index{path\+Status@{path\+Status}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{path\+Status}{pathStatus}}
+{\footnotesize\ttfamily int path\+Status\mbox{[}4\mbox{]}}
+
+\mbox{\Hypertarget{EnemyFunc_8c_a2e00c7c94e8a81cc896bce8956a9a032}\label{EnemyFunc_8c_a2e00c7c94e8a81cc896bce8956a9a032}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!T1\+\_\+e@{T1\+\_\+e}}
+\index{T1\+\_\+e@{T1\+\_\+e}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{T1\+\_\+e}{T1\_e}}
+{\footnotesize\ttfamily Troop T1\+\_\+e}
+
+struct Tropa 1 do PC \mbox{\Hypertarget{EnemyFunc_8c_aea29d96d5040789995c1e03e8faaa1f9}\label{EnemyFunc_8c_aea29d96d5040789995c1e03e8faaa1f9}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!T2\+\_\+e@{T2\+\_\+e}}
+\index{T2\+\_\+e@{T2\+\_\+e}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{T2\+\_\+e}{T2\_e}}
+{\footnotesize\ttfamily Troop T2\+\_\+e}
+
+struct Tropa 2 do PC \mbox{\Hypertarget{EnemyFunc_8c_acb6791b0f5d4c21d96ed588ece080e38}\label{EnemyFunc_8c_acb6791b0f5d4c21d96ed588ece080e38}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!T3\+\_\+e@{T3\+\_\+e}}
+\index{T3\+\_\+e@{T3\+\_\+e}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{T3\+\_\+e}{T3\_e}}
+{\footnotesize\ttfamily Troop T3\+\_\+e}
+
+struct Tropa 3 do PC \mbox{\Hypertarget{EnemyFunc_8c_a5229b2af98af6c573c548b257f4a5eae}\label{EnemyFunc_8c_a5229b2af98af6c573c548b257f4a5eae}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!unwalkable@{unwalkable}}
+\index{unwalkable@{unwalkable}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{unwalkable}{unwalkable}}
+{\footnotesize\ttfamily int unwalkable = 1}
+
+\mbox{\Hypertarget{EnemyFunc_8c_a49efc706b17c89b3843c99c488ef1f0e}\label{EnemyFunc_8c_a49efc706b17c89b3843c99c488ef1f0e}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!walkable@{walkable}}
+\index{walkable@{walkable}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{walkable}{walkable}}
+{\footnotesize\ttfamily int walkable = 0}
+
+constants for walkability array \mbox{\Hypertarget{EnemyFunc_8c_a7bce088cbd7712e387f5a341410fb0e4}\label{EnemyFunc_8c_a7bce088cbd7712e387f5a341410fb0e4}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!x\+Path@{x\+Path}}
+\index{x\+Path@{x\+Path}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{x\+Path}{xPath}}
+{\footnotesize\ttfamily int x\+Path\mbox{[}4\mbox{]}}
+
+Path reading variables \mbox{\Hypertarget{EnemyFunc_8c_a7c2f5bf65183a339ea02ad6966ae0a72}\label{EnemyFunc_8c_a7c2f5bf65183a339ea02ad6966ae0a72}} 
+\index{Enemy\+Func.\+c@{Enemy\+Func.\+c}!y\+Path@{y\+Path}}
+\index{y\+Path@{y\+Path}!Enemy\+Func.\+c@{Enemy\+Func.\+c}}
+\subsubsection{\texorpdfstring{y\+Path}{yPath}}
+{\footnotesize\ttfamily int y\+Path\mbox{[}4\mbox{]}}
+
+Path reading variables 

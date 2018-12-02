@@ -1,0 +1,410 @@
+\hypertarget{GameLogic_8c}{}\section{Game\+Logic.\+c File Reference}
+\label{GameLogic_8c}\index{Game\+Logic.\+c@{Game\+Logic.\+c}}
+{\ttfamily \#include \char`\"{}Win\+Manager.\+h\char`\"{}}\newline
+Include dependency graph for Game\+Logic.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{GameLogic_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{GameLogic_8c_a285c3f70c3743d8c4d1d64574cbaeccf}{start\+New\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Inicia e determina o que acontece no jogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{GameLogic_8c_a7cce67ceb88c653b0572dbb89add5d38}{player\+Checkers}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Verificar Status das Estruturas e tropas do Player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{GameLogic_8c_a3745a14194c42945ac994ba20448e370}{on\+Game\+Routine}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Chama as Funções Para Atualizar o Jogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{GameLogic_8c_acfc6eb449ca115b62b027250c46597b3}{enemy\+Checkers}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Verificar Status dos Prédios e Tropas do PC. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{GameLogic_8c_ad3f949a3837869c04ca3115c5c1558b1}{game\+Checkers}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Atualizar Status Gerais. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{GameLogic_8c_aa47d7322cce56921933f620dde8dc20b}{player\+Controllers}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Verificar Criação de Recursos e Tropas do Player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{GameLogic_8c_ace3531b6b91cdfc6e5efb802e79079c5}{enemy\+Controllers}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Verificar Criação de Recursos e Tropas do PC. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{GameLogic_8c_a9eb420ce9f7c7664de188d277f069309}{game\+Controllers}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Atualizar Recursos e Tropas Gerais. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{GameLogic_8c_aa8ec071ce9e46c870e5eef1443f78969}{refresh\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Atualizar a Tela. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{GameLogic_8c_ac5d72dfe00aec01540c4ffbf3c17168e}{pause\+Game\+Routine}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Controlar as Opções no Menu de Pause. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{GameLogic_8c_a588696d89f65cab797ac3aa09db8ace5}{print\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Printar na Tela o Jogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{GameLogic_8c_a9255c729e3e0425e5f6f420ef18d19bd}{alloc\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Iniciar e Alocar Pré-\/\+Requisitos para o Jogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{GameLogic_8c_ab7c9ee132f977dd2efd33ab66509d650}{destroy\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Desaloca e Finaliza as Janelas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{GameLogic_8c_ac42f6d85eb40dfdfadbf9933d885b4c1}{save\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Salvar o Jogo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{GameLogic_8c_ac340004cff52617fb540899b03191a9b}{load\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Carregar um Jogo Salvo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+W\+I\+N\+D\+OW $\ast$ \mbox{\hyperlink{GameLogic_8c_aa578a767fc3d38ab4b0211e552ed41cd}{game\+Win}}
+\item 
+W\+I\+N\+D\+OW $\ast$ \mbox{\hyperlink{GameLogic_8c_a81cc11227a869b90adbf28221ec125a7}{status\+Win}}
+\item 
+int \mbox{\hyperlink{GameLogic_8c_ab7ad0796d84021de0fd46246b3d5096f}{game\+State}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{GameLogic_8c_a9255c729e3e0425e5f6f420ef18d19bd}\label{GameLogic_8c_a9255c729e3e0425e5f6f420ef18d19bd}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!alloc\+Game@{alloc\+Game}}
+\index{alloc\+Game@{alloc\+Game}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{alloc\+Game()}{allocGame()}}
+{\footnotesize\ttfamily void alloc\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Iniciar e Alocar Pré-\/\+Requisitos para o Jogo. 
+
+Descrição\+: A Função aloca e cria as janelas do jogo e do status, aloca o mapa do jogo e o inicializa.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void -\/ A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{GameLogic_8c_ab7c9ee132f977dd2efd33ab66509d650}\label{GameLogic_8c_ab7c9ee132f977dd2efd33ab66509d650}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!destroy\+Game@{destroy\+Game}}
+\index{destroy\+Game@{destroy\+Game}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{destroy\+Game()}{destroyGame()}}
+{\footnotesize\ttfamily void destroy\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Desaloca e Finaliza as Janelas. 
+
+Descrição\+: A Função desaloca a janela utilizada para o jogo e para o status e desaloca o mapa do jogo. Então limpa o terminal e atualiza a tela.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void -\/ A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{GameLogic_8c_acfc6eb449ca115b62b027250c46597b3}\label{GameLogic_8c_acfc6eb449ca115b62b027250c46597b3}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!enemy\+Checkers@{enemy\+Checkers}}
+\index{enemy\+Checkers@{enemy\+Checkers}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{enemy\+Checkers()}{enemyCheckers()}}
+{\footnotesize\ttfamily void enemy\+Checkers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Verificar Status dos Prédios e Tropas do PC. 
+
+Descrição\+: A Função chama funções para verificar a vida dos prédios e a quantidade de tropas do PC.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void -\/ A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{GameLogic_8c_ace3531b6b91cdfc6e5efb802e79079c5}\label{GameLogic_8c_ace3531b6b91cdfc6e5efb802e79079c5}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!enemy\+Controllers@{enemy\+Controllers}}
+\index{enemy\+Controllers@{enemy\+Controllers}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{enemy\+Controllers()}{enemyControllers()}}
+{\footnotesize\ttfamily void enemy\+Controllers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Verificar Criação de Recursos e Tropas do PC. 
+
+Descrição\+: A Função chama funções para verificar a mineração de recursos e a criação de tropas do PC.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void -\/ A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{GameLogic_8c_ad3f949a3837869c04ca3115c5c1558b1}\label{GameLogic_8c_ad3f949a3837869c04ca3115c5c1558b1}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!game\+Checkers@{game\+Checkers}}
+\index{game\+Checkers@{game\+Checkers}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{game\+Checkers()}{gameCheckers()}}
+{\footnotesize\ttfamily void game\+Checkers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Atualizar Status Gerais. 
+
+Descrição\+: A Função chama funções de checagem de mudança de status em tropas e prédios do player e do PC.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void -\/ A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{GameLogic_8c_a9eb420ce9f7c7664de188d277f069309}\label{GameLogic_8c_a9eb420ce9f7c7664de188d277f069309}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!game\+Controllers@{game\+Controllers}}
+\index{game\+Controllers@{game\+Controllers}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{game\+Controllers()}{gameControllers()}}
+{\footnotesize\ttfamily void game\+Controllers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Atualizar Recursos e Tropas Gerais. 
+
+Descrição\+: A Função chama funções de verificação da mineração de recursos e da criação de tropas.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void -\/ A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{GameLogic_8c_ac340004cff52617fb540899b03191a9b}\label{GameLogic_8c_ac340004cff52617fb540899b03191a9b}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!load\+Game@{load\+Game}}
+\index{load\+Game@{load\+Game}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{load\+Game()}{loadGame()}}
+{\footnotesize\ttfamily int load\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Carregar um Jogo Salvo. 
+
+Descrição\+: A Função abre o arquivo de save e lê todos os dados da base, prédios e tropas do player e do PC. Caso não exista um save, é mostrado uma mensagem na tela.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+0 -\/ se não existir um arquivo de save válido 
+
+1 -\/ se o load ocorrer sem problemas
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: A função retorna valores fixos. \mbox{\Hypertarget{GameLogic_8c_a3745a14194c42945ac994ba20448e370}\label{GameLogic_8c_a3745a14194c42945ac994ba20448e370}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!on\+Game\+Routine@{on\+Game\+Routine}}
+\index{on\+Game\+Routine@{on\+Game\+Routine}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{on\+Game\+Routine()}{onGameRoutine()}}
+{\footnotesize\ttfamily void on\+Game\+Routine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Chama as Funções Para Atualizar o Jogo. 
+
+Descrição\+: A Função chama funções de atualizar a tela, mover tropas, verificar recursos e tropas. Ou seja, atualiza tudo dentro do jogo.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void -\/ A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{GameLogic_8c_ac5d72dfe00aec01540c4ffbf3c17168e}\label{GameLogic_8c_ac5d72dfe00aec01540c4ffbf3c17168e}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!pause\+Game\+Routine@{pause\+Game\+Routine}}
+\index{pause\+Game\+Routine@{pause\+Game\+Routine}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{pause\+Game\+Routine()}{pauseGameRoutine()}}
+{\footnotesize\ttfamily void pause\+Game\+Routine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Controlar as Opções no Menu de Pause. 
+
+Descrição\+: A Função volta ao jogo, salva o jogo ou saí do jogo de acordo com a opção selecionada no menu de Pause.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void -\/ A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{GameLogic_8c_a7cce67ceb88c653b0572dbb89add5d38}\label{GameLogic_8c_a7cce67ceb88c653b0572dbb89add5d38}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!player\+Checkers@{player\+Checkers}}
+\index{player\+Checkers@{player\+Checkers}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{player\+Checkers()}{playerCheckers()}}
+{\footnotesize\ttfamily void player\+Checkers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Verificar Status das Estruturas e tropas do Player. 
+
+Descrição\+: A Função chama as funções para verificar se há batalhas entre tropas, se alguma tropa está atacando algum prédio ou base inimiga, qual a vida dos prédios do player e a quantidade de tropas que o player possui.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void -\/ A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{GameLogic_8c_aa47d7322cce56921933f620dde8dc20b}\label{GameLogic_8c_aa47d7322cce56921933f620dde8dc20b}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!player\+Controllers@{player\+Controllers}}
+\index{player\+Controllers@{player\+Controllers}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{player\+Controllers()}{playerControllers()}}
+{\footnotesize\ttfamily void player\+Controllers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Verificar Criação de Recursos e Tropas do Player. 
+
+Descrição\+: A Função chama funções para verificar a mineração de recursos e a criação de tropas do player.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void -\/ A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{GameLogic_8c_a588696d89f65cab797ac3aa09db8ace5}\label{GameLogic_8c_a588696d89f65cab797ac3aa09db8ace5}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!print\+Game@{print\+Game}}
+\index{print\+Game@{print\+Game}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{print\+Game()}{printGame()}}
+{\footnotesize\ttfamily void print\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Printar na Tela o Jogo. 
+
+Descrição\+: A Função imprime os status do player, do PC e o mapa do jogo.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void -\/ A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{GameLogic_8c_aa8ec071ce9e46c870e5eef1443f78969}\label{GameLogic_8c_aa8ec071ce9e46c870e5eef1443f78969}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!refresh\+Game@{refresh\+Game}}
+\index{refresh\+Game@{refresh\+Game}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{refresh\+Game()}{refreshGame()}}
+{\footnotesize\ttfamily void refresh\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Atualizar a Tela. 
+
+Descrição\+: A Função atualiza a tela do jogo e dá um refresh.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void -\/ A função apenas imprime o jogo na tela
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{GameLogic_8c_ac42f6d85eb40dfdfadbf9933d885b4c1}\label{GameLogic_8c_ac42f6d85eb40dfdfadbf9933d885b4c1}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!save\+Game@{save\+Game}}
+\index{save\+Game@{save\+Game}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{save\+Game()}{saveGame()}}
+{\footnotesize\ttfamily void save\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Salvar o Jogo. 
+
+Descrição\+: A Função cria um arquivo binário e salva todos os dados da base, dos prédios e das tropas do player e do PC nele.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void -\/ A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{GameLogic_8c_a285c3f70c3743d8c4d1d64574cbaeccf}\label{GameLogic_8c_a285c3f70c3743d8c4d1d64574cbaeccf}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!start\+New\+Game@{start\+New\+Game}}
+\index{start\+New\+Game@{start\+New\+Game}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{start\+New\+Game()}{startNewGame()}}
+{\footnotesize\ttfamily void start\+New\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Inicia e determina o que acontece no jogo. 
+
+Descrição\+: A Função é responsável por alocar tudo que o jogo vai usar, atualizar a tela, verificar se o jogo está em Play ou em Pause. É onde o loop do jogo acontece. Quando a vida da base de um dos jogadores se torna 0, a função encerra o jogo e finaliza tudo.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+função void -\/ a função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Sem parâmetros
+
+Assertiva de saída\+: Função void 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{GameLogic_8c_ab7ad0796d84021de0fd46246b3d5096f}\label{GameLogic_8c_ab7ad0796d84021de0fd46246b3d5096f}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!game\+State@{game\+State}}
+\index{game\+State@{game\+State}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{game\+State}{gameState}}
+{\footnotesize\ttfamily int game\+State}
+
+Flag para identificar se o jogo está pausado ou rodando \mbox{\Hypertarget{GameLogic_8c_aa578a767fc3d38ab4b0211e552ed41cd}\label{GameLogic_8c_aa578a767fc3d38ab4b0211e552ed41cd}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!game\+Win@{game\+Win}}
+\index{game\+Win@{game\+Win}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{game\+Win}{gameWin}}
+{\footnotesize\ttfamily W\+I\+N\+D\+OW$\ast$ game\+Win}
+
+Janela do jogo \mbox{\Hypertarget{GameLogic_8c_a81cc11227a869b90adbf28221ec125a7}\label{GameLogic_8c_a81cc11227a869b90adbf28221ec125a7}} 
+\index{Game\+Logic.\+c@{Game\+Logic.\+c}!status\+Win@{status\+Win}}
+\index{status\+Win@{status\+Win}!Game\+Logic.\+c@{Game\+Logic.\+c}}
+\subsubsection{\texorpdfstring{status\+Win}{statusWin}}
+{\footnotesize\ttfamily W\+I\+N\+D\+OW$\ast$ status\+Win}
+
+Janela dos status 

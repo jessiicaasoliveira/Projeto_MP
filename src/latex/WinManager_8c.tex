@@ -1,0 +1,394 @@
+\hypertarget{WinManager_8c}{}\section{Win\+Manager.\+c File Reference}
+\label{WinManager_8c}\index{Win\+Manager.\+c@{Win\+Manager.\+c}}
+{\ttfamily \#include \char`\"{}Win\+Manager.\+h\char`\"{}}\newline
+Include dependency graph for Win\+Manager.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{WinManager_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{WinManager_8c_a25f003de16c08a4888b69f619d70f427}{A\+R\+R\+A\+Y\+\_\+\+S\+I\+ZE}}(a)~(sizeof(a) / sizeof(a\mbox{[}0\mbox{]}))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{WinManager_8c_a849111adfa324beecdeee015db181eed}{start\+Win}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Iniciar as funções da Ncurses usadas no jogo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{WinManager_8c_ab2cbbec44e25f5f9e75674f1c9a16ad1}{get\+Menu}} (int mouse\+\_\+x, int mouse\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Função\+: Informar a posição do cursor do mouse no menu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{WinManager_8c_adde33d501e5ef6a7d56c0a4f8ddb1dcd}{start\+Game\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Iniciar, printar e controlar o Menu do Início do Jogo. \end{DoxyCompactList}\item 
+W\+I\+N\+D\+OW $\ast$ \mbox{\hyperlink{WinManager_8c_a0853f92ddde0241ba748777429c65e1c}{create\+Win}} (int Win\+Height, int Win\+Width, int Win\+Starty, int Win\+Startx)
+\begin{DoxyCompactList}\small\item\em Função\+: Criar uma Janela. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{WinManager_8c_adfacea1859be77ff9ae0a1224d8d88fa}{destroy\+Win}} (W\+I\+N\+D\+OW $\ast$$\ast$local\+\_\+win)
+\begin{DoxyCompactList}\small\item\em Função\+: Destruir uma Janela. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{WinManager_8c_af00cc56d5366ca2a981d00222dca7ccf}{middle\+Print}} (W\+I\+N\+D\+OW $\ast$win, int Win\+Starty, int Win\+Startx, int Win\+Width, char $\ast$string, chtype color)
+\begin{DoxyCompactList}\small\item\em Função\+: Printa uma string em uma Janela. \end{DoxyCompactList}\item 
+W\+I\+N\+D\+OW $\ast$ \mbox{\hyperlink{WinManager_8c_a6d85a472f9d03e41398d37f7a24469ee}{game\+Window}} (int win\+\_\+y, int win\+\_\+x)
+\begin{DoxyCompactList}\small\item\em Função\+: Cria a Janela do Jogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{WinManager_8c_a1f8b61e7bf767e032acd5e310ec845db}{refresh\+Windows}} (W\+I\+N\+D\+OW $\ast$\mbox{\hyperlink{GameLogic_8c_aa578a767fc3d38ab4b0211e552ed41cd}{game\+Win}}, W\+I\+N\+D\+OW $\ast$\mbox{\hyperlink{GameLogic_8c_a81cc11227a869b90adbf28221ec125a7}{status\+Win}})
+\begin{DoxyCompactList}\small\item\em Função\+: Dá Refresh na Tela do jogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{WinManager_8c_a0759424ad1942330b0dab68e64a103e9}{print\+Player\+Status}} (W\+I\+N\+D\+OW $\ast$status, Base $\ast$b, Build $\ast$b1, Build $\ast$b2, Build $\ast$b3, Troop $\ast$t1, Troop $\ast$t2, Troop $\ast$t3)
+\begin{DoxyCompactList}\small\item\em Função\+: Printa os Status do Player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{WinManager_8c_aef0131e7f148c4ab7966307c5feec5a5}{print\+Enemy\+Status}} (W\+I\+N\+D\+OW $\ast$status, Base $\ast$b, Build $\ast$b1, Build $\ast$b2, Build $\ast$b3, Troop $\ast$t1, Troop $\ast$t2, Troop $\ast$t3)
+\begin{DoxyCompactList}\small\item\em Função\+: Printa os Status do PC. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{WinManager_8c_af61982e4a73de79a1d742ee8124e1dde}{pause\+Game\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Função\+: Iniciar, printar e controlar o Menu de Pause. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{WinManager_8c_a42f09a98601c46f9afd0520146181d05}{game\+End}} (Base $\ast$b\+\_\+p, Base $\ast$b\+\_\+e)
+\begin{DoxyCompactList}\small\item\em Função\+: Monta e Printa uma Janela do Fim do Jogo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{WinManager_8c_a0d9b061718fe48dee496d1b572fa8f7b}{term\+Lines}}
+\item 
+int \mbox{\hyperlink{WinManager_8c_a35de4fbde28ecba7e22cb29362fdd281}{term\+Cols}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{WinManager_8c_a25f003de16c08a4888b69f619d70f427}\label{WinManager_8c_a25f003de16c08a4888b69f619d70f427}} 
+\index{Win\+Manager.\+c@{Win\+Manager.\+c}!A\+R\+R\+A\+Y\+\_\+\+S\+I\+ZE@{A\+R\+R\+A\+Y\+\_\+\+S\+I\+ZE}}
+\index{A\+R\+R\+A\+Y\+\_\+\+S\+I\+ZE@{A\+R\+R\+A\+Y\+\_\+\+S\+I\+ZE}!Win\+Manager.\+c@{Win\+Manager.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+R\+A\+Y\+\_\+\+S\+I\+ZE}{ARRAY\_SIZE}}
+{\footnotesize\ttfamily \#define A\+R\+R\+A\+Y\+\_\+\+S\+I\+ZE(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~(sizeof(a) / sizeof(a\mbox{[}0\mbox{]}))}
+
+This define gets exactly the size of the array of arrays 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{WinManager_8c_a0853f92ddde0241ba748777429c65e1c}\label{WinManager_8c_a0853f92ddde0241ba748777429c65e1c}} 
+\index{Win\+Manager.\+c@{Win\+Manager.\+c}!create\+Win@{create\+Win}}
+\index{create\+Win@{create\+Win}!Win\+Manager.\+c@{Win\+Manager.\+c}}
+\subsubsection{\texorpdfstring{create\+Win()}{createWin()}}
+{\footnotesize\ttfamily W\+I\+N\+D\+OW$\ast$ create\+Win (\begin{DoxyParamCaption}\item[{int}]{Win\+Height,  }\item[{int}]{Win\+Width,  }\item[{int}]{Win\+Starty,  }\item[{int}]{Win\+Startx }\end{DoxyParamCaption})}
+
+
+
+Função\+: Criar uma Janela. 
+
+Descrição\+: A Função recebe o tamanho e uma posição no mapa e cria uma janela e retorna essa janela.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em int} & Win\+Height -\/ altura da janela \\
+\hline
+{\em int} & Win\+Width -\/ largura da janela \\
+\hline
+{\em int} & Win\+Starty -\/ coordenada y que a janela vai começar a ser contruída \\
+\hline
+{\em int} & Win\+Startx -\/ coordenada x que a janela vai começar a ser contruída\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+W\+I\+N\+D\+O\+W$\ast$ local\+\_\+win -\/ janela criada
+\end{DoxyReturn}
+Assertiva de entrada\+: int Win\+Height $>$ 0 int Win\+Width $>$ 0 int Win\+Starty $>$= 0 int Win\+Startx $>$= 0
+
+Assertiva de saída\+: W\+I\+N\+D\+O\+W$\ast$ local\+\_\+win != N\+U\+LL \mbox{\Hypertarget{WinManager_8c_adfacea1859be77ff9ae0a1224d8d88fa}\label{WinManager_8c_adfacea1859be77ff9ae0a1224d8d88fa}} 
+\index{Win\+Manager.\+c@{Win\+Manager.\+c}!destroy\+Win@{destroy\+Win}}
+\index{destroy\+Win@{destroy\+Win}!Win\+Manager.\+c@{Win\+Manager.\+c}}
+\subsubsection{\texorpdfstring{destroy\+Win()}{destroyWin()}}
+{\footnotesize\ttfamily void destroy\+Win (\begin{DoxyParamCaption}\item[{W\+I\+N\+D\+OW $\ast$$\ast$}]{local\+\_\+win }\end{DoxyParamCaption})}
+
+
+
+Função\+: Destruir uma Janela. 
+
+Descrição\+: A Função recebe uma janela e a destrói, desalocando e retirando da tela.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em W\+I\+N\+D\+O\+W$\ast$$\ast$} & local\+\_\+win\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void. A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: W\+I\+N\+D\+O\+W$\ast$$\ast$ local\+\_\+win != N\+U\+LL
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{WinManager_8c_a42f09a98601c46f9afd0520146181d05}\label{WinManager_8c_a42f09a98601c46f9afd0520146181d05}} 
+\index{Win\+Manager.\+c@{Win\+Manager.\+c}!game\+End@{game\+End}}
+\index{game\+End@{game\+End}!Win\+Manager.\+c@{Win\+Manager.\+c}}
+\subsubsection{\texorpdfstring{game\+End()}{gameEnd()}}
+{\footnotesize\ttfamily void game\+End (\begin{DoxyParamCaption}\item[{Base $\ast$}]{b\+\_\+p,  }\item[{Base $\ast$}]{b\+\_\+e }\end{DoxyParamCaption})}
+
+
+
+Função\+: Monta e Printa uma Janela do Fim do Jogo. 
+
+Descrição\+: A Função recebe as 2 structs da base (do player e do PC) e então verifica qual das duas bases tem o HP igual a 0. Se for do player é mostrada uma tela dizendo que o jogador perdeu o jogo. Se for do PC é mostrada uma tela dizendo que o jogador ganhou o jogo.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Base$\ast$} & b\+\_\+p -\/ struct da base do player \\
+\hline
+{\em Base$\ast$} & b\+\_\+e -\/ struct da base do PC\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void. A função apenas printa uma janela com uma mensagem
+\end{DoxyReturn}
+Assertiva de entrada\+: Base$\ast$ b\+\_\+p != N\+U\+LL Base$\ast$ b\+\_\+e != N\+U\+LL
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{WinManager_8c_a6d85a472f9d03e41398d37f7a24469ee}\label{WinManager_8c_a6d85a472f9d03e41398d37f7a24469ee}} 
+\index{Win\+Manager.\+c@{Win\+Manager.\+c}!game\+Window@{game\+Window}}
+\index{game\+Window@{game\+Window}!Win\+Manager.\+c@{Win\+Manager.\+c}}
+\subsubsection{\texorpdfstring{game\+Window()}{gameWindow()}}
+{\footnotesize\ttfamily W\+I\+N\+D\+OW$\ast$ game\+Window (\begin{DoxyParamCaption}\item[{int}]{win\+\_\+y,  }\item[{int}]{win\+\_\+x }\end{DoxyParamCaption})}
+
+
+
+Função\+: Cria a Janela do Jogo. 
+
+Descrição\+: A Função recebe a largura e a altura de uma janela e com esses valores ela aloca e cria essa janela. Então é habilitada o keypad nessa janela. No final essa janela formada é retornada.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em int} & win\+\_\+y -\/ largura da janela do jogo (número de colunas) \\
+\hline
+{\em int} & win\+\_\+x -\/ altura da janela do jogo (número de linhas)\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+W\+I\+N\+D\+O\+W$\ast$ game\+Win -\/ janela do jogo
+\end{DoxyReturn}
+Assertiva de entrada\+: int win\+\_\+y $>$ 0 int win\+\_\+x $>$ 0
+
+Assertiva de saída\+: W\+I\+N\+D\+O\+W$\ast$ game\+Win != N\+U\+LL \mbox{\Hypertarget{WinManager_8c_ab2cbbec44e25f5f9e75674f1c9a16ad1}\label{WinManager_8c_ab2cbbec44e25f5f9e75674f1c9a16ad1}} 
+\index{Win\+Manager.\+c@{Win\+Manager.\+c}!get\+Menu@{get\+Menu}}
+\index{get\+Menu@{get\+Menu}!Win\+Manager.\+c@{Win\+Manager.\+c}}
+\subsubsection{\texorpdfstring{get\+Menu()}{getMenu()}}
+{\footnotesize\ttfamily int get\+Menu (\begin{DoxyParamCaption}\item[{int}]{mouse\+\_\+x,  }\item[{int}]{mouse\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Função\+: Informar a posição do cursor do mouse no menu. 
+
+Descrição\+: A Função recebe as coordenadas do cursor do mouse e identifica se o cursor está em algumas das opções do menu e retorna uma flag de acordo com a opção selecionada.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em int} & mouse\+\_\+x -\/ posição x do cursor no menu \\
+\hline
+{\em int} & mouse\+\_\+y -\/ posição y do cursor no menu\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+int i -\/ flag que simboliza em qual opção do menu o mouse se encontra. Seus valores podem ser\+: 0 -\/ Mouse sobre nenhuma das opções 1 -\/ Mouse sobre a New Game 2 -\/ Mouse sobre o Load Game 3 -\/ Mouse sobre os Créditos 4 -\/ Mouse sobre o Exit
+\end{DoxyReturn}
+Assertiva de entrada\+: int mouse\+\_\+x $>$= 0 int mouse\+\_\+y $>$= 0
+
+Assertiva de saída\+: int i == 0 $\vert$$\vert$ i == 1 $\vert$$\vert$ i == 2 $\vert$$\vert$ i == 3 $\vert$$\vert$ i == 4 \mbox{\Hypertarget{WinManager_8c_af00cc56d5366ca2a981d00222dca7ccf}\label{WinManager_8c_af00cc56d5366ca2a981d00222dca7ccf}} 
+\index{Win\+Manager.\+c@{Win\+Manager.\+c}!middle\+Print@{middle\+Print}}
+\index{middle\+Print@{middle\+Print}!Win\+Manager.\+c@{Win\+Manager.\+c}}
+\subsubsection{\texorpdfstring{middle\+Print()}{middlePrint()}}
+{\footnotesize\ttfamily void middle\+Print (\begin{DoxyParamCaption}\item[{W\+I\+N\+D\+OW $\ast$}]{win,  }\item[{int}]{Win\+Starty,  }\item[{int}]{Win\+Startx,  }\item[{int}]{Win\+Width,  }\item[{char $\ast$}]{string,  }\item[{chtype}]{color }\end{DoxyParamCaption})}
+
+
+
+Função\+: Printa uma string em uma Janela. 
+
+Descrição\+: A Função recebe uma janela, uma string e a cor e a posição em que essa string deve ser escrita na janela.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em W\+I\+N\+D\+O\+W$\ast$} & win -\/ uma janela \\
+\hline
+{\em int} & Win\+Starty -\/ coordenada y que a string vai ficar \\
+\hline
+{\em int} & Win\+Startx -\/ coordenada x que a string vai ficar \\
+\hline
+{\em int} & Win\+Width -\/ largura da janela \\
+\hline
+{\em char$\ast$} & string -\/ string que vai ser impressa na janela \\
+\hline
+{\em chtype} & color -\/ cor da string\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void. A função somente imprime em uma janela
+\end{DoxyReturn}
+Assertiva de entrada\+: W\+I\+N\+D\+O\+W$\ast$ win != N\+U\+LL int Win\+Starty $>$= 0 int Win\+Startx $>$= 0 int Win\+Width $>$ 0 char$\ast$ string != N\+U\+LL
+
+Assertiva de saída\+: Função Void \mbox{\Hypertarget{WinManager_8c_af61982e4a73de79a1d742ee8124e1dde}\label{WinManager_8c_af61982e4a73de79a1d742ee8124e1dde}} 
+\index{Win\+Manager.\+c@{Win\+Manager.\+c}!pause\+Game\+Menu@{pause\+Game\+Menu}}
+\index{pause\+Game\+Menu@{pause\+Game\+Menu}!Win\+Manager.\+c@{Win\+Manager.\+c}}
+\subsubsection{\texorpdfstring{pause\+Game\+Menu()}{pauseGameMenu()}}
+{\footnotesize\ttfamily int pause\+Game\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Iniciar, printar e controlar o Menu de Pause. 
+
+Descrição\+: A Função inicializa os itens do menu de pause, inicializa o menu, cria a janela do menu sobre a janela do jogo, printa o menu e as bordas com as suas cores. Então ela espera o usuário escolher um dos itens e dar \char`\"{}enter\char`\"{} . Depois a função destrói o menu e retorna o valor do item selecionado.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+(long int)item\+Ptr -\/ valor do item selecionado pelo player. Dependendo da opção selecionada, a variável possui um valor. Podendo ser\+: 0 -\/ New Game 1 -\/ Load Game 2 -\/ Credits 3 -\/ Exit
+\end{DoxyReturn}
+Assertiva de entrada\+: sem parâmetros
+
+Assertiva de saída\+: (long int)item\+Ptr == 0 $\vert$$\vert$ item\+Ptr == 1 $\vert$$\vert$ item\+Ptr == 2 \mbox{\Hypertarget{WinManager_8c_aef0131e7f148c4ab7966307c5feec5a5}\label{WinManager_8c_aef0131e7f148c4ab7966307c5feec5a5}} 
+\index{Win\+Manager.\+c@{Win\+Manager.\+c}!print\+Enemy\+Status@{print\+Enemy\+Status}}
+\index{print\+Enemy\+Status@{print\+Enemy\+Status}!Win\+Manager.\+c@{Win\+Manager.\+c}}
+\subsubsection{\texorpdfstring{print\+Enemy\+Status()}{printEnemyStatus()}}
+{\footnotesize\ttfamily void print\+Enemy\+Status (\begin{DoxyParamCaption}\item[{W\+I\+N\+D\+OW $\ast$}]{status,  }\item[{Base $\ast$}]{b,  }\item[{Build $\ast$}]{b1,  }\item[{Build $\ast$}]{b2,  }\item[{Build $\ast$}]{b3,  }\item[{Troop $\ast$}]{t1,  }\item[{Troop $\ast$}]{t2,  }\item[{Troop $\ast$}]{t3 }\end{DoxyParamCaption})}
+
+
+
+Função\+: Printa os Status do PC. 
+
+Descrição\+: A Função recebe uma janela e as structs da base, dos prédios e das tropas. Então ela printa na janela os status dessas structs, como HP, número de tropas e quantidade de recursos.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em W\+I\+N\+D\+O\+W$\ast$} & status -\/ janela dos status \\
+\hline
+{\em Base$\ast$} & b -\/ struct da base \\
+\hline
+{\em Build$\ast$} & b1 -\/ struct do prédio 1 \\
+\hline
+{\em Build$\ast$} & b2 -\/ struct do prédio 2 \\
+\hline
+{\em Build$\ast$} & b3 -\/ struct do prédio 3 \\
+\hline
+{\em Troop$\ast$} & t1 -\/ struct da tropa 1 \\
+\hline
+{\em Troop$\ast$} & t2 -\/ struct da tropa 2 \\
+\hline
+{\em Troop$\ast$} & t3 -\/ struct da tropa 3\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void. A função apenas printa os status
+\end{DoxyReturn}
+Assertiva de entrada\+: W\+I\+N\+D\+O\+W$\ast$ status != N\+U\+LL Base$\ast$ b != N\+U\+LL Build$\ast$ b1 != N\+U\+LL Build$\ast$ b2 != N\+U\+LL Build$\ast$ b3 != N\+U\+LL Troop$\ast$ t1 != N\+U\+LL Troop$\ast$ t2 != N\+U\+LL Troop$\ast$ t3 != N\+U\+LL
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{WinManager_8c_a0759424ad1942330b0dab68e64a103e9}\label{WinManager_8c_a0759424ad1942330b0dab68e64a103e9}} 
+\index{Win\+Manager.\+c@{Win\+Manager.\+c}!print\+Player\+Status@{print\+Player\+Status}}
+\index{print\+Player\+Status@{print\+Player\+Status}!Win\+Manager.\+c@{Win\+Manager.\+c}}
+\subsubsection{\texorpdfstring{print\+Player\+Status()}{printPlayerStatus()}}
+{\footnotesize\ttfamily void print\+Player\+Status (\begin{DoxyParamCaption}\item[{W\+I\+N\+D\+OW $\ast$}]{status,  }\item[{Base $\ast$}]{b,  }\item[{Build $\ast$}]{b1,  }\item[{Build $\ast$}]{b2,  }\item[{Build $\ast$}]{b3,  }\item[{Troop $\ast$}]{t1,  }\item[{Troop $\ast$}]{t2,  }\item[{Troop $\ast$}]{t3 }\end{DoxyParamCaption})}
+
+
+
+Função\+: Printa os Status do Player. 
+
+Descrição\+: A Função recebe uma janela e as structs da base, dos prédios e das tropas. Então ela printa na janela os status dessas structs, como HP, número de tropas e quantidade de recursos.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em W\+I\+N\+D\+O\+W$\ast$} & status -\/ janela dos status \\
+\hline
+{\em Base$\ast$} & b -\/ struct da base \\
+\hline
+{\em Build$\ast$} & b1 -\/ struct do prédio 1 \\
+\hline
+{\em Build$\ast$} & b2 -\/ struct do prédio 2 \\
+\hline
+{\em Build$\ast$} & b3 -\/ struct do prédio 3 \\
+\hline
+{\em Troop$\ast$} & t1 -\/ struct da tropa 1 \\
+\hline
+{\em Troop$\ast$} & t2 -\/ struct da tropa 2 \\
+\hline
+{\em Troop$\ast$} & t3 -\/ struct da tropa 3\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void. A função apenas printa os status
+\end{DoxyReturn}
+Assertiva de entrada\+: W\+I\+N\+D\+O\+W$\ast$ status != N\+U\+LL Base$\ast$ b != N\+U\+LL Build$\ast$ b1 != N\+U\+LL Build$\ast$ b2 != N\+U\+LL Build$\ast$ b3 != N\+U\+LL Troop$\ast$ t1 != N\+U\+LL Troop$\ast$ t2 != N\+U\+LL Troop$\ast$ t3 != N\+U\+LL
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{WinManager_8c_a1f8b61e7bf767e032acd5e310ec845db}\label{WinManager_8c_a1f8b61e7bf767e032acd5e310ec845db}} 
+\index{Win\+Manager.\+c@{Win\+Manager.\+c}!refresh\+Windows@{refresh\+Windows}}
+\index{refresh\+Windows@{refresh\+Windows}!Win\+Manager.\+c@{Win\+Manager.\+c}}
+\subsubsection{\texorpdfstring{refresh\+Windows()}{refreshWindows()}}
+{\footnotesize\ttfamily void refresh\+Windows (\begin{DoxyParamCaption}\item[{W\+I\+N\+D\+OW $\ast$}]{game\+Win,  }\item[{W\+I\+N\+D\+OW $\ast$}]{status\+Win }\end{DoxyParamCaption})}
+
+
+
+Função\+: Dá Refresh na Tela do jogo. 
+
+Descrição\+: A Função recebe 2 janelas, a do jogo com o mapa e a janela de status do player e PC. Então ela atualiza e dá refresh na tela de acordo com o que aconteceu dentro do jogo.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em W\+I\+N\+D\+O\+W$\ast$} & game\+Win -\/ janela do jogo, onde está o mapa \\
+\hline
+{\em W\+I\+N\+D\+O\+W$\ast$} & status\+Win -\/ janela com os status das tropas,prédios e base do player e do PC\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void. A função apenas atualiza a tela
+\end{DoxyReturn}
+Assertiva de entrada\+: W\+I\+N\+D\+O\+W$\ast$ game\+Win != N\+U\+LL W\+I\+N\+D\+O\+W$\ast$ status\+Win != N\+U\+LL
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{WinManager_8c_adde33d501e5ef6a7d56c0a4f8ddb1dcd}\label{WinManager_8c_adde33d501e5ef6a7d56c0a4f8ddb1dcd}} 
+\index{Win\+Manager.\+c@{Win\+Manager.\+c}!start\+Game\+Menu@{start\+Game\+Menu}}
+\index{start\+Game\+Menu@{start\+Game\+Menu}!Win\+Manager.\+c@{Win\+Manager.\+c}}
+\subsubsection{\texorpdfstring{start\+Game\+Menu()}{startGameMenu()}}
+{\footnotesize\ttfamily int start\+Game\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Iniciar, printar e controlar o Menu do Início do Jogo. 
+
+Descrição\+: A Função inicializa os itens do menu inicial, inicializa o menu, cria a janela do menu sobre a janela da ncurses, printa o menu e as bordas com as suas cores. Então ela espera o usuário escolher um dos itens e dar \char`\"{}enter\char`\"{} . Depois a função destrói o menu inicial e retorna o valor do item selecionado.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+(long int)item\+Ptr -\/ valor do item selecionado pelo player. Dependendo da opção selecionada, a variável possui um valor. Podendo ser\+: 0 -\/ New Game 1 -\/ Load Game 2 -\/ Credits 3 -\/ Exit
+\end{DoxyReturn}
+Assertiva de entrada\+: sem parâmetros
+
+Assertiva de saída\+: (long int)item\+Ptr == 0 $\vert$$\vert$ item\+Ptr == 1 $\vert$$\vert$ item\+Ptr == 2 $\vert$$\vert$ item\+Ptr == 3 \mbox{\Hypertarget{WinManager_8c_a849111adfa324beecdeee015db181eed}\label{WinManager_8c_a849111adfa324beecdeee015db181eed}} 
+\index{Win\+Manager.\+c@{Win\+Manager.\+c}!start\+Win@{start\+Win}}
+\index{start\+Win@{start\+Win}!Win\+Manager.\+c@{Win\+Manager.\+c}}
+\subsubsection{\texorpdfstring{start\+Win()}{startWin()}}
+{\footnotesize\ttfamily void start\+Win (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função\+: Iniciar as funções da Ncurses usadas no jogo. 
+
+Descrição\+: A Função é responsável por iniciar tudo que o programa irá utilizar. Entre eles, as specials keys, as cores, o uso do mouse, captura o tamanho do terminal, desabilita o echo (a necessidade de apertar enter para capturar uma entrada) e inicia a janela da ncurses. Com tudo inicializado as outras funções podem funcionar.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em sem} & parâmetros\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void -\/ a função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: sem parâmetros
+
+Assertiva de saída\+: função void 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{WinManager_8c_a35de4fbde28ecba7e22cb29362fdd281}\label{WinManager_8c_a35de4fbde28ecba7e22cb29362fdd281}} 
+\index{Win\+Manager.\+c@{Win\+Manager.\+c}!term\+Cols@{term\+Cols}}
+\index{term\+Cols@{term\+Cols}!Win\+Manager.\+c@{Win\+Manager.\+c}}
+\subsubsection{\texorpdfstring{term\+Cols}{termCols}}
+{\footnotesize\ttfamily int term\+Cols}
+
+variável para o número de colunas do terminal \mbox{\Hypertarget{WinManager_8c_a0d9b061718fe48dee496d1b572fa8f7b}\label{WinManager_8c_a0d9b061718fe48dee496d1b572fa8f7b}} 
+\index{Win\+Manager.\+c@{Win\+Manager.\+c}!term\+Lines@{term\+Lines}}
+\index{term\+Lines@{term\+Lines}!Win\+Manager.\+c@{Win\+Manager.\+c}}
+\subsubsection{\texorpdfstring{term\+Lines}{termLines}}
+{\footnotesize\ttfamily int term\+Lines}
+
+variável para o número de linhas do terminal 

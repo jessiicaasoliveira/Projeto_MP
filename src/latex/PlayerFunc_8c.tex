@@ -1,0 +1,434 @@
+\hypertarget{PlayerFunc_8c}{}\section{Player\+Func.\+c File Reference}
+\label{PlayerFunc_8c}\index{Player\+Func.\+c@{Player\+Func.\+c}}
+{\ttfamily \#include \char`\"{}Player\+Func.\+h\char`\"{}}\newline
+Include dependency graph for Player\+Func.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{PlayerFunc_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Base $\ast$ \mbox{\hyperlink{PlayerFunc_8c_aaced0bd3de4e9bfdff0f9cc578f38973}{set\+Base\+Att}} (Base $\ast$bc, int x, int y, int height, int width)
+\begin{DoxyCompactList}\small\item\em Função\+: Setar Atributos da Base. \end{DoxyCompactList}\item 
+Build $\ast$ \mbox{\hyperlink{PlayerFunc_8c_a4d9be44221b41b95231736f3ead1f8e3}{set\+Build\+Att}} (Build $\ast$b, int x, int y, int height, int width, int type)
+\begin{DoxyCompactList}\small\item\em Função\+: Setar Atributos dos Prédios. \end{DoxyCompactList}\item 
+Troop $\ast$ \mbox{\hyperlink{PlayerFunc_8c_a4aa33629a3ca0e352afc8495c8fe7a9d}{set\+Troop\+Att}} (Troop $\ast$t, int x, int y, int type)
+\begin{DoxyCompactList}\small\item\em Função\+: Setar Atributos das Tropas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{PlayerFunc_8c_a3d413144b7a4c3705c290f046df7262e}{move\+Troop}} (W\+I\+N\+D\+OW $\ast$win, char $\ast$$\ast$map)
+\begin{DoxyCompactList}\small\item\em Função\+: Mover as Tropas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{PlayerFunc_8c_a32d049b69cc3b29b238d5f0d1e55235c}{resource\+Controller}} (Base $\ast$b, Build $\ast$b1, Build $\ast$b2)
+\begin{DoxyCompactList}\small\item\em Função\+: Controlar a Mineração de Recursos. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{PlayerFunc_8c_a6f112c057d34d8833d6cab06bb8c6a17}{troop\+Controller}} (Troop $\ast$t1, Troop $\ast$t2, Troop $\ast$t3, Build $\ast$b3, Base $\ast$b)
+\begin{DoxyCompactList}\small\item\em Função\+: Controlar a Criação de Tropas. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{PlayerFunc_8c_ab33aaf90543d021261eb4c9037921a2d}{troop\+Checker}} (Troop $\ast$t, int mode)
+\begin{DoxyCompactList}\small\item\em Função\+: Verificar as Redondezas da Tropa. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{PlayerFunc_8c_aefef57907035f8c1d6da57853beddc32}{build\+H\+P\+Checker}} (Build $\ast$b1, Build $\ast$b2, Build $\ast$b3, char $\ast$$\ast$map)
+\begin{DoxyCompactList}\small\item\em Função\+: Verificar se um Prédio foi Derrubado. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{PlayerFunc_8c_ae59ccce8fee4d7d21655f7747f766128}{troop\+Amount\+Checker}} (Troop $\ast$t1, Troop $\ast$t2, Troop $\ast$t3, char $\ast$$\ast$map)
+\begin{DoxyCompactList}\small\item\em Função\+: Verificar se uma Tropa foi eliminada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{PlayerFunc_8c_ac5eb3097f64dc5e595b0eb00348dc70a}{battle\+Checker}} (Troop $\ast$t, Troop $\ast$t1\+\_\+e, Troop $\ast$t2\+\_\+e, Troop $\ast$t3\+\_\+e)
+\begin{DoxyCompactList}\small\item\em Função\+: Controlar o Sistema de Batalha das Tropas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{PlayerFunc_8c_af0cfc04a4a66b4a70b4d9cad873aff1c}{destroy\+Build\+Checker}} (Troop $\ast$t, Base $\ast$b, Build $\ast$b1, Build $\ast$b2, Build $\ast$b3)
+\begin{DoxyCompactList}\small\item\em Função\+: Controlar o Ataque de Tropas aos Prédios/\+Base. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Base \mbox{\hyperlink{PlayerFunc_8c_aec091722f35907329e67f46c3161acdf}{Base\+\_\+p}}
+\item 
+Build \mbox{\hyperlink{PlayerFunc_8c_a925abcdbb079393da1518cec5b3ec5e1}{B1\+\_\+p}}
+\item 
+Build \mbox{\hyperlink{PlayerFunc_8c_ae38d253db63d8d5630d76742bea4e9eb}{B2\+\_\+p}}
+\item 
+Build \mbox{\hyperlink{PlayerFunc_8c_a3a341c97721e783906c060add6cf918e}{B3\+\_\+p}}
+\item 
+Troop \mbox{\hyperlink{PlayerFunc_8c_a77c37b243793bbcf4e14dcae4bdcf5b8}{T1\+\_\+p}}
+\item 
+Troop \mbox{\hyperlink{PlayerFunc_8c_ab0818f20f9722834079abffd7730c563}{T2\+\_\+p}}
+\item 
+Troop \mbox{\hyperlink{PlayerFunc_8c_a5815e52c3b85542221cef33fe258bc09}{T3\+\_\+p}}
+\item 
+int \mbox{\hyperlink{PlayerFunc_8c_ab0fb07f4c546cadaadff39b142526c6b}{troop\+Sel}} = 45
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{PlayerFunc_8c_ac5eb3097f64dc5e595b0eb00348dc70a}\label{PlayerFunc_8c_ac5eb3097f64dc5e595b0eb00348dc70a}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!battle\+Checker@{battle\+Checker}}
+\index{battle\+Checker@{battle\+Checker}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{battle\+Checker()}{battleChecker()}}
+{\footnotesize\ttfamily void battle\+Checker (\begin{DoxyParamCaption}\item[{Troop $\ast$}]{t,  }\item[{Troop $\ast$}]{t1\+\_\+e,  }\item[{Troop $\ast$}]{t2\+\_\+e,  }\item[{Troop $\ast$}]{t3\+\_\+e }\end{DoxyParamCaption})}
+
+
+
+Função\+: Controlar o Sistema de Batalha das Tropas. 
+
+Descrição\+: A Função recebe as structs de uma das tropas do player de todas as tropas do PC. Então ela verifica de qual tropa do PC a tropa do player está do lado. De acordo com os atributos da tropa do player e da tropa do PC que ele está batalhando é calculado se as tropas do PC ou do Player diminuem. A tropa que ganhar a batalha vai perdendo seu número de tropas até chegar a 0 e sumir.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Troop$\ast$} & t -\/ struct da tropa do player \\
+\hline
+{\em Troop$\ast$} & t1\+\_\+e -\/ struct da tropa do tipo 1 do PC \\
+\hline
+{\em Troop$\ast$} & t2\+\_\+e -\/ struct da tropa do tipo 2 do PC \\
+\hline
+{\em Troop$\ast$} & b3 -\/ struct da tropa do tipo 3 do PC\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void. A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Troop$\ast$ t != N\+U\+LL Troop$\ast$ t1\+\_\+e != N\+U\+LL Troop$\ast$ t2\+\_\+e != N\+U\+LL Troop$\ast$ t3\+\_\+e != N\+U\+LL
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{PlayerFunc_8c_aefef57907035f8c1d6da57853beddc32}\label{PlayerFunc_8c_aefef57907035f8c1d6da57853beddc32}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!build\+H\+P\+Checker@{build\+H\+P\+Checker}}
+\index{build\+H\+P\+Checker@{build\+H\+P\+Checker}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{build\+H\+P\+Checker()}{buildHPChecker()}}
+{\footnotesize\ttfamily void build\+H\+P\+Checker (\begin{DoxyParamCaption}\item[{Build $\ast$}]{b1,  }\item[{Build $\ast$}]{b2,  }\item[{Build $\ast$}]{b3,  }\item[{char $\ast$$\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Função\+: Verificar se um Prédio foi Derrubado. 
+
+Descrição\+: A Função recebe as structs dos prédios e a matriz do mapa. Ela verifica se a vida dos prédios é 0. Se for ela retira o prédio do mapa e deixa o hp da base como -\/1.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Build$\ast$} & b1 -\/ struct do prédio do tipo 1 \\
+\hline
+{\em Build$\ast$} & b2 -\/ struct do prédio do tipo 2 \\
+\hline
+{\em Build$\ast$} & b3 -\/ struct do prédio do tipo 3 \\
+\hline
+{\em char$\ast$$\ast$} & map -\/ matriz do mapa do jogo\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void. A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Build$\ast$ b1 != N\+U\+LL Build$\ast$ b2 != N\+U\+LL Build$\ast$ b3 != N\+U\+LL Build$\ast$ b3 != N\+U\+LL char$\ast$$\ast$ map != N\+U\+LL
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{PlayerFunc_8c_af0cfc04a4a66b4a70b4d9cad873aff1c}\label{PlayerFunc_8c_af0cfc04a4a66b4a70b4d9cad873aff1c}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!destroy\+Build\+Checker@{destroy\+Build\+Checker}}
+\index{destroy\+Build\+Checker@{destroy\+Build\+Checker}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{destroy\+Build\+Checker()}{destroyBuildChecker()}}
+{\footnotesize\ttfamily void destroy\+Build\+Checker (\begin{DoxyParamCaption}\item[{Troop $\ast$}]{t,  }\item[{Base $\ast$}]{b,  }\item[{Build $\ast$}]{b1,  }\item[{Build $\ast$}]{b2,  }\item[{Build $\ast$}]{b3 }\end{DoxyParamCaption})}
+
+
+
+Função\+: Controlar o Ataque de Tropas aos Prédios/\+Base. 
+
+Descrição\+: A Função recebe as structs dos prédios, da base e de uma tropa. Ela verifica se a tropa está perto de algum prédio/base e se estiver é calculado o dano que essa tropa está dando no prédio/base. Antes de diminuir a vida do prédio/base é necessário diminuir a defesa para 0.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Troop$\ast$} & t -\/ struct da tropa do tipo 1 \\
+\hline
+{\em Base$\ast$} & b -\/ struct da base \\
+\hline
+{\em Build$\ast$} & b1 -\/ struct do prédio do tipo 1 \\
+\hline
+{\em Build$\ast$} & b2 -\/ struct do prédio do tipo 2 \\
+\hline
+{\em Build$\ast$} & b3 -\/ struct do prédio do tipo 3\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void. A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Troop$\ast$ t != N\+U\+LL Base$\ast$ b != N\+U\+LL Build$\ast$ b1 != N\+U\+LL Build$\ast$ b2 != N\+U\+LL Build$\ast$ b3 != N\+U\+LL
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{PlayerFunc_8c_a3d413144b7a4c3705c290f046df7262e}\label{PlayerFunc_8c_a3d413144b7a4c3705c290f046df7262e}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!move\+Troop@{move\+Troop}}
+\index{move\+Troop@{move\+Troop}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{move\+Troop()}{moveTroop()}}
+{\footnotesize\ttfamily void move\+Troop (\begin{DoxyParamCaption}\item[{W\+I\+N\+D\+OW $\ast$}]{win,  }\item[{char $\ast$$\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Função\+: Mover as Tropas. 
+
+Descrição\+: A Função recebe uma janela (ncurses) e uma matriz do mapa. Então ela verifica as entradas digitadas pelo usuário. No caso, 0, 1 e 2 para selecionar as tropas e/ou as teclas direcionais do teclado para movimentar as tropas. Então a função modifica a localização da tropa.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em W\+I\+N\+D\+O\+W$\ast$} & win -\/ uma janela \\
+\hline
+{\em char$\ast$$\ast$} & map -\/ uma matriz que contém o mapa\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void -\/ a função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: char$\ast$$\ast$ map != N\+U\+LL
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{PlayerFunc_8c_a32d049b69cc3b29b238d5f0d1e55235c}\label{PlayerFunc_8c_a32d049b69cc3b29b238d5f0d1e55235c}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!resource\+Controller@{resource\+Controller}}
+\index{resource\+Controller@{resource\+Controller}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{resource\+Controller()}{resourceController()}}
+{\footnotesize\ttfamily void resource\+Controller (\begin{DoxyParamCaption}\item[{Base $\ast$}]{b,  }\item[{Build $\ast$}]{b1,  }\item[{Build $\ast$}]{b2 }\end{DoxyParamCaption})}
+
+
+
+Função\+: Controlar a Mineração de Recursos. 
+
+Descrição\+: A Função recebe as structs da base e de 2 prédios responsáveis pela mineração de recursos. Para controlar a frequencia de mineração, é verificado randomicamente um valor inteiro, e se ele for maior que 60 e a vida do prédio for superior a 0 é aumentado a quantidade de recursos minerados de acordo com a velocidade de mineração de cada tipo de prédio.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Base$\ast$} & b -\/ struct da base \\
+\hline
+{\em Build$\ast$} & b1 -\/ struct do prédio do tipo 1 \\
+\hline
+{\em Build$\ast$} & b2 -\/ struct do prédio do tipo 2\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void. A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Base$\ast$ b != N\+U\+LL Build$\ast$ b1 != N\+U\+LL Build$\ast$ b2 != N\+U\+LL
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{PlayerFunc_8c_aaced0bd3de4e9bfdff0f9cc578f38973}\label{PlayerFunc_8c_aaced0bd3de4e9bfdff0f9cc578f38973}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!set\+Base\+Att@{set\+Base\+Att}}
+\index{set\+Base\+Att@{set\+Base\+Att}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{set\+Base\+Att()}{setBaseAtt()}}
+{\footnotesize\ttfamily Base$\ast$ set\+Base\+Att (\begin{DoxyParamCaption}\item[{Base $\ast$}]{bc,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{height,  }\item[{int}]{width }\end{DoxyParamCaption})}
+
+
+
+Função\+: Setar Atributos da Base. 
+
+Descrição\+: A Função recebe uma struct da base, sua posição, comprimento e largura.\+Então esses valores são setados nessa struct e é setado também a quantidade de recursos 1 e 2, a defesa e a vida dessa base.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Base$\ast$} & bc -\/ uma struct para a base \\
+\hline
+{\em int} & x -\/ coordenada x da base \\
+\hline
+{\em int} & y -\/ coordenada y da base \\
+\hline
+{\em int} & height -\/ altura da base \\
+\hline
+{\em int} & width -\/ largura da base\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Base$\ast$ bc -\/ struct com os valores modificados e iniciados para o começo do jogo
+\end{DoxyReturn}
+Assertiva de entrada\+: Base$\ast$ bc != N\+U\+LL int x $>$= 0 int y $>$= 0 int height $>$ 0 int width $>$ 0
+
+Assertiva de saída\+: Base$\ast$ bc != N\+U\+LL \mbox{\Hypertarget{PlayerFunc_8c_a4d9be44221b41b95231736f3ead1f8e3}\label{PlayerFunc_8c_a4d9be44221b41b95231736f3ead1f8e3}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!set\+Build\+Att@{set\+Build\+Att}}
+\index{set\+Build\+Att@{set\+Build\+Att}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{set\+Build\+Att()}{setBuildAtt()}}
+{\footnotesize\ttfamily Build$\ast$ set\+Build\+Att (\begin{DoxyParamCaption}\item[{Build $\ast$}]{b,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{height,  }\item[{int}]{width,  }\item[{int}]{type }\end{DoxyParamCaption})}
+
+
+
+Função\+: Setar Atributos dos Prédios. 
+
+Descrição\+: A Função recebe uma struct de um prédio, sua posição, comprimento, largura e um valor inteiro que define qual o seu tipo.\+Então esses valores são setados nessa struct e é setado também, dependendo do tipo, a defesa, a velocidade de mineração, o consumo de recursos e a vida.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Build$\ast$} & b -\/ uma struct para o prédio \\
+\hline
+{\em int} & x -\/ coordenada x do prédio \\
+\hline
+{\em int} & y -\/ coordenada y do prédio \\
+\hline
+{\em int} & height -\/ altura do prédio \\
+\hline
+{\em int} & width -\/ largura do prédio \\
+\hline
+{\em int} & type -\/ tipo de prédio\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Build$\ast$ b -\/ struct com os valores modificados e iniciados para o começo do jogo
+\end{DoxyReturn}
+Assertiva de entrada\+: Build$\ast$ b != N\+U\+LL int x $>$= 0 int y $>$= 0 int height $>$ 0 int width $>$ 0 int type == 0 $\vert$$\vert$ type == 1 $\vert$$\vert$ type == 2
+
+Assertiva de saída\+: Build$\ast$ b != N\+U\+LL \mbox{\Hypertarget{PlayerFunc_8c_a4aa33629a3ca0e352afc8495c8fe7a9d}\label{PlayerFunc_8c_a4aa33629a3ca0e352afc8495c8fe7a9d}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!set\+Troop\+Att@{set\+Troop\+Att}}
+\index{set\+Troop\+Att@{set\+Troop\+Att}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{set\+Troop\+Att()}{setTroopAtt()}}
+{\footnotesize\ttfamily Troop$\ast$ set\+Troop\+Att (\begin{DoxyParamCaption}\item[{Troop $\ast$}]{t,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{type }\end{DoxyParamCaption})}
+
+
+
+Função\+: Setar Atributos das Tropas. 
+
+Descrição\+: A Função recebe uma struct das tropas, a sua posição e um valor inteiro que define qual o seu tipo. Então esses valores,menos o tipo, são setados nessa struct e é setado também, dependendo do seu tipo, quantidade de soldados na tropa, o dano da tropa, a defesa da tropa e a sua vida.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Troop$\ast$} & bc -\/ uma struct para a tropa \\
+\hline
+{\em int} & x -\/ coordenada x da tropa \\
+\hline
+{\em int} & y -\/ coordenada y da tropa \\
+\hline
+{\em int} & type -\/ tipo de tropa\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Troop$\ast$ t -\/ struct com os valores modificados e iniciados para o começo do jogo
+\end{DoxyReturn}
+Assertiva de entrada\+: Troop$\ast$ t != N\+U\+LL int x $>$= 0 int y $>$= 0 int type == 0 $\vert$$\vert$ type == 1 $\vert$$\vert$ type == 2
+
+Assertiva de saída\+: Troop$\ast$ t != N\+U\+LL \mbox{\Hypertarget{PlayerFunc_8c_ae59ccce8fee4d7d21655f7747f766128}\label{PlayerFunc_8c_ae59ccce8fee4d7d21655f7747f766128}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!troop\+Amount\+Checker@{troop\+Amount\+Checker}}
+\index{troop\+Amount\+Checker@{troop\+Amount\+Checker}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{troop\+Amount\+Checker()}{troopAmountChecker()}}
+{\footnotesize\ttfamily void troop\+Amount\+Checker (\begin{DoxyParamCaption}\item[{Troop $\ast$}]{t1,  }\item[{Troop $\ast$}]{t2,  }\item[{Troop $\ast$}]{t3,  }\item[{char $\ast$$\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Função\+: Verificar se uma Tropa foi eliminada. 
+
+Descrição\+: A Função recebe as structs das tropas e a matriz do mapa. Ela verifica se a quantidade de tropas é igual a zero e se for ela retira a tropa do mapa.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Troop$\ast$} & t1 -\/ struct da tropa do tipo 1 \\
+\hline
+{\em Troop$\ast$} & t2 -\/ struct da tropa do tipo 2 \\
+\hline
+{\em Troop$\ast$} & t3 -\/ struct da tropa do tipo 3 \\
+\hline
+{\em char$\ast$$\ast$} & map -\/ matriz do mapa\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void. A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Troop$\ast$ t1 != N\+U\+LL Troop$\ast$ t2 != N\+U\+LL Troop$\ast$ t3 != N\+U\+LL char$\ast$$\ast$ map != N\+U\+LL
+
+Assertiva de saída\+: Função void \mbox{\Hypertarget{PlayerFunc_8c_ab33aaf90543d021261eb4c9037921a2d}\label{PlayerFunc_8c_ab33aaf90543d021261eb4c9037921a2d}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!troop\+Checker@{troop\+Checker}}
+\index{troop\+Checker@{troop\+Checker}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{troop\+Checker()}{troopChecker()}}
+{\footnotesize\ttfamily int troop\+Checker (\begin{DoxyParamCaption}\item[{Troop $\ast$}]{t,  }\item[{int}]{mode }\end{DoxyParamCaption})}
+
+
+
+Função\+: Verificar as Redondezas da Tropa. 
+
+Descrição\+: A Função recebe a struct de uma tropa e verifica as redondezas dessa tropa, e retorna um valor de acordo com o que está do lado dessa tropa.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Troop$\ast$} & t -\/ struct da tropa \\
+\hline
+{\em int} & mode -\/ flag para identificar se a função foi chamada para checar se a tropa está perto do prédio responsável por aumentar tropas (0) ou se foi chamada para checar se há tropas inimigas por perto (1)\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+0 -\/ caso a tropa não esteja perto de nada 
+
+1 -\/ caso a mode = 0 e a tropa esteja perto do prédio responsável por gerar tropas 
+
+7 -\/ caso a tropa esteja perto da tropa inimiga \textquotesingle{}7\textquotesingle{} 
+
+8 -\/ caso a tropa esteja perto da tropa inimiga \textquotesingle{}8\textquotesingle{} 
+
+9 -\/ caso a tropa esteja perto da tropa inimiga \textquotesingle{}9\textquotesingle{} 
+
+10 -\/ caso a tropa esteja perto do base \textquotesingle{}Y\textquotesingle{} 
+
+11 -\/ caso a tropa esteja perto do prédio \textquotesingle{}D\textquotesingle{} 
+
+12 -\/ caso a tropa esteja perto do prédio \textquotesingle{}F\textquotesingle{} 
+
+13 -\/ caso a tropa esteja perto do prédio \textquotesingle{}E\textquotesingle{}
+\end{DoxyReturn}
+Assertiva de entrada\+: Troop$\ast$ t != N\+U\+LL int mode == 0 $\vert$$\vert$ mode == 1
+
+Assertiva de saída\+: A função retorna valores fixos. \mbox{\Hypertarget{PlayerFunc_8c_a6f112c057d34d8833d6cab06bb8c6a17}\label{PlayerFunc_8c_a6f112c057d34d8833d6cab06bb8c6a17}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!troop\+Controller@{troop\+Controller}}
+\index{troop\+Controller@{troop\+Controller}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{troop\+Controller()}{troopController()}}
+{\footnotesize\ttfamily void troop\+Controller (\begin{DoxyParamCaption}\item[{Troop $\ast$}]{t1,  }\item[{Troop $\ast$}]{t2,  }\item[{Troop $\ast$}]{t3,  }\item[{Build $\ast$}]{b3,  }\item[{Base $\ast$}]{b }\end{DoxyParamCaption})}
+
+
+
+Função\+: Controlar a Criação de Tropas. 
+
+Descrição\+: A Função recebe as structs da base, das tropas e do prédio responsável pela criação de tropas. Então ela verifica se a tropa está do lado do prédio que gera tropa, e se há recursos para gerar mais tropas. Então essa tropa tem a quantidade aumentada.
+
+Parâmetros\+: 
+\begin{DoxyParams}{Parameters}
+{\em Troop$\ast$} & t1 -\/ struct da tropa do tipo 1 \\
+\hline
+{\em Troop$\ast$} & t2 -\/ struct da tropa do tipo 2 \\
+\hline
+{\em Troop$\ast$} & t3 -\/ struct da tropa do tipo 3 \\
+\hline
+{\em Build$\ast$} & b3 -\/ struct do prédio do tipo 3 \\
+\hline
+{\em Base$\ast$} & b -\/ struct da base\\
+\hline
+\end{DoxyParams}
+Valor retornado\+: \begin{DoxyReturn}{Returns}
+Void. A função não retorna nada
+\end{DoxyReturn}
+Assertiva de entrada\+: Troop$\ast$ t1 != N\+U\+LL Troop$\ast$ t2 != N\+U\+LL Troop$\ast$ t3 != N\+U\+LL Build$\ast$ b3 != N\+U\+LL Base$\ast$ b != N\+U\+LL
+
+Assertiva de saída\+: Função void 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{PlayerFunc_8c_a925abcdbb079393da1518cec5b3ec5e1}\label{PlayerFunc_8c_a925abcdbb079393da1518cec5b3ec5e1}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!B1\+\_\+p@{B1\+\_\+p}}
+\index{B1\+\_\+p@{B1\+\_\+p}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{B1\+\_\+p}{B1\_p}}
+{\footnotesize\ttfamily Build B1\+\_\+p}
+
+struct prédio 1 \mbox{\Hypertarget{PlayerFunc_8c_ae38d253db63d8d5630d76742bea4e9eb}\label{PlayerFunc_8c_ae38d253db63d8d5630d76742bea4e9eb}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!B2\+\_\+p@{B2\+\_\+p}}
+\index{B2\+\_\+p@{B2\+\_\+p}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{B2\+\_\+p}{B2\_p}}
+{\footnotesize\ttfamily Build B2\+\_\+p}
+
+struct prédio 2 \mbox{\Hypertarget{PlayerFunc_8c_a3a341c97721e783906c060add6cf918e}\label{PlayerFunc_8c_a3a341c97721e783906c060add6cf918e}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!B3\+\_\+p@{B3\+\_\+p}}
+\index{B3\+\_\+p@{B3\+\_\+p}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{B3\+\_\+p}{B3\_p}}
+{\footnotesize\ttfamily Build B3\+\_\+p}
+
+struct prédio 3 \mbox{\Hypertarget{PlayerFunc_8c_aec091722f35907329e67f46c3161acdf}\label{PlayerFunc_8c_aec091722f35907329e67f46c3161acdf}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!Base\+\_\+p@{Base\+\_\+p}}
+\index{Base\+\_\+p@{Base\+\_\+p}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{Base\+\_\+p}{Base\_p}}
+{\footnotesize\ttfamily Base Base\+\_\+p}
+
+struct base \mbox{\Hypertarget{PlayerFunc_8c_a77c37b243793bbcf4e14dcae4bdcf5b8}\label{PlayerFunc_8c_a77c37b243793bbcf4e14dcae4bdcf5b8}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!T1\+\_\+p@{T1\+\_\+p}}
+\index{T1\+\_\+p@{T1\+\_\+p}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{T1\+\_\+p}{T1\_p}}
+{\footnotesize\ttfamily Troop T1\+\_\+p}
+
+struct tropa 1 \mbox{\Hypertarget{PlayerFunc_8c_ab0818f20f9722834079abffd7730c563}\label{PlayerFunc_8c_ab0818f20f9722834079abffd7730c563}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!T2\+\_\+p@{T2\+\_\+p}}
+\index{T2\+\_\+p@{T2\+\_\+p}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{T2\+\_\+p}{T2\_p}}
+{\footnotesize\ttfamily Troop T2\+\_\+p}
+
+struct tropa 2 \mbox{\Hypertarget{PlayerFunc_8c_a5815e52c3b85542221cef33fe258bc09}\label{PlayerFunc_8c_a5815e52c3b85542221cef33fe258bc09}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!T3\+\_\+p@{T3\+\_\+p}}
+\index{T3\+\_\+p@{T3\+\_\+p}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{T3\+\_\+p}{T3\_p}}
+{\footnotesize\ttfamily Troop T3\+\_\+p}
+
+struct tropa 3 \mbox{\Hypertarget{PlayerFunc_8c_ab0fb07f4c546cadaadff39b142526c6b}\label{PlayerFunc_8c_ab0fb07f4c546cadaadff39b142526c6b}} 
+\index{Player\+Func.\+c@{Player\+Func.\+c}!troop\+Sel@{troop\+Sel}}
+\index{troop\+Sel@{troop\+Sel}!Player\+Func.\+c@{Player\+Func.\+c}}
+\subsubsection{\texorpdfstring{troop\+Sel}{troopSel}}
+{\footnotesize\ttfamily int troop\+Sel = 45}
+
+variável que mostra qual tropa está selecionada 
