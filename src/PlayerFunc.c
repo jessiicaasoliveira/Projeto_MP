@@ -420,3 +420,125 @@ void troopController(Troop* t1, Troop* t2, Troop* t3, Build* b3, Base* b) {
             b->r2Amount = 0;
     }
 }
+
+/**
+ **************************************************************************
+ * @brief Função: Verificar as Redondezas da Tropa
+ *
+ * Descrição:
+ * A Função recebe a struct de uma tropa e verifica as redondezas dessa tropa, e retorna um valor de acordo com o que está do lado dessa tropa.
+ *
+ * Parâmetros:
+ * @param Troop* t - struct da tropa
+ * @param int mode - flag para identificar se a função foi chamada para checar se a tropa está perto do prédio responsável por aumentar tropas (0) ou se foi chamada para checar se há tropas inimigas por perto (1)
+ *
+ * Valor retornado:
+ * @return 0 - caso a tropa não esteja perto de nada
+ * @return 1 - caso a mode = 0 e a tropa esteja perto do prédio responsável por gerar tropas
+ * @return 7 - caso a tropa esteja perto da tropa inimiga '7'
+ * @return 8 - caso a tropa esteja perto da tropa inimiga '8'
+ * @return 9 - caso a tropa esteja perto da tropa inimiga '9'
+ * @return 10 - caso a tropa esteja perto do base 'Y'
+ * @return 11 - caso a tropa esteja perto do prédio 'D'
+ * @return 12 - caso a tropa esteja perto do prédio 'F'
+ * @return 13 - caso a tropa esteja perto do prédio 'E'
+ *
+ * Assertiva de entrada:
+ * Troop* t != NULL
+ * int mode == 0 || mode == 1
+ *
+ * Assertiva de saída:
+ * A função retorna valores fixos.
+ ***************************************************************************/
+int troopChecker(Troop* t, int mode) { /* variável mode para checar redondezas -> batalha ou aumento de tropa */
+    switch (mode) {
+    case 0: /* Caso para gerar tropa */
+        if (t->x+1 < map_x && map1[t->y][t->x+1] == 'C')
+            return 1;
+        else if (t->x-1 >= 0 && map1[t->y][t->x-1] == 'C')
+            return 1;
+        else if (t->y-1 >= 0 && map1[t->y-1][t->x] == 'C')
+            return 1;
+        else if (t->y+1 < map_y && map1[t->y+1][t->x] == 'C')
+            return 1;
+        break;
+    case 1: /* Caso de batalha */
+        if (t->x+1 < map_x) {
+            switch (map1[t->y][t->x+1]) {
+            case '7':
+                return 7;
+            case '8':
+                return 8;
+            case '9':
+                return 9;
+            case 'Y':
+                return 10;
+            case 'D':
+                return 11;
+            case 'F':
+                return 12;
+            case 'E':
+                return 13;
+            }
+        }
+        if (t->x-1 >= 0) {
+            switch (map1[t->y][t->x-1]) {
+            case '7':
+                return 7;
+            case '8':
+                return 8;
+            case '9':
+                return 9;
+            case 'Y':
+                return 10;
+            case 'D':
+                return 11;
+            case 'F':
+                return 12;
+            case 'E':
+                return 13;
+            }
+        }
+        if (t->y-1 >= 0) {
+            switch (map1[t->y-1][t->x]) {
+            case '7':
+                return 7;
+            case '8':
+                return 8;
+            case '9':
+                return 9;
+            case 'Y':
+                return 10;
+            case 'D':
+                return 11;
+            case 'F':
+                return 12;
+            case 'E':
+                return 13;
+            }
+        }
+        if (t->y+1 < map_y) {
+            switch (map1[t->y+1][t->x]) {
+            case '7':
+                return 7;
+            case '8':
+                return 8;
+            case '9':
+                return 9;
+            case 'Y':
+                return 10;
+            case 'D':
+                return 11;
+            case 'F':
+                return 12;
+            case 'E':
+                return 13;
+            }
+        }
+        break;
+    }
+    map1[T1_p.y][T1_p.x] = '1';
+    map1[T2_p.y][T2_p.x] = '2';
+    map1[T3_p.y][T3_p.x] = '3';
+    return 0;
+}
