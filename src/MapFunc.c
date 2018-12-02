@@ -28,7 +28,6 @@ int map_x;
  * Assertiva de saída:
  * char** map != NULL
  ***************************************************************************/
-
 char** allocMap(char** map, int y, int x) {
     FILE* fp;
     int i;
@@ -74,8 +73,7 @@ char** allocMap(char** map, int y, int x) {
  *
  * Assertiva de saída:
  * char** map == NULL
-***************************************************************************/
-
+ ***************************************************************************/
 char** deallocMap(char** map) {
     FILE* fp;
     int i;
@@ -148,8 +146,8 @@ void setBaseOnMap(char** map, Base* bc, int x, int y, int width, int height, int
         }
 }
 
-/** 
-**************************************************************************
+/**
+ **************************************************************************
  * @brief Função: Colocar no Mapa um prédio
  *
  * Descrição:
@@ -189,7 +187,6 @@ void setBaseOnMap(char** map, Base* bc, int x, int y, int width, int height, int
  * Assertiva de saída:
  * Função void
  ***************************************************************************/
-
 void setBuildOnMap(char** map, Build* b, int x, int y, int width, int height, int type, int who, int save) {
     int i, j;
 
@@ -230,7 +227,7 @@ void setBuildOnMap(char** map, Build* b, int x, int y, int width, int height, in
 }
 
 /**
-**************************************************************************
+ **************************************************************************
  * @brief Função: Colocar no Mapa a Tropa
  *
  * Descrição:
@@ -266,7 +263,6 @@ void setBuildOnMap(char** map, Build* b, int x, int y, int width, int height, in
  * Assertiva de saída:
  * Função void
  ***************************************************************************/
-
 void setTroopOnMap(char** map, Troop* t, int x, int y, int type, int who, int save) {
     if (!save) {
         t = setTroopAtt(t, x, y, type);
