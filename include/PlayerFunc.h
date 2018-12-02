@@ -37,3 +37,4 @@ extern Troop T1_p, T2_p, T3_p;
 
 /*funções*/
 Base* setBaseAtt(Base* bc, int x, int y, int height, int width);
+Build* setBuildAtt(Build* b, int x, int y, int height, int width, int type);
