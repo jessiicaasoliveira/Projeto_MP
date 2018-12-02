@@ -40,3 +40,5 @@ Base* setBaseAtt(Base* bc, int x, int y, int height, int width);
 Build* setBuildAtt(Build* b, int x, int y, int height, int width, int type);
 Troop* setTroopAtt(Troop* t, int x, int y, int type);
 void moveTroop(WINDOW* win, char** map);
+void resourceController(Base* b, Build* b1, Build* b2);
+void troopController(Troop* t1, Troop* t2, Troop* t3, Build* b3, Base* b);
