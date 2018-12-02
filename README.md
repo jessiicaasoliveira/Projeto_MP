@@ -16,9 +16,9 @@ Comandos para compilação do programa:
 
 - Para compilar o jogo, ir para o terminal e  digitar o comando `make` ou `make main`
 
-- Para compilação do módulo de teste CUnit, ir para o terminal, instalar o CUnit e  digitar o comando `make CUnit`
+- Para compilação do módulo de teste CUnit, ir para o terminal, instalar o CUnit e  digitar o comando `make Tests`
 
-- Digite `./CUnit` para execução do CUnit
+- Digite `./Tests` para execução do CUnit
 
 - Instale o Splint e digite `make splint` para a execução do Splint
 
