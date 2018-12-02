@@ -147,7 +147,7 @@ void setBaseOnMap(char** map, Base* bc, int x, int y, int width, int height, int
             }
         }
 }
- 
+
 /** 
 **************************************************************************
  * @brief Função: Colocar no Mapa um prédio
@@ -390,4 +390,71 @@ void setMap(char** map, int save) {
     setTroopOnMap(map, &T1_e, map_x-18, (map_y/2)-2, 0, 1, save);
     setTroopOnMap(map, &T2_e, map_x-18, (map_y/2), 1, 1, save);
     setTroopOnMap(map, &T3_e, map_x-18, (map_y/2)+2, 2, 1, save);
+}
+
+/**
+ **************************************************************************
+ * @brief Função: Imprimir o Mapa na Window
+ *
+ * Descrição:
+ * A Função recebe uma matriz (mapa do jogo) do tipo char e uma janela (ncurses). Então ela printa na tela o mapa, com as bases, prédios e tropas. Ela também é responsável pelas cores printadas.
+ *
+ * Parâmetros:
+ * @param char** map - matriz (mapa) do tipo char
+ * @param WINDOW* win - uma janela
+ *
+ * Valor retornado:
+ * @return função void. É uma função de atualização de tela
+ *
+ * Assertiva de entrada:
+ * char** map != NULL
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void printMap(WINDOW* win, char** map) {
+    int i, j;
+
+    for (i = 0; i < map_y; i++) {
+        for (j = 0; j < map_x; j++) {
+            switch (map[i][j]) {
+            case 'X':
+                mvwaddch(win, i+2, j+1, map[i][j] | COLOR_PAIR(6) | A_STANDOUT);
+                break;
+
+            case 'A':
+            case 'C':
+            case 'B':
+                mvwaddch(win, i+2, j+1, map[i][j] | COLOR_PAIR(5) | A_STANDOUT);
+                break;
+
+            case 'D':
+            case 'F':
+            case 'E':
+                mvwaddch(win, i+2, j+1, map[i][j] | COLOR_PAIR(7) | A_STANDOUT);
+                break;
+
+            case 'Y':
+                mvwaddch(win, i+2, j+1, map[i][j] | COLOR_PAIR(8) | A_STANDOUT);
+                break;
+
+            case '1':
+            case '2':
+            case '3':
+                mvwaddch(win, i+2, j+1, map[i][j] | COLOR_PAIR(9) | A_STANDOUT);
+                break;
+
+            case '7':
+            case '8':
+            case '9':
+                mvwaddch(win, i+2, j+1, map[i][j] | COLOR_PAIR(10) | A_STANDOUT);
+                break;
+
+            default:
+                mvwaddch(win, i+2, j+1, map[i][j]);
+            }
+        }
+        wprintw(win, "\n");
+    }
+    wrefresh(win);
 }
