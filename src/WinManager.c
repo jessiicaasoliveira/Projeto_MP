@@ -27,33 +27,32 @@ int termCols;
  * Assertiva de saída:
  * função void
  ***************************************************************************/
-void startWin()
-{
+void startWin() {
     /*inicia a janela da ncurses*/
-	initscr();
-	cbreak();
-	start_color();
+    initscr();
+    cbreak();
+    start_color();
     /*desabilita a necessidade de dar enter quando digita algo*/
-	noecho();
-	curs_set(1);
+    noecho();
+    curs_set(1);
     /*habilita a special keys na tela da ncurses*/
-	keypad(stdscr, TRUE);
+    keypad(stdscr, TRUE);
     /*pega o tamanho do terminal*/
-	getmaxyx(stdscr, termLines, termCols);
+    getmaxyx(stdscr, termLines, termCols);
     /*possibilita a identificação do mouse*/
     mousemask(ALL_MOUSE_EVENTS | REPORT_MOUSE_POSITION, NULL);
 
     /* Setting pairs of colors */
     init_pair(1, COLOR_RED, COLOR_BLACK);
-	init_pair(2, COLOR_GREEN, COLOR_BLACK);
-	init_pair(3, COLOR_MAGENTA, COLOR_BLACK);
-	init_pair(4, COLOR_BLUE, COLOR_BLACK);
-	init_pair(5, COLOR_BLUE, COLOR_WHITE);
-	init_pair(6, COLOR_CYAN, COLOR_WHITE);
-	init_pair(7, COLOR_MAGENTA, COLOR_WHITE);
-	init_pair(8, COLOR_RED, COLOR_WHITE);
-	init_pair(9, COLOR_GREEN, COLOR_WHITE);
-	init_pair(10, COLOR_YELLOW, COLOR_BLACK);
+    init_pair(2, COLOR_GREEN, COLOR_BLACK);
+    init_pair(3, COLOR_MAGENTA, COLOR_BLACK);
+    init_pair(4, COLOR_BLUE, COLOR_BLACK);
+    init_pair(5, COLOR_BLUE, COLOR_WHITE);
+    init_pair(6, COLOR_CYAN, COLOR_WHITE);
+    init_pair(7, COLOR_MAGENTA, COLOR_WHITE);
+    init_pair(8, COLOR_RED, COLOR_WHITE);
+    init_pair(9, COLOR_GREEN, COLOR_WHITE);
+    init_pair(10, COLOR_YELLOW, COLOR_BLACK);
 }
 
 /**
@@ -82,7 +81,7 @@ void startWin()
  * Assertiva de saída:
  * int i == 0 || i == 1 || i == 2 || i == 3 || i == 4
  ***************************************************************************/
-int getMenu(int mouse_x, int mouse_y){
+int getMenu(int mouse_x, int mouse_y) {
     FILE* fp;
     int i = 0;
 
@@ -140,32 +139,30 @@ int getMenu(int mouse_x, int mouse_y){
  * Assertiva de saída:
  * (long int)itemPtr == 0 || itemPtr == 1 || itemPtr == 2 || itemPtr == 3
  ***************************************************************************/
-int startGameMenu()
-{
+int startGameMenu() {
     FILE* fp;
     char* choices[] = { "New Game", "Load Game", "Credits", "Exit" };
     ITEM** items;
     ITEM* cur_item;
-	int n_choices, sel = 0;
-	long int i;
-	void* itemPtr;
-	MENU* menu;
-	WINDOW* menuWin;
+    int n_choices, sel = 0;
+    long int i;
+    void* itemPtr;
+    MENU* menu;
+    WINDOW* menuWin;
     MEVENT evento_mouse;
 
 
     /* Initialize items to the menu */
-	n_choices = ARRAY_SIZE(choices);
+    n_choices = ARRAY_SIZE(choices);
     items = (ITEM **)calloc(n_choices + 1, sizeof(ITEM *));
-    for(i = 0; i < n_choices; ++i)
-    {
+    for (i = 0; i < n_choices; ++i) {
         items[i] = new_item(choices[i], NULL);
         set_item_userptr(items[i], (void*)i);
     }
-	items[n_choices] = (ITEM *)NULL;
+    items[n_choices] = (ITEM *)NULL;
 
-	/* Initiate menu */
-	menu = new_menu((ITEM**)items);
+    /* Initiate menu */
+    menu = new_menu((ITEM**)items);
 
     /* Create window for Menu */
     menuWin = createWin(10, 40, (termLines/6), (termCols/3));
@@ -178,24 +175,23 @@ int startGameMenu()
     box(menuWin, 0, 0);
     middlePrint(menuWin, 1, 0, 40, "TROOPS DUEL", COLOR_PAIR(1));
     mvwaddch(menuWin, 2, 0, ACS_LTEE);
-	mvwhline(menuWin, 2, 1, ACS_HLINE, 38);
-	mvwaddch(menuWin, 2, 39, ACS_RTEE);
-	mvprintw(LINES - 2, 0, "Press UP and DOWN to navigate and ENTER to select an option");
-	refresh();
+    mvwhline(menuWin, 2, 1, ACS_HLINE, 38);
+    mvwaddch(menuWin, 2, 39, ACS_RTEE);
+    mvprintw(LINES - 2, 0, "Press UP and DOWN to navigate and ENTER to select an option");
+    refresh();
 
 
-	/* Setting grounds (fore and back) for the menu */
-	set_menu_fore(menu, COLOR_PAIR(1)); //EDITAR CORES
-	set_menu_back(menu, COLOR_PAIR(2)); //EDITAR CORES
-	set_menu_grey(menu, COLOR_PAIR(3)); //EDITAR CORES
+    /* Setting grounds (fore and back) for the menu */
+    set_menu_fore(menu, COLOR_PAIR(1));    //EDITAR CORES
+    set_menu_back(menu, COLOR_PAIR(2));    //EDITAR CORES
+    set_menu_grey(menu, COLOR_PAIR(3)); //EDITAR CORES
 
-	/* Printing the menu */
-	post_menu(menu);
-	wrefresh(menuWin);
+    /* Printing the menu */
+    post_menu(menu);
+    wrefresh(menuWin);
 
-	while(!sel || (!loadGame() && itemPtr == (void*)1))
-	{
-
+    while (!sel || (!loadGame() && itemPtr == (void*)1)) {
+        
         switch(wgetch(menuWin))
         {
             case KEY_DOWN:
@@ -267,12 +263,12 @@ int startGameMenu()
 
         }
         wrefresh(menuWin);
-	}
+    }
 
-	unpost_menu(menu);
+    unpost_menu(menu);
     free_menu(menu);
-	for(i = 0; i < n_choices; ++i)
-		free_item(items[i]);
+    for(i = 0; i < n_choices; ++i)
+        free_item(items[i]);
 
     destroyWin(&menuWin);
     erase();
@@ -317,9 +313,9 @@ WINDOW* createWin(int WinHeight, int WinWidth, int WinStarty, int WinStartx)
     FILE* fp;
     WINDOW* local_win;
 
-	local_win = newwin(WinHeight, WinWidth, WinStarty, WinStartx);
-	keypad(local_win, TRUE);
-	wrefresh(local_win);
+    local_win = newwin(WinHeight, WinWidth, WinStarty, WinStartx);
+    keypad(local_win, TRUE);
+    wrefresh(local_win);
 
     /*Assertiva de saída*/
     if (local_win == NULL) {
@@ -327,7 +323,7 @@ WINDOW* createWin(int WinHeight, int WinWidth, int WinStarty, int WinStartx)
         fprintf(fp, "Erro na createWin (arquivo WinManager.c)\n");
         fclose(fp);
     }
-	return local_win;
+    return local_win;
 }
 
 /**
@@ -351,10 +347,10 @@ WINDOW* createWin(int WinHeight, int WinWidth, int WinStarty, int WinStartx)
  ***************************************************************************/
 void destroyWin(WINDOW** local_win)
 {
-	werase(*local_win);
-	wrefresh(*local_win);
-	delwin(*local_win);
-	*local_win = NULL;
+    werase(*local_win);
+    wrefresh(*local_win);
+    delwin(*local_win);
+    *local_win = NULL;
 }
 
 /**
@@ -388,28 +384,28 @@ void destroyWin(WINDOW** local_win)
 void middlePrint(WINDOW* win, int WinStarty, int WinStartx, int WinWidth, char* string, chtype color)
 {
     int length, x, y;
-	float temp;
+    float temp;
 
-	if(win == NULL)
-		win = stdscr;
+    if(win == NULL)
+        win = stdscr;
 
-	getyx(win, y, x);
+    getyx(win, y, x);
 
-	if(WinStartx != 0)
-		x = WinStartx;
+    if(WinStartx != 0)
+        x = WinStartx;
 
-	if(WinStarty != 0)
-		y = WinStarty;
+    if(WinStarty != 0)
+        y = WinStarty;
 
-	if(WinWidth == 0)
-		WinWidth = 80;
+    if(WinWidth == 0)
+        WinWidth = 80;
 
-	length = strlen(string);
-	temp = (WinWidth - length)/ 2;
-	x = WinStartx + (int)temp;
-	wattron(win, color);
-	mvwprintw(win, y, x, "%s", string);
-	wattroff(win, color);
+    length = strlen(string);
+    temp = (WinWidth - length)/ 2;
+    x = WinStartx + (int)temp;
+    wattron(win, color);
+    mvwprintw(win, y, x, "%s", string);
+    wattroff(win, color);
 }
 
 /**
@@ -523,10 +519,10 @@ void refreshWindows(WINDOW* gameWin, WINDOW* statusWin)
 void printPlayerStatus(WINDOW* status, Base* b, Build* b1, Build* b2, Build* b3, Troop* t1, Troop* t2, Troop* t3)
 {
     wattron(status, COLOR_PAIR(2));
-    mvwprintw(status, 1, 2, "HP B: %i + %i", b->hp, b->defense);
-    mvwprintw(status, 2, 2, "HP X: %i + %i", b1->hp, b1->defense);
-    mvwprintw(status, 4, 2, "HP Z: %i + %i", b2->hp, b2->defense);
-    mvwprintw(status, 3, 2, "HP Y: %i + %i", b3->hp, b3->defense);
+    mvwprintw(status, 1, 2, "HP X: %i + %i", b->hp, b->defense);
+    mvwprintw(status, 2, 2, "HP A: %i + %i", b1->hp, b1->defense);
+    mvwprintw(status, 4, 2, "HP B: %i + %i", b2->hp, b2->defense);
+    mvwprintw(status, 3, 2, "HP C: %i + %i", b3->hp, b3->defense);
 
     mvwprintw(status, 1, termCols/10+8, "T1 Amount: %i", t1->amount);
     mvwprintw(status, 2, termCols/10+8, "T2 Amount: %i", t2->amount);
@@ -580,10 +576,10 @@ void printEnemyStatus(WINDOW* status, Base* b, Build* b1, Build* b2, Build* b3, 
     mvwprintw(status, 4, termCols/2-3, "|");
 
     wattron(status, COLOR_PAIR(1));
-    mvwprintw(status, 1, termCols/2+3, "HP C: %i + %i", b->hp, b->defense);
-    mvwprintw(status, 2, termCols/2+3, "HP L: %i + %i", b1->hp, b1->defense);
-    mvwprintw(status, 4, termCols/2+3, "HP N: %i + %i", b2->hp, b2->defense);
-    mvwprintw(status, 3, termCols/2+3, "HP M: %i + %i", b3->hp, b3->defense);
+    mvwprintw(status, 1, termCols/2+3, "HP Y: %i + %i", b->hp, b->defense);
+    mvwprintw(status, 2, termCols/2+3, "HP D: %i + %i", b1->hp, b1->defense);
+    mvwprintw(status, 4, termCols/2+3, "HP E: %i + %i", b2->hp, b2->defense);
+    mvwprintw(status, 3, termCols/2+3, "HP F: %i + %i", b3->hp, b3->defense);
 
     mvwprintw(status, 1, termCols/2+25, "T7 Amount: %i", t1->amount);
     mvwprintw(status, 2, termCols/2+25, "T8 Amount: %i", t2->amount);
@@ -623,25 +619,25 @@ int pauseGameMenu()
     char* choices[] = { "Continue", "Save Game", "Exit Game" };
     ITEM** items;
     ITEM* cur_item;
-	int n_choices, sel = 0;
-	long int i;
-	void* itemPtr;
-	MENU* menu;
-	WINDOW* pauseWin;
-	MEVENT evento_mouse;
+    int n_choices, sel = 0;
+    long int i;
+    void* itemPtr;
+    MENU* menu;
+    WINDOW* pauseWin;
+    MEVENT evento_mouse;
 
     /* Initialize items to the menu */
-	n_choices = ARRAY_SIZE(choices);
+    n_choices = ARRAY_SIZE(choices);
     items = (ITEM **)calloc(n_choices + 1, sizeof(ITEM *));
     for(i = 0; i < n_choices; ++i)
     {
         items[i] = new_item(choices[i], NULL);
         set_item_userptr(items[i], (void*)i);
     }
-	items[n_choices] = (ITEM *)NULL;
+    items[n_choices] = (ITEM *)NULL;
 
-	/* Initiate menu */
-	menu = new_menu((ITEM**)items);
+    /* Initiate menu */
+    menu = new_menu((ITEM**)items);
 
     /* Create window for Menu */
     pauseWin = createWin(10, 40, (termLines/3), (termCols/3));
@@ -653,22 +649,22 @@ int pauseGameMenu()
     box(pauseWin, 0, 0);
     middlePrint(pauseWin, 1, 0, 40, "GAME PAUSED", COLOR_PAIR(1));
     mvwaddch(pauseWin, 2, 0, ACS_LTEE);
-	mvwhline(pauseWin, 2, 1, ACS_HLINE, 38);
-	mvwaddch(pauseWin, 2, 39, ACS_RTEE);
+    mvwhline(pauseWin, 2, 1, ACS_HLINE, 38);
+    mvwaddch(pauseWin, 2, 39, ACS_RTEE);
     wrefresh(pauseWin);
 
-	/* Setting grounds (fore and back) for the menu */
-	set_menu_fore(menu, COLOR_PAIR(1)); //EDITAR CORES
-	set_menu_back(menu, COLOR_PAIR(2)); //EDITAR CORES
-	set_menu_grey(menu, COLOR_PAIR(3)); //EDITAR CORES
+    /* Setting grounds (fore and back) for the menu */
+    set_menu_fore(menu, COLOR_PAIR(1)); //EDITAR CORES
+    set_menu_back(menu, COLOR_PAIR(2)); //EDITAR CORES
+    set_menu_grey(menu, COLOR_PAIR(3)); //EDITAR CORES
 
-	/* Printing the menu */
-	post_menu(menu);
-	wrefresh(pauseWin);
+    /* Printing the menu */
+    post_menu(menu);
+    wrefresh(pauseWin);
 
-	while(!sel)
-	{
-	    flushinp();
+    while(!sel)
+    {
+        flushinp();
         switch(wgetch(pauseWin))
         {
             case KEY_DOWN:
@@ -740,12 +736,12 @@ int pauseGameMenu()
 
         }
         wrefresh(pauseWin);
-	}
+    }
 
-	unpost_menu(menu);
+    unpost_menu(menu);
     free_menu(menu);
-	for(i = 0; i < n_choices; ++i)
-		free_item(items[i]);
+    for(i = 0; i < n_choices; ++i)
+        free_item(items[i]);
 
     destroyWin(&pauseWin);
 
