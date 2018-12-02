@@ -21,7 +21,7 @@ DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 _OBJ1 = GameLogic.o WinManager.o PlayerFunc.o EnemyFunc.o MapFunc.o main.o
 OBJ1 = $(patsubst %,$(ODIR)/%,$(_OBJ1))
 
-_OBJ2 = LogicaJogo.o WinManager.o PlayerFunc.o EnemyFunc.o MapFunc.o 
+_OBJ2 = GameLogic.o WinManager.o PlayerFunc.o EnemyFunc.o MapFunc.o Tests.o
 OBJ2 = $(patsubst %,$(ODIR)/%,$(_OBJ2))
 
 $(ODIR)/%.o: %.c $(DEPS)
@@ -30,8 +30,8 @@ $(ODIR)/%.o: %.c $(DEPS)
 main: $(OBJ1)	
 	$(CC) -Wall $(CFLAGCUI) $^ $(CFLAGL) $(LIBS) -o $@ $(CFLAGI) $(GDB)
 
-# CUnit: $(OBJ2)
-# 	$(CC) -Wall $(CFLAGCUI) $^ $(CFLAGL) $(LIBS) -o $@ $(CFLAGI) $(GDB)
+Tests: $(OBJ2)
+	g++ -Wall $(CFLAGCUI) $^ $(CFLAGL) $(LIBS) -o $@ $(CFLAGI) $(GDB)
 
 splint:
 	$(SPLINT) $(SPLINTFLAGS) -I $(IDIR) $(SPLINT_SOURCE)
