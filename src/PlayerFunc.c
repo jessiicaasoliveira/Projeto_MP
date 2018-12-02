@@ -450,7 +450,8 @@ void troopController(Troop* t1, Troop* t2, Troop* t3, Build* b3, Base* b) {
  * Assertiva de saída:
  * A função retorna valores fixos.
  ***************************************************************************/
-int troopChecker(Troop* t, int mode) { /* variável mode para checar redondezas -> batalha ou aumento de tropa */
+int troopChecker(Troop* t, int mode) {
+/* variável mode para checar redondezas -> batalha ou aumento de tropa */
     switch (mode) {
     case 0: /* Caso para gerar tropa */
         if (t->x+1 < map_x && map1[t->y][t->x+1] == 'C')
@@ -541,4 +542,94 @@ int troopChecker(Troop* t, int mode) { /* variável mode para checar redondezas 
     map1[T2_p.y][T2_p.x] = '2';
     map1[T3_p.y][T3_p.x] = '3';
     return 0;
+}
+
+/**
+ **************************************************************************
+ * @brief Função: Verificar se um Prédio foi Derrubado
+ *
+ * Descrição:
+ * A Função recebe as structs dos prédios e a matriz do mapa. Ela verifica se a vida dos prédios é 0. Se for ela retira o prédio do mapa e deixa o hp da base como -1.
+ *
+ * Parâmetros:
+ * @param Build* b1 - struct do prédio do tipo 1
+ * @param Build* b2 - struct do prédio do tipo 2
+ * @param Build* b3 - struct do prédio do tipo 3
+ * @param char** map - matriz do mapa do jogo
+ *
+ * Valor retornado:
+ * @return Void. A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Build* b1 != NULL
+ * Build* b2 != NULL
+ * Build* b3 != NULL
+ * Build* b3 != NULL
+ * char** map != NULL
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void buildHPChecker(Build* b1, Build* b2, Build* b3, char** map) {
+    int i, j;
+    if (b1->hp == 0) {
+        for (i = b1->y; i <= (b1->height + b1->y); i++)
+            for (j = b1->x; j <= (b1->width + b1->x); j++)
+                map[i][j] = MAP_TILE;
+        b1->hp = -1;
+    }
+    if (b2->hp == 0) {
+        for (i = b2->y; i <= (b2->height + b2->y); i++)
+            for (j = b2->x; j <= (b2->width + b2->x); j++)
+                map[i][j] = MAP_TILE;
+        b2->hp = -1;
+    }
+    if (b3->hp == 0) {
+        for (i = b3->y; i <= (b3->height + b3->y); i++)
+            for (j = b3->x; j <= (b3->width + b3->x); j++)
+                map[i][j] = MAP_TILE;
+        b3->hp = -1;
+    }
+}
+/**
+ **************************************************************************
+ * @brief Função: Verificar se uma Tropa foi eliminada
+ *
+ * Descrição:
+ * A Função recebe as structs das tropas e a matriz do mapa. Ela verifica se a quantidade de tropas é igual a zero e se for ela retira a tropa do mapa.
+ *
+ * Parâmetros:
+ * @param Troop* t1 - struct da tropa do tipo 1
+ * @param Troop* t2 - struct da tropa do tipo 2
+ * @param Troop* t3 - struct da tropa do tipo 3
+ * @param char** map - matriz do mapa
+ *
+ * Valor retornado:
+ * @return Void. A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Troop* t1 != NULL
+ * Troop* t2 != NULL
+ * Troop* t3 != NULL
+ * char** map != NULL
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void troopAmountChecker(Troop* t1, Troop* t2, Troop* t3, char** map) {
+    if (t1->amount <= 0) {
+        map[t1->y][t1->x] = MAP_TILE;
+        t1->amount = 0;
+        t1->y = t1->x = 0;
+    }
+    if (t2->amount <= 0) {
+        map[t2->y][t2->x] = MAP_TILE;
+        t2->amount = 0;
+        t2->y = t2->x = 0;
+    }
+    if (t3->amount <= 0) {
+        map[t3->y][t3->x] = MAP_TILE;
+        t3->amount = 0;
+        t3->y = t3->x = 0;
+    }
 }
