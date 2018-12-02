@@ -2,3 +2,24 @@
 
 Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
 
+10/11/2018 | 4 horas | Estudar aulas relacionadas | Foram feitas leituras dos materiais disponíveis para montar a especificação do projeto
+
+11/11/2018 | 3 horas | Especificar os módulos/fazer diagramas  | Criando o diagrama de execução do jogo
+
+12/11/2018 | 3 horas |  especificar os módulos/especificar as funções/codificar módulo  | Implementação das funções de controle das tropas
+
+
+14/11/2018 | 7 horas | Parte Gráfica | Desenvolvimento da Interface Gráfica do jogo
+
+24/11/2018 | 2 horas | Revisar especificações | Em grupo, foi feita uma reunião para definir se aquilo que foi definido precisaria ser adaptado
+
+25/11/2018 | 4 horas | codificar módulo | Finalizando as funções de movimentação das tropas
+
+28/11/2018 | 4 horas | Codificar módulos | Usando Programação em Pares, foram agendadas calls via Hangouts para que o grupo pudesse codificar módulos que conversassem entre si, devido a complexidade do código
+
+29/11/2018 | 6 horas | revisar projetos/Rodar os CPPCheck e retirar warnings/revisar código do módulo | Foram retirados alguns bugs que encontravam-se no sistema que comprometiam a execução
+
+01/12/2018 | 8 horas | Documentação com Doxygen | Comentei todos os codigos que escrevi para se adequarem ao doxygen
+
+02/12/2018 | 6 horas | Revisar dos testes  | Foram corrigidos alguns testes e foram realizadas adaptações para o gcov
+

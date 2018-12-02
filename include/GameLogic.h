@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <time.h>
 
-#define MAP_TILE '-'
+#define MAP_TILE ' '
 #define GAME_STATE_PLAY '1' //ESTADO DE JOGO: JOGANDO
 #define GAME_STATE_PAUSE '2' //ESTADO DE JOGO: PAUSADO
 #define REFRESH_TIME 65000
