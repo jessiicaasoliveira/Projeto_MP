@@ -1,3 +1,32 @@
 #Jéssica da Silva Oliveira - 13/0028983
 
 Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
+
+
+10/11/2018 | 6 horas | Estudar aulas relacionadas | Foram feitas leituras dos materiais disponíveis para montar a especificação do projeto
+
+12/11/2018 | 3 horas | Especificar módulos | Foram feitas histórias de usuário com objetivo de clarear as ideias referentes aos módulos das funções
+
+12/11/2018 | 3 horas | Especificar funções | Foram feitas as especificações sobre as funções que o código deveria ter para alcançar os objetivos do jogo Duelo das Tropas
+
+17/11/2018 | 2 horas | Revisar especificações | Em grupo, foi feita uma reunião para definir se aquilo que foi definido precisaria ser adaptado
+
+23/11/2018 | 2 horas | Projetar | O projeto foi projetado após as modificações inseridas na especificação
+
+25/11/2018 | 3 horas | Fazer diagramas | A modelagem do projeto foi consolidada
+
+28/11/2018 | 4 horas | Codificar módulos | Usando Programação em Pares, foram agendadas calls via Hangouts para que o grupo pudesse codificar módulos que conversassem entre si, devido a complexidade do código
+
+28/11/2018 | 3 horas | Codificar funções | Criação do modelo físico da função do arquivos mapFunc.c da estrutura de dados da base, da build e da troop
+
+29/11/2018 | 3 horas | Codificar funções | Criação do modelo físico da função do arquivos playerFunc.c
+
+29/11/2018 | 2 horas | Retirar warnings | Foram retirados os warnings e feitas algumas correções, bem como implementação de outros módulos
+
+30/11/2018 | 5 horas | Revisar código de módulo | Foram feitas correções nos módulos, que até então estavam em sua maioria completamente desenvolvidos, mas apresentando alguns warnings
+
+01/12/2018 | 8 horas | Codificar módulos | Para inserir outras funcionalidades que foram necessárias, outro módulo teve que ser codificado, para gerenciar os controladores de jogo
+
+02/12/2018 | 4 horas | Revisar código de módulo | Foram corrigidas algumas funcionalidades, e o código ficou 100% funcional.
+
+02/12/2018 | 3 horas | Criação, escrita e revisão do Read Me 
