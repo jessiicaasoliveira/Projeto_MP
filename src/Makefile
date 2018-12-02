@@ -4,7 +4,7 @@ CFLAGI=-I$(IDIR)
 CFLAGL=-L/usr/local/lib
 CFLAGCUI=-I../include
 GDB=-g
-LIBS= -fprofile-arcs -ftest-coverage -lncurses -lmenu
+LIBS= -fprofile-arcs -ftest-coverage -lncurses -lmenu -lgtest -lgtest_main 
 
 ODIR=../obj
 
@@ -21,7 +21,7 @@ DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 _OBJ1 = GameLogic.o WinManager.o PlayerFunc.o EnemyFunc.o MapFunc.o main.o
 OBJ1 = $(patsubst %,$(ODIR)/%,$(_OBJ1))
 
-_OBJ2 = Testes.o LogicaJogo.o WinManager.o PlayerFunc.o EnemyFunc.o MapFunc.o 
+_OBJ2 = Tests.o LogicaJogo.o WinManager.o PlayerFunc.o EnemyFunc.o MapFunc.o 
 OBJ2 = $(patsubst %,$(ODIR)/%,$(_OBJ2))	
 
 $(ODIR)/%.o: %.c $(DEPS)
@@ -31,7 +31,7 @@ main: $(OBJ1)
 	$(CC) -Wall $(CFLAGCUI) $^ $(CFLAGL) $(LIBS) -o $@ $(CFLAGI) $(GDB)
 
 Testes: $(OBJ2)
-	g++ -Wall $(CFLAGCUI) $^ $(CFLAGL) $(LIBS) -o $@ $(CFLAGI) $(GDB)
+	$(CC)  -Wall $(CFLAGCUI) $^ $(CFLAGL) $(LIBS) -o $@ $(CFLAGI) $(GDB)
 
 splint:
 	$(SPLINT) $(SPLINTFLAGS) -I $(IDIR) $(SPLINT_SOURCE)

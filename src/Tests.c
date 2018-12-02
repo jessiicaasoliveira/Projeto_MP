@@ -1,15 +1,24 @@
-#define CATCH_CONFIG_MAIN   
-#include "Catch.hpp"
+#include <gtest/gtest.h>
 #include "EnemyFunc.h"
-#include "GameLogic.h"
-#include "MapFunc.h"
-#include "PlayerFunc.h"
-#include "WinManager.h"
+// #include "GameLogic.h"
+// #include "MapFunc.h"
+// #include "PlayerFunc.h"
+// #include "WinManager.h"
 
+using namespace std;
 /* Teste case para biblioteca EnemyFunc.h */
-TEST_CASE("Testes da biblioteca EnemyFunc.h:"){
+TEST(enemy_func,testa_path){
 
     int path_y;
-    path_y = ReadPathY(1, 1)
+    path_y = ReadPathY(1, 1);
 
+}
+
+
+
+int main(int argc, char **argv)
+{
+
+	::testing::InitGoogleTest(&argc, argv);
+	return RUN_ALL_TESTS();
 }
