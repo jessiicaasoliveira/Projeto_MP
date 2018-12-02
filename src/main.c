@@ -17,7 +17,7 @@ int main() {
             break;
 
         case 2:
-            mvprintw(0, 0, "Jogo Feito por: Amanda , Bruno e Jessica");
+            mvprintw(0, 0, "Jogo Feito por: Amanda Carvalho , Bruno Justino e Jessica Oliveira");
             refresh();
             getchar();
             break;
