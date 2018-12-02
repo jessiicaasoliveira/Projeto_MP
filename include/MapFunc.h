@@ -16,3 +16,5 @@ void setBuildOnMap(char** map, Build* b, int x, int y, int width, int height, in
 void setTroopOnMap(char** map, Troop* t, int x, int y, int type, int who, int save);
 
 void setMap(char** map, int save);
+
+void printMap(WINDOW* win, char** map);
