@@ -341,3 +341,82 @@ void moveTroop(WINDOW* win, char** map) {
         troopSel = 45;/* - na tabela ASCII*/
     }
 }
+
+/**
+**************************************************************************
+ * @brief Função: Controlar a Mineração de Recursos
+ *
+ * Descrição:
+ * A Função recebe as structs da base e de 2 prédios responsáveis pela mineração de recursos. Para controlar a frequencia de mineração, é verificado randomicamente um valor inteiro, e se ele for maior que 60 e a vida do prédio for superior a 0 é aumentado a quantidade de recursos minerados de acordo com a velocidade de mineração de cada tipo de prédio.
+ *
+ * Parâmetros:
+ * @param Base* b - struct da base
+ * @param Build* b1 - struct do prédio do tipo 1
+ * @param Build* b2 - struct do prédio do tipo 2
+ *
+ * Valor retornado:
+ * @return Void. A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Base* b != NULL
+ * Build* b1 != NULL
+ * Build* b2 != NULL
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void resourceController(Base* b, Build* b1, Build* b2) {
+    if ((rand_r()%101) > RESOURCE_RAND) {
+        if (b1->hp > 0)
+            b->r1Amount += (b1->mineSpeed * R1_RATE);
+        if (b2->hp > 0)
+            b->r2Amount += (b2->mineSpeed * R2_RATE);
+    }
+}
+/**
+ **************************************************************************
+ * @brief Função: Controlar a Criação de Tropas
+ *
+ * Descrição:
+ * A Função recebe as structs da base, das tropas e do prédio responsável pela criação de tropas. Então ela verifica se a tropa está do lado do prédio que gera tropa, e se há recursos para gerar mais tropas. Então essa tropa tem a quantidade aumentada.
+ *
+ * Parâmetros:
+ * @param Troop* t1 - struct da tropa do tipo 1
+ * @param Troop* t2 - struct da tropa do tipo 2
+ * @param Troop* t3 - struct da tropa do tipo 3
+ * @param Build* b3 - struct do prédio do tipo 3
+ * @param Base* b - struct da base
+ *
+ * Valor retornado:
+ * @return Void. A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Troop* t1 != NULL
+ * Troop* t2 != NULL
+ * Troop* t3 != NULL
+ * Build* b3 != NULL
+ * Base* b != NULL
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void troopController(Troop* t1, Troop* t2, Troop* t3, Build* b3, Base* b) {
+    if (troopChecker(t1, 0) && b->r1Amount > 0) {
+        t1->amount += (b3->mineSpeed * T1_RATE);
+        b->r1Amount += (-b3->resourceConsume * R1_COST);
+        if (b->r1Amount <=0)
+            b->r1Amount = 0;
+    }
+    if (troopChecker(t2, 0) && b->r1Amount > 0) {
+        t2->amount += (b3->mineSpeed * T2_RATE);
+        b->r1Amount += (-b3->resourceConsume * R1_COST);
+        if (b->r1Amount <=0)
+            b->r1Amount = 0;
+    }
+    if (troopChecker(t3, 0) && b->r2Amount > 0) {
+        t3->amount += (b3->mineSpeed * T3_RATE);
+        b->r2Amount += (-b3->resourceConsume * R2_COST);
+        if (b->r2Amount <=0)
+            b->r2Amount = 0;
+    }
+}
