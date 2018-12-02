@@ -10,3 +10,5 @@ char** allocMap(char** map, int y, int x);
 char** deallocMap(char** map);
 
 void setBaseOnMap(char** map, Base* bc, int x, int y, int width, int height, int who, int save);
+
+void setBuildOnMap(char** map, Build* b, int x, int y, int width, int height, int type, int who, int save);
