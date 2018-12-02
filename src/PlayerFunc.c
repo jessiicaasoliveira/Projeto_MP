@@ -633,3 +633,149 @@ void troopAmountChecker(Troop* t1, Troop* t2, Troop* t3, char** map) {
         t3->y = t3->x = 0;
     }
 }
+
+/**
+ **************************************************************************
+ * @brief Função: Controlar o Sistema de Batalha das Tropas
+ *
+ * Descrição:
+ * A Função recebe as structs de uma das tropas do player de todas as tropas do PC. Então ela verifica de qual tropa do PC a tropa do player está do lado. De acordo com os atributos da tropa do player e da tropa do PC que ele está batalhando é calculado se as tropas do PC ou do Player diminuem. A tropa que ganhar a batalha vai perdendo seu número de tropas até chegar a 0 e sumir.
+ *
+ * Parâmetros:
+ * @param Troop* t - struct da tropa do player
+ * @param Troop* t1_e - struct da tropa do tipo 1 do PC
+ * @param Troop* t2_e - struct da tropa do tipo 2 do PC
+ * @param Troop* b3 - struct da tropa do tipo 3 do PC
+ *
+ * Valor retornado:
+ * @return Void. A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Troop* t != NULL
+ * Troop* t1_e != NULL
+ * Troop* t2_e != NULL
+ * Troop* t3_e != NULL
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void battleChecker(Troop* t, Troop* t1_e, Troop* t2_e, Troop* t3_e) {
+    int diff, playerTotal, pcTotal;
+    switch (troopChecker(t, 1)) {
+    case 7:
+        playerTotal = (t->amount+t->damage+t->defense+t->hp);
+        pcTotal = (t1_e->amount+t1_e->damage+t1_e->defense+t->hp);
+        if (playerTotal > pcTotal) {
+            diff = pcTotal - playerTotal;
+            t1_e->amount += diff;
+        }
+        else if (playerTotal < pcTotal) {
+            diff = playerTotal - pcTotal;
+            t->amount += diff;
+        }
+        break;
+    case 8:
+        playerTotal = (t->amount+t->damage+t->defense+t->hp);
+        pcTotal = (t2_e->amount+t2_e->damage+t2_e->defense+t->hp);
+        if (playerTotal > pcTotal) {
+            diff = pcTotal - playerTotal;
+            t2_e->amount += diff;
+        }
+        else if (playerTotal < pcTotal) {
+            diff = playerTotal - pcTotal;
+            t->amount += diff;
+        }
+        break;
+    case 9:
+        playerTotal = (t->amount+t->damage+t->defense+t->hp);
+        pcTotal = (t3_e->amount+t3_e->damage+t3_e->defense+t->hp);
+        if (playerTotal > pcTotal) {
+            diff = pcTotal - playerTotal;
+            t3_e->amount += diff;
+        }
+        else if (playerTotal < pcTotal) {
+            diff = playerTotal - pcTotal;
+            t->amount += diff;
+        }
+        break;
+    }
+}
+/**
+ **************************************************************************
+ * @brief Função: Controlar o Ataque de Tropas aos Prédios/Base
+ *
+ * Descrição:
+ * A Função recebe as structs dos prédios, da base e de uma tropa. Ela verifica se a tropa está perto de algum prédio/base e se estiver é calculado o dano que essa tropa está dando no prédio/base. Antes de diminuir a vida do prédio/base é necessário diminuir a defesa para 0.
+ *
+ * Parâmetros:
+ * @param Troop* t - struct da tropa do tipo 1
+ * @param Base* b - struct da base
+ * @param Build* b1 - struct do prédio do tipo 1
+ * @param Build* b2 - struct do prédio do tipo 2
+ * @param Build* b3 - struct do prédio do tipo 3
+ *
+ * Valor retornado:
+ * @return Void. A função não retorna nada
+ *
+ * Assertiva de entrada:
+ * Troop* t != NULL
+ * Base* b != NULL
+ * Build* b1 != NULL
+ * Build* b2 != NULL
+ * Build* b3 != NULL
+ *
+ * Assertiva de saída:
+ * Função void
+ ***************************************************************************/
+void destroyBuildChecker(Troop* t, Base* b, Build* b1, Build* b2, Build* b3) {
+    switch (troopChecker(t, 1)) {
+    case 10:
+        if (b->defense > 0) {
+            b->defense += (-t->damage);
+            if (b->defense < 0)
+                b->defense = 0;
+        }
+        else if (b->defense == 0 && b->hp > 0) {
+            b->hp += (-t->damage);
+            if (b->hp < 0)
+                b->hp = 0;
+        }
+        break;
+    case 11:
+        if (b1->defense > 0) {
+            b1->defense += (-t->damage);
+            if (b1->defense < 0)
+                b1->defense = 0;
+        }
+        else if (b1->defense == 0 && b1->hp > 0) {
+            b1->hp += (-t->damage);
+            if (b1->hp < 0)
+                b1->hp = 0;
+        }
+        break;
+    case 13:
+        if (b3->defense > 0) {
+            b3->defense += (-t->damage);
+            if (b3->defense < 0)
+                b3->defense = 0;
+        }
+        else if (b3->defense == 0 && b3->hp > 0) {
+            b3->hp += (-t->damage);
+            if (b3->hp < 0)
+                b3->hp = 0;
+        }
+        break;
+    case 12:
+        if (b2->defense > 0) {
+            b2->defense += (-t->damage);
+            if (b2->defense < 0)
+                b2->defense = 0;
+        }
+        else if (b2->defense == 0 && b2->hp > 0) {
+                b2->hp += (-t->damage);
+                if (b2->hp < 0)
+                    b2->hp = 0;
+            }
+        break;
+    }
+}
