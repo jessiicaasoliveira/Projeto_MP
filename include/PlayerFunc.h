@@ -43,3 +43,7 @@ void moveTroop(WINDOW* win, char** map);
 void resourceController(Base* b, Build* b1, Build* b2);
 void troopController(Troop* t1, Troop* t2, Troop* t3, Build* b3, Base* b);
 int troopChecker(Troop* t, int mode);
+void buildHPChecker(Build* b1, Build* b2, Build* b3, char** map);
+void troopAmountChecker(Troop* t1, Troop* t2, Troop* t3, char** map);
+void battleChecker(Troop* t, Troop* t1_e, Troop* t2_e, Troop* t3_e);
+void destroyBuildChecker(Troop* t, Base* b, Build* b1, Build* b2, Build* b3);
