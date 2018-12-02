@@ -1,0 +1,783 @@
+        -:    0:Source:PlayerFunc.c
+        -:    0:Programs:5
+        -:    1:#include "PlayerFunc.h"
+        -:    2:
+        -:    3:/**struct base*/
+        -:    4:Base Base_p;
+        -:    5:/**struct prédio 1*/
+        -:    6:Build B1_p;
+        -:    7:/**struct prédio 2*/
+        -:    8:Build B2_p;
+        -:    9:/**struct prédio 3*/
+        -:   10:Build B3_p;
+        -:   11:/**struct tropa 1*/
+        -:   12:Troop T1_p;
+        -:   13:/**struct tropa 2*/
+        -:   14:Troop T2_p;
+        -:   15:/**struct tropa 3*/
+        -:   16:Troop T3_p;
+        -:   17:/**variável que mostra qual tropa está selecionada*/
+        -:   18:int troopSel = 45;
+        -:   19:
+        -:   20:/**
+        -:   21: **************************************************************************
+        -:   22: * @brief Função: Setar Atributos da Base
+        -:   23: *
+        -:   24: * Descrição:
+        -:   25: * A Função recebe uma struct da base, sua posição, comprimento e largura.Então esses valores são setados nessa struct e é setado também a quantidade de recursos 1 e 2, a defesa e a vida dessa base.
+        -:   26: *
+        -:   27: * Parâmetros:
+        -:   28: * @param Base* bc - uma struct para a base
+        -:   29: * @param int x - coordenada x da base
+        -:   30: * @param int y - coordenada y da base
+        -:   31: * @param int height - altura da base
+        -:   32: * @param int width - largura da base
+        -:   33: *
+        -:   34: * Valor retornado:
+        -:   35: * @return Base* bc - struct com os valores modificados e iniciados para o começo do jogo
+        -:   36: *
+        -:   37: * Assertiva de entrada:
+        -:   38: * Base* bc != NULL
+        -:   39: * int x >= 0
+        -:   40: * int y >= 0
+        -:   41: * int height > 0
+        -:   42: * int width > 0
+        -:   43: *
+        -:   44: * Assertiva de saída:
+        -:   45: * Base* bc != NULL
+        -:   46: ***************************************************************************/
+        -:   47:
+    #####:   48:Base* setBaseAtt(Base* bc, int x, int y, int height, int width) {
+        -:   49:    FILE* fp;
+        -:   50:
+        -:   51:    /* Variáveis de posição e tamanho da base */
+    #####:   52:    bc->x = x;
+    #####:   53:    bc->y = y;
+    #####:   54:    bc->height = height;
+    #####:   55:    bc->width = width;
+        -:   56:
+        -:   57:    /* Variáveis de jogo da base */
+    #####:   58:    bc->r1Amount = 100;
+    #####:   59:    bc->r2Amount = 100;
+    #####:   60:    bc->defense = 1000;
+    #####:   61:    bc->hp = 5000;
+        -:   62:
+        -:   63:    /*Assertiva de saída*/
+    #####:   64:    if (bc == NULL) {
+    #####:   65:        fp = fopen("Relatório_Erros.txt", "a");
+    #####:   66:        fprintf(fp, "Erro na setBaseAtt (arquivo PlayerFunc.c)\n");
+    #####:   67:        fclose(fp);
+        -:   68:    }
+    #####:   69:    return bc;
+        -:   70:}
+        -:   71:
+        -:   72:/**
+        -:   73: **************************************************************************
+        -:   74: * @brief Função: Setar Atributos dos Prédios
+        -:   75: *
+        -:   76: * Descrição:
+        -:   77: * A Função recebe uma struct de um prédio, sua posição, comprimento, largura e um valor inteiro que define qual o seu tipo.Então esses valores são setados nessa struct e é setado também, dependendo do tipo, a defesa, a velocidade de mineração, o consumo de recursos e a vida.
+        -:   78: *
+        -:   79: * Parâmetros:
+        -:   80: * @param Build* b - uma struct para o prédio
+        -:   81: * @param int x - coordenada x do prédio
+        -:   82: * @param int y - coordenada y do prédio
+        -:   83: * @param int height - altura do prédio
+        -:   84: * @param int width - largura do prédio
+        -:   85: * @param int type - tipo de prédio
+        -:   86: *
+        -:   87: * Valor retornado:
+        -:   88: * @return Build* b - struct com os valores modificados e iniciados para o começo do jogo
+        -:   89: *
+        -:   90: * Assertiva de entrada:
+        -:   91: * Build* b != NULL
+        -:   92: * int x >= 0
+        -:   93: * int y >= 0
+        -:   94: * int height > 0
+        -:   95: * int width > 0
+        -:   96: * int type == 0 || type == 1 || type == 2
+        -:   97: *
+        -:   98: * Assertiva de saída:
+        -:   99: * Build* b != NULL
+        -:  100: ***************************************************************************/
+    #####:  101:Build* setBuildAtt(Build* b, int x, int y, int height, int width, int type) {
+        -:  102:    FILE* fp;
+        -:  103:    /* Variáveis de posição e tamanho da base */
+    #####:  104:    b->x = x;
+    #####:  105:    b->y = y;
+    #####:  106:    b->width = height;
+    #####:  107:    b->height = width;
+        -:  108:    /* Variáveis de jogo da base */
+    #####:  109:    switch (type) { /* Atributos para diferentes tipos*/
+    #####:  110:        case 0: /* Minerador de recurso 1*/
+    #####:  111:            b->defense = 500;
+    #####:  112:            b->mineSpeed = 150;
+    #####:  113:            b->resourceConsume = 0;
+    #####:  114:            b->hp = 1000;
+    #####:  115:            break;
+    #####:  116:        case 1: /* Minerador de recurso 2*/
+    #####:  117:            b->defense = 500;
+    #####:  118:            b->mineSpeed = 120;
+    #####:  119:            b->resourceConsume = 0;
+    #####:  120:            b->hp = 1200;
+    #####:  121:            break;
+    #####:  122:        case 2: /* Minerador de tropas */
+    #####:  123:            b->defense = 700;
+    #####:  124:            b->mineSpeed = 100;
+    #####:  125:            b->resourceConsume = 100;
+    #####:  126:            b->hp = 1300;
+    #####:  127:            break;
+        -:  128:    }
+        -:  129:    /*Assertiva de saída*/
+    #####:  130:    if (b == NULL) {
+    #####:  131:        fp = fopen("Relatório_Erros.txt", "a");
+    #####:  132:        fprintf(fp, "Erro na setBuildAtt (arquivo PlayerFunc.c)\n");
+    #####:  133:        fclose(fp);
+        -:  134:    }
+    #####:  135:    return b;
+        -:  136:}
+        -:  137:/**
+        -:  138:**************************************************************************
+        -:  139: * @brief Função: Setar Atributos das Tropas
+        -:  140: *
+        -:  141: * Descrição:
+        -:  142: * A Função recebe uma struct das tropas, a sua posição e um valor inteiro que define qual o seu tipo. Então esses valores,menos o tipo, são setados nessa struct e é setado também, dependendo do seu tipo, quantidade de soldados na tropa, o dano da tropa, a defesa da tropa e a sua vida.
+        -:  143: *
+        -:  144: * Parâmetros:
+        -:  145: * @param Troop* bc - uma struct para a tropa
+        -:  146: * @param int x - coordenada x da tropa
+        -:  147: * @param int y - coordenada y da tropa
+        -:  148: * @param int type - tipo de tropa
+        -:  149: *
+        -:  150: * Valor retornado:
+        -:  151: * @return Troop* t - struct com os valores modificados e iniciados para o começo do jogo
+        -:  152: *
+        -:  153: * Assertiva de entrada:
+        -:  154: * Troop* t != NULL
+        -:  155: * int x >= 0
+        -:  156: * int y >= 0
+        -:  157: * int type == 0 || type == 1 || type == 2
+        -:  158: *
+        -:  159: * Assertiva de saída:
+        -:  160: * Troop* t != NULL
+        -:  161: ***************************************************************************/
+    #####:  162:Troop* setTroopAtt(Troop* t, int x, int y, int type) {
+        -:  163:    FILE* fp;
+        -:  164:    /* Variáveis de posição e tamanho da base */
+    #####:  165:    t->x = x;
+    #####:  166:    t->y = y;
+    #####:  167:    switch (type) { /* Atributos para diferentes tipos*/
+    #####:  168:        case 0: /* Tropa tipo 0*/
+    #####:  169:            t->amount = 100;
+    #####:  170:            t->damage = 40;
+    #####:  171:            t->defense = 30;
+    #####:  172:            t->hp = 80;
+    #####:  173:            break;
+    #####:  174:        case 1: /* Tropa tipo 1*/
+    #####:  175:            t->amount = 80;
+    #####:  176:            t->damage = 60;
+    #####:  177:            t->defense = 40;
+    #####:  178:            t->hp = 90;
+    #####:  179:            break;
+    #####:  180:        case 2: /* Tropa tipo 2 */
+    #####:  181:            t->amount = 40;
+    #####:  182:            t->damage = 100;
+    #####:  183:            t->defense = 70;
+    #####:  184:            t->hp = 70;
+    #####:  185:            break;
+        -:  186:    }
+        -:  187:    /*Assertiva de saída*/
+    #####:  188:    if (t == NULL) {
+    #####:  189:        fp = fopen("Relatório_Erros.txt", "a");
+    #####:  190:        fprintf(fp, "Erro na setBaseAtt (arquivo PlayerFunc.c)\n");
+    #####:  191:        fclose(fp);
+        -:  192:    }
+    #####:  193:    return t;
+        -:  194:}
+        -:  195:
+        -:  196:/**
+        -:  197: **************************************************************************
+        -:  198: * @brief Função: Mover as Tropas
+        -:  199: *
+        -:  200: * Descrição:
+        -:  201: * A Função recebe uma janela (ncurses) e uma matriz do mapa. Então ela verifica as entradas digitadas pelo usuário. No caso, 0, 1 e 2 para selecionar as tropas e/ou as teclas direcionais do teclado para movimentar as tropas. Então a função modifica a localização da tropa.
+        -:  202: *
+        -:  203: * Parâmetros:
+        -:  204: * @param WINDOW* win - uma janela
+        -:  205: * @param char** map - uma matriz que contém o mapa
+        -:  206: *
+        -:  207: * Valor retornado:
+        -:  208: * @return Void - a função não retorna nada
+        -:  209: *
+        -:  210: * Assertiva de entrada:
+        -:  211: * char** map != NULL
+        -:  212: *
+        -:  213: * Assertiva de saída:
+        -:  214: * Função void
+        -:  215: ***************************************************************************/
+    #####:  216:void moveTroop(WINDOW* win, char** map) {
+    #####:  217:    flushinp();
+    #####:  218:    wtimeout(win, 1000); /* waits 1000 miliseconds = 1 second for user input*/
+    #####:  219:    switch (wgetch(win)) {
+    #####:  220:    case KEY_DOWN:
+    #####:  221:        switch (troopSel) {
+    #####:  222:        case 49:/*1 na tabela ASCII*/
+    #####:  223:            if (T1_p.y+1 < map_y && map[T1_p.y+1][T1_p.x] == MAP_TILE && T1_p.amount > 0) {
+    #####:  224:                map[T1_p.y][T1_p.x] = MAP_TILE;
+    #####:  225:                map[T1_p.y+1][T1_p.x] = '1';
+    #####:  226:                T1_p.y++;
+        -:  227:            }
+    #####:  228:            break;
+    #####:  229:        case 50:/*2 na tabela ASCII*/
+    #####:  230:            if (T2_p.y+1 < map_y && map[T2_p.y+1][T2_p.x] == MAP_TILE && T2_p.amount > 0) {
+    #####:  231:                map[T2_p.y][T2_p.x] = MAP_TILE;
+    #####:  232:                map[T2_p.y+1][T2_p.x] = '2';
+    #####:  233:                T2_p.y++;
+        -:  234:            }
+    #####:  235:            break;
+    #####:  236:        case 51:/*3 na tabela ASCII*/
+    #####:  237:            if (T3_p.y+1 < map_y && map[T3_p.y+1][T3_p.x] == MAP_TILE && T3_p.amount > 0) {
+    #####:  238:                map[T3_p.y][T3_p.x] = MAP_TILE;
+    #####:  239:                map[T3_p.y+1][T3_p.x] = '3';
+    #####:  240:                T3_p.y++;
+        -:  241:            }
+    #####:  242:            break;
+    #####:  243:        default:
+    #####:  244:            usleep(REFRESH_TIME);
+        -:  245:        }
+    #####:  246:        break;
+    #####:  247:    case KEY_UP:
+    #####:  248:        switch (troopSel) {
+    #####:  249:           case 49:/*1 na tabela ASCII*/
+    #####:  250:             if (T1_p.y-1 >= 0 && map[T1_p.y-1][T1_p.x] == MAP_TILE && T1_p.amount > 0) {
+    #####:  251:                map[T1_p.y][T1_p.x] = MAP_TILE;
+    #####:  252:                map[T1_p.y-1][T1_p.x] = '1';
+    #####:  253:                T1_p.y--;
+        -:  254:            }
+    #####:  255:            break;
+    #####:  256:        case 50:/*2 na tabela ASCII*/
+    #####:  257:            if (T2_p.y-1 >= 0 && map[T2_p.y-1][T2_p.x] == MAP_TILE && T2_p.amount > 0) {
+    #####:  258:                map[T2_p.y][T2_p.x] = MAP_TILE;
+    #####:  259:                map[T2_p.y-1][T2_p.x] = '2';
+    #####:  260:                T2_p.y--;
+        -:  261:            }
+    #####:  262:            break;
+    #####:  263:        case 51:/*3 na tabela ASCII*/
+    #####:  264:            if (T3_p.y-1 >= 0 && map[T3_p.y-1][T3_p.x] == MAP_TILE && T3_p.amount > 0) {
+    #####:  265:                map[T3_p.y][T3_p.x] = MAP_TILE;
+    #####:  266:                map[T3_p.y-1][T3_p.x] = '3';
+    #####:  267:                T3_p.y--;
+        -:  268:            }
+    #####:  269:            break;
+    #####:  270:        default:
+    #####:  271:            usleep(REFRESH_TIME);
+        -:  272:        }
+    #####:  273:        break;
+    #####:  274:    case KEY_LEFT:
+    #####:  275:        switch (troopSel) {
+    #####:  276:           case 49:/*1 na tabela ASCII*/
+    #####:  277:             if (T1_p.x-1 >= 0 && map[T1_p.y][T1_p.x-1] == MAP_TILE && T1_p.amount > 0) {
+    #####:  278:                map[T1_p.y][T1_p.x] = MAP_TILE;
+    #####:  279:                map[T1_p.y][T1_p.x-1] = '1';
+    #####:  280:                T1_p.x--;
+        -:  281:            }
+    #####:  282:            break;
+    #####:  283:        case 50:/*2 na tabela ASCII*/
+    #####:  284:            if (T2_p.x-1 >= 0 && map[T2_p.y][T2_p.x-1] == MAP_TILE && T2_p.amount > 0) {
+    #####:  285:                map[T2_p.y][T2_p.x] = MAP_TILE;
+    #####:  286:                map[T2_p.y][T2_p.x-1] = '2';
+    #####:  287:                T2_p.x--;
+        -:  288:            }
+    #####:  289:            break;
+    #####:  290:        case 51:/*3 na tabela ASCII*/
+    #####:  291:            if (T3_p.x-1 >= 0 && map[T3_p.y][T3_p.x-1] == MAP_TILE && T3_p.amount > 0) {
+    #####:  292:                map[T3_p.y][T3_p.x] = MAP_TILE;
+    #####:  293:                map[T3_p.y][T3_p.x-1] = '3';
+    #####:  294:                T3_p.x--;
+        -:  295:            }
+    #####:  296:            break;
+    #####:  297:        default:
+    #####:  298:            usleep(REFRESH_TIME);
+        -:  299:        }
+    #####:  300:        break;
+    #####:  301:    case KEY_RIGHT:
+    #####:  302:        switch (troopSel) {
+    #####:  303:           case 49:/*1 na tabela ASCII*/
+    #####:  304:             if (T1_p.x+1 >= 0 && map[T1_p.y][T1_p.x+1] == MAP_TILE && T1_p.amount > 0) {
+    #####:  305:                map[T1_p.y][T1_p.x] = MAP_TILE;
+    #####:  306:                map[T1_p.y][T1_p.x+1] = '1';
+    #####:  307:                T1_p.x++;
+        -:  308:            }
+    #####:  309:            break;
+    #####:  310:        case 50:/*2 na tabela ASCII*/
+    #####:  311:            if (T2_p.x+1 >= 0 && map[T2_p.y][T2_p.x+1] == MAP_TILE && T2_p.amount > 0) {
+    #####:  312:                map[T2_p.y][T2_p.x] = MAP_TILE;
+    #####:  313:                map[T2_p.y][T2_p.x+1] = '2';
+    #####:  314:                T2_p.x++;
+        -:  315:            }
+    #####:  316:            break;
+    #####:  317:        case 51:/*3 na tabela ASCII*/
+    #####:  318:            if (T3_p.x+1 >= 0 && map[T3_p.y][T3_p.x+1] == MAP_TILE && T3_p.amount > 0) {
+    #####:  319:                map[T3_p.y][T3_p.x] = MAP_TILE;
+    #####:  320:                map[T3_p.y][T3_p.x+1] = '3';
+    #####:  321:                T3_p.x++;
+        -:  322:            }
+    #####:  323:            break;
+    #####:  324:        default:
+    #####:  325:            usleep(REFRESH_TIME);
+        -:  326:        }
+    #####:  327:        break;
+    #####:  328:    case 49:/*1 na tabela ASCII*/
+    #####:  329:        troopSel = 49;
+    #####:  330:        break;
+    #####:  331:    case 50:/*2 na tabela ASCII*/
+    #####:  332:        troopSel = 50;
+    #####:  333:        break;
+    #####:  334:    case 51:/*3 na tabela ASCII*/
+    #####:  335:        troopSel = 51;
+    #####:  336:        break;
+    #####:  337:    case 27: /* Escape na tabela ASCII */
+    #####:  338:        gameState = GAME_STATE_PAUSE;
+    #####:  339:        break;
+    #####:  340:    default:
+    #####:  341:        troopSel = 45;/* - na tabela ASCII*/
+        -:  342:    }
+    #####:  343:}
+        -:  344:
+        -:  345:/**
+        -:  346:**************************************************************************
+        -:  347: * @brief Função: Controlar a Mineração de Recursos
+        -:  348: *
+        -:  349: * Descrição:
+        -:  350: * A Função recebe as structs da base e de 2 prédios responsáveis pela mineração de recursos. Para controlar a frequencia de mineração, é verificado randomicamente um valor inteiro, e se ele for maior que 60 e a vida do prédio for superior a 0 é aumentado a quantidade de recursos minerados de acordo com a velocidade de mineração de cada tipo de prédio.
+        -:  351: *
+        -:  352: * Parâmetros:
+        -:  353: * @param Base* b - struct da base
+        -:  354: * @param Build* b1 - struct do prédio do tipo 1
+        -:  355: * @param Build* b2 - struct do prédio do tipo 2
+        -:  356: *
+        -:  357: * Valor retornado:
+        -:  358: * @return Void. A função não retorna nada
+        -:  359: *
+        -:  360: * Assertiva de entrada:
+        -:  361: * Base* b != NULL
+        -:  362: * Build* b1 != NULL
+        -:  363: * Build* b2 != NULL
+        -:  364: *
+        -:  365: * Assertiva de saída:
+        -:  366: * Função void
+        -:  367: ***************************************************************************/
+    #####:  368:void resourceController(Base* b, Build* b1, Build* b2) {
+    #####:  369:    if ((rand()%101) > RESOURCE_RAND) {
+    #####:  370:        if (b1->hp > 0)
+    #####:  371:            b->r1Amount += (b1->mineSpeed * R1_RATE);
+    #####:  372:        if (b2->hp > 0)
+    #####:  373:            b->r2Amount += (b2->mineSpeed * R2_RATE);
+        -:  374:    }
+    #####:  375:}
+        -:  376:/**
+        -:  377: **************************************************************************
+        -:  378: * @brief Função: Controlar a Criação de Tropas
+        -:  379: *
+        -:  380: * Descrição:
+        -:  381: * A Função recebe as structs da base, das tropas e do prédio responsável pela criação de tropas. Então ela verifica se a tropa está do lado do prédio que gera tropa, e se há recursos para gerar mais tropas. Então essa tropa tem a quantidade aumentada.
+        -:  382: *
+        -:  383: * Parâmetros:
+        -:  384: * @param Troop* t1 - struct da tropa do tipo 1
+        -:  385: * @param Troop* t2 - struct da tropa do tipo 2
+        -:  386: * @param Troop* t3 - struct da tropa do tipo 3
+        -:  387: * @param Build* b3 - struct do prédio do tipo 3
+        -:  388: * @param Base* b - struct da base
+        -:  389: *
+        -:  390: * Valor retornado:
+        -:  391: * @return Void. A função não retorna nada
+        -:  392: *
+        -:  393: * Assertiva de entrada:
+        -:  394: * Troop* t1 != NULL
+        -:  395: * Troop* t2 != NULL
+        -:  396: * Troop* t3 != NULL
+        -:  397: * Build* b3 != NULL
+        -:  398: * Base* b != NULL
+        -:  399: *
+        -:  400: * Assertiva de saída:
+        -:  401: * Função void
+        -:  402: ***************************************************************************/
+    #####:  403:void troopController(Troop* t1, Troop* t2, Troop* t3, Build* b3, Base* b) {
+    #####:  404:    if (troopChecker(t1, 0) && b->r1Amount > 0) {
+    #####:  405:        t1->amount += (b3->mineSpeed * T1_RATE);
+    #####:  406:        b->r1Amount += (-b3->resourceConsume * R1_COST);
+    #####:  407:        if (b->r1Amount <=0)
+    #####:  408:            b->r1Amount = 0;
+        -:  409:    }
+    #####:  410:    if (troopChecker(t2, 0) && b->r1Amount > 0) {
+    #####:  411:        t2->amount += (b3->mineSpeed * T2_RATE);
+    #####:  412:        b->r1Amount += (-b3->resourceConsume * R1_COST);
+    #####:  413:        if (b->r1Amount <=0)
+    #####:  414:            b->r1Amount = 0;
+        -:  415:    }
+    #####:  416:    if (troopChecker(t3, 0) && b->r2Amount > 0) {
+    #####:  417:        t3->amount += (b3->mineSpeed * T3_RATE);
+    #####:  418:        b->r2Amount += (-b3->resourceConsume * R2_COST);
+    #####:  419:        if (b->r2Amount <=0)
+    #####:  420:            b->r2Amount = 0;
+        -:  421:    }
+    #####:  422:}
+        -:  423:
+        -:  424:/**
+        -:  425: **************************************************************************
+        -:  426: * @brief Função: Verificar as Redondezas da Tropa
+        -:  427: *
+        -:  428: * Descrição:
+        -:  429: * A Função recebe a struct de uma tropa e verifica as redondezas dessa tropa, e retorna um valor de acordo com o que está do lado dessa tropa.
+        -:  430: *
+        -:  431: * Parâmetros:
+        -:  432: * @param Troop* t - struct da tropa
+        -:  433: * @param int mode - flag para identificar se a função foi chamada para checar se a tropa está perto do prédio responsável por aumentar tropas (0) ou se foi chamada para checar se há tropas inimigas por perto (1)
+        -:  434: *
+        -:  435: * Valor retornado:
+        -:  436: * @return 0 - caso a tropa não esteja perto de nada
+        -:  437: * @return 1 - caso a mode = 0 e a tropa esteja perto do prédio responsável por gerar tropas
+        -:  438: * @return 7 - caso a tropa esteja perto da tropa inimiga '7'
+        -:  439: * @return 8 - caso a tropa esteja perto da tropa inimiga '8'
+        -:  440: * @return 9 - caso a tropa esteja perto da tropa inimiga '9'
+        -:  441: * @return 10 - caso a tropa esteja perto do base 'Y'
+        -:  442: * @return 11 - caso a tropa esteja perto do prédio 'D'
+        -:  443: * @return 12 - caso a tropa esteja perto do prédio 'F'
+        -:  444: * @return 13 - caso a tropa esteja perto do prédio 'E'
+        -:  445: *
+        -:  446: * Assertiva de entrada:
+        -:  447: * Troop* t != NULL
+        -:  448: * int mode == 0 || mode == 1
+        -:  449: *
+        -:  450: * Assertiva de saída:
+        -:  451: * A função retorna valores fixos.
+        -:  452: ***************************************************************************/
+    #####:  453:int troopChecker(Troop* t, int mode) {
+        -:  454:/* variável mode para checar redondezas -> batalha ou aumento de tropa */
+    #####:  455:    switch (mode) {
+    #####:  456:    case 0: /* Caso para gerar tropa */
+    #####:  457:        if (t->x+1 < map_x && map1[t->y][t->x+1] == 'C')
+    #####:  458:            return 1;
+    #####:  459:        else if (t->x-1 >= 0 && map1[t->y][t->x-1] == 'C')
+    #####:  460:            return 1;
+    #####:  461:        else if (t->y-1 >= 0 && map1[t->y-1][t->x] == 'C')
+    #####:  462:            return 1;
+    #####:  463:        else if (t->y+1 < map_y && map1[t->y+1][t->x] == 'C')
+    #####:  464:            return 1;
+    #####:  465:        break;
+    #####:  466:    case 1: /* Caso de batalha */
+    #####:  467:        if (t->x+1 < map_x) {
+    #####:  468:            switch (map1[t->y][t->x+1]) {
+    #####:  469:            case '7':
+    #####:  470:                return 7;
+    #####:  471:            case '8':
+    #####:  472:                return 8;
+    #####:  473:            case '9':
+    #####:  474:                return 9;
+    #####:  475:            case 'Y':
+    #####:  476:                return 10;
+    #####:  477:            case 'D':
+    #####:  478:                return 11;
+    #####:  479:            case 'F':
+    #####:  480:                return 12;
+    #####:  481:            case 'E':
+    #####:  482:                return 13;
+        -:  483:            }
+        -:  484:        }
+    #####:  485:        if (t->x-1 >= 0) {
+    #####:  486:            switch (map1[t->y][t->x-1]) {
+    #####:  487:            case '7':
+    #####:  488:                return 7;
+    #####:  489:            case '8':
+    #####:  490:                return 8;
+    #####:  491:            case '9':
+    #####:  492:                return 9;
+    #####:  493:            case 'Y':
+    #####:  494:                return 10;
+    #####:  495:            case 'D':
+    #####:  496:                return 11;
+    #####:  497:            case 'F':
+    #####:  498:                return 12;
+    #####:  499:            case 'E':
+    #####:  500:                return 13;
+        -:  501:            }
+        -:  502:        }
+    #####:  503:        if (t->y-1 >= 0) {
+    #####:  504:            switch (map1[t->y-1][t->x]) {
+    #####:  505:            case '7':
+    #####:  506:                return 7;
+    #####:  507:            case '8':
+    #####:  508:                return 8;
+    #####:  509:            case '9':
+    #####:  510:                return 9;
+    #####:  511:            case 'Y':
+    #####:  512:                return 10;
+    #####:  513:            case 'D':
+    #####:  514:                return 11;
+    #####:  515:            case 'F':
+    #####:  516:                return 12;
+    #####:  517:            case 'E':
+    #####:  518:                return 13;
+        -:  519:            }
+        -:  520:        }
+    #####:  521:        if (t->y+1 < map_y) {
+    #####:  522:            switch (map1[t->y+1][t->x]) {
+    #####:  523:            case '7':
+    #####:  524:                return 7;
+    #####:  525:            case '8':
+    #####:  526:                return 8;
+    #####:  527:            case '9':
+    #####:  528:                return 9;
+    #####:  529:            case 'Y':
+    #####:  530:                return 10;
+    #####:  531:            case 'D':
+    #####:  532:                return 11;
+    #####:  533:            case 'F':
+    #####:  534:                return 12;
+    #####:  535:            case 'E':
+    #####:  536:                return 13;
+        -:  537:            }
+        -:  538:        }
+    #####:  539:        break;
+        -:  540:    }
+    #####:  541:    map1[T1_p.y][T1_p.x] = '1';
+    #####:  542:    map1[T2_p.y][T2_p.x] = '2';
+    #####:  543:    map1[T3_p.y][T3_p.x] = '3';
+    #####:  544:    return 0;
+        -:  545:}
+        -:  546:
+        -:  547:/**
+        -:  548: **************************************************************************
+        -:  549: * @brief Função: Verificar se um Prédio foi Derrubado
+        -:  550: *
+        -:  551: * Descrição:
+        -:  552: * A Função recebe as structs dos prédios e a matriz do mapa. Ela verifica se a vida dos prédios é 0. Se for ela retira o prédio do mapa e deixa o hp da base como -1.
+        -:  553: *
+        -:  554: * Parâmetros:
+        -:  555: * @param Build* b1 - struct do prédio do tipo 1
+        -:  556: * @param Build* b2 - struct do prédio do tipo 2
+        -:  557: * @param Build* b3 - struct do prédio do tipo 3
+        -:  558: * @param char** map - matriz do mapa do jogo
+        -:  559: *
+        -:  560: * Valor retornado:
+        -:  561: * @return Void. A função não retorna nada
+        -:  562: *
+        -:  563: * Assertiva de entrada:
+        -:  564: * Build* b1 != NULL
+        -:  565: * Build* b2 != NULL
+        -:  566: * Build* b3 != NULL
+        -:  567: * Build* b3 != NULL
+        -:  568: * char** map != NULL
+        -:  569: *
+        -:  570: * Assertiva de saída:
+        -:  571: * Função void
+        -:  572: ***************************************************************************/
+    #####:  573:void buildHPChecker(Build* b1, Build* b2, Build* b3, char** map) {
+        -:  574:    int i, j;
+    #####:  575:    if (b1->hp == 0) {
+    #####:  576:        for (i = b1->y; i <= (b1->height + b1->y); i++)
+    #####:  577:            for (j = b1->x; j <= (b1->width + b1->x); j++)
+    #####:  578:                map[i][j] = MAP_TILE;
+    #####:  579:        b1->hp = -1;
+        -:  580:    }
+    #####:  581:    if (b2->hp == 0) {
+    #####:  582:        for (i = b2->y; i <= (b2->height + b2->y); i++)
+    #####:  583:            for (j = b2->x; j <= (b2->width + b2->x); j++)
+    #####:  584:                map[i][j] = MAP_TILE;
+    #####:  585:        b2->hp = -1;
+        -:  586:    }
+    #####:  587:    if (b3->hp == 0) {
+    #####:  588:        for (i = b3->y; i <= (b3->height + b3->y); i++)
+    #####:  589:            for (j = b3->x; j <= (b3->width + b3->x); j++)
+    #####:  590:                map[i][j] = MAP_TILE;
+    #####:  591:        b3->hp = -1;
+        -:  592:    }
+    #####:  593:}
+        -:  594:/**
+        -:  595: **************************************************************************
+        -:  596: * @brief Função: Verificar se uma Tropa foi eliminada
+        -:  597: *
+        -:  598: * Descrição:
+        -:  599: * A Função recebe as structs das tropas e a matriz do mapa. Ela verifica se a quantidade de tropas é igual a zero e se for ela retira a tropa do mapa.
+        -:  600: *
+        -:  601: * Parâmetros:
+        -:  602: * @param Troop* t1 - struct da tropa do tipo 1
+        -:  603: * @param Troop* t2 - struct da tropa do tipo 2
+        -:  604: * @param Troop* t3 - struct da tropa do tipo 3
+        -:  605: * @param char** map - matriz do mapa
+        -:  606: *
+        -:  607: * Valor retornado:
+        -:  608: * @return Void. A função não retorna nada
+        -:  609: *
+        -:  610: * Assertiva de entrada:
+        -:  611: * Troop* t1 != NULL
+        -:  612: * Troop* t2 != NULL
+        -:  613: * Troop* t3 != NULL
+        -:  614: * char** map != NULL
+        -:  615: *
+        -:  616: * Assertiva de saída:
+        -:  617: * Função void
+        -:  618: ***************************************************************************/
+    #####:  619:void troopAmountChecker(Troop* t1, Troop* t2, Troop* t3, char** map) {
+    #####:  620:    if (t1->amount <= 0) {
+    #####:  621:        map[t1->y][t1->x] = MAP_TILE;
+    #####:  622:        t1->amount = 0;
+    #####:  623:        t1->y = t1->x = 0;
+        -:  624:    }
+    #####:  625:    if (t2->amount <= 0) {
+    #####:  626:        map[t2->y][t2->x] = MAP_TILE;
+    #####:  627:        t2->amount = 0;
+    #####:  628:        t2->y = t2->x = 0;
+        -:  629:    }
+    #####:  630:    if (t3->amount <= 0) {
+    #####:  631:        map[t3->y][t3->x] = MAP_TILE;
+    #####:  632:        t3->amount = 0;
+    #####:  633:        t3->y = t3->x = 0;
+        -:  634:    }
+    #####:  635:}
+        -:  636:
+        -:  637:/**
+        -:  638: **************************************************************************
+        -:  639: * @brief Função: Controlar o Sistema de Batalha das Tropas
+        -:  640: *
+        -:  641: * Descrição:
+        -:  642: * A Função recebe as structs de uma das tropas do player de todas as tropas do PC. Então ela verifica de qual tropa do PC a tropa do player está do lado. De acordo com os atributos da tropa do player e da tropa do PC que ele está batalhando é calculado se as tropas do PC ou do Player diminuem. A tropa que ganhar a batalha vai perdendo seu número de tropas até chegar a 0 e sumir.
+        -:  643: *
+        -:  644: * Parâmetros:
+        -:  645: * @param Troop* t - struct da tropa do player
+        -:  646: * @param Troop* t1_e - struct da tropa do tipo 1 do PC
+        -:  647: * @param Troop* t2_e - struct da tropa do tipo 2 do PC
+        -:  648: * @param Troop* b3 - struct da tropa do tipo 3 do PC
+        -:  649: *
+        -:  650: * Valor retornado:
+        -:  651: * @return Void. A função não retorna nada
+        -:  652: *
+        -:  653: * Assertiva de entrada:
+        -:  654: * Troop* t != NULL
+        -:  655: * Troop* t1_e != NULL
+        -:  656: * Troop* t2_e != NULL
+        -:  657: * Troop* t3_e != NULL
+        -:  658: *
+        -:  659: * Assertiva de saída:
+        -:  660: * Função void
+        -:  661: ***************************************************************************/
+    #####:  662:void battleChecker(Troop* t, Troop* t1_e, Troop* t2_e, Troop* t3_e) {
+        -:  663:    int diff, playerTotal, pcTotal;
+    #####:  664:    switch (troopChecker(t, 1)) {
+    #####:  665:    case 7:
+    #####:  666:        playerTotal = (t->amount+t->damage+t->defense+t->hp);
+    #####:  667:        pcTotal = (t1_e->amount+t1_e->damage+t1_e->defense+t->hp);
+    #####:  668:        if (playerTotal > pcTotal) {
+    #####:  669:            diff = pcTotal - playerTotal;
+    #####:  670:            t1_e->amount += diff;
+        -:  671:        }
+    #####:  672:        else if (playerTotal < pcTotal) {
+    #####:  673:            diff = playerTotal - pcTotal;
+    #####:  674:            t->amount += diff;
+        -:  675:        }
+    #####:  676:        break;
+    #####:  677:    case 8:
+    #####:  678:        playerTotal = (t->amount+t->damage+t->defense+t->hp);
+    #####:  679:        pcTotal = (t2_e->amount+t2_e->damage+t2_e->defense+t->hp);
+    #####:  680:        if (playerTotal > pcTotal) {
+    #####:  681:            diff = pcTotal - playerTotal;
+    #####:  682:            t2_e->amount += diff;
+        -:  683:        }
+    #####:  684:        else if (playerTotal < pcTotal) {
+    #####:  685:            diff = playerTotal - pcTotal;
+    #####:  686:            t->amount += diff;
+        -:  687:        }
+    #####:  688:        break;
+    #####:  689:    case 9:
+    #####:  690:        playerTotal = (t->amount+t->damage+t->defense+t->hp);
+    #####:  691:        pcTotal = (t3_e->amount+t3_e->damage+t3_e->defense+t->hp);
+    #####:  692:        if (playerTotal > pcTotal) {
+    #####:  693:            diff = pcTotal - playerTotal;
+    #####:  694:            t3_e->amount += diff;
+        -:  695:        }
+    #####:  696:        else if (playerTotal < pcTotal) {
+    #####:  697:            diff = playerTotal - pcTotal;
+    #####:  698:            t->amount += diff;
+        -:  699:        }
+    #####:  700:        break;
+        -:  701:    }
+    #####:  702:}
+        -:  703:/**
+        -:  704: **************************************************************************
+        -:  705: * @brief Função: Controlar o Ataque de Tropas aos Prédios/Base
+        -:  706: *
+        -:  707: * Descrição:
+        -:  708: * A Função recebe as structs dos prédios, da base e de uma tropa. Ela verifica se a tropa está perto de algum prédio/base e se estiver é calculado o dano que essa tropa está dando no prédio/base. Antes de diminuir a vida do prédio/base é necessário diminuir a defesa para 0.
+        -:  709: *
+        -:  710: * Parâmetros:
+        -:  711: * @param Troop* t - struct da tropa do tipo 1
+        -:  712: * @param Base* b - struct da base
+        -:  713: * @param Build* b1 - struct do prédio do tipo 1
+        -:  714: * @param Build* b2 - struct do prédio do tipo 2
+        -:  715: * @param Build* b3 - struct do prédio do tipo 3
+        -:  716: *
+        -:  717: * Valor retornado:
+        -:  718: * @return Void. A função não retorna nada
+        -:  719: *
+        -:  720: * Assertiva de entrada:
+        -:  721: * Troop* t != NULL
+        -:  722: * Base* b != NULL
+        -:  723: * Build* b1 != NULL
+        -:  724: * Build* b2 != NULL
+        -:  725: * Build* b3 != NULL
+        -:  726: *
+        -:  727: * Assertiva de saída:
+        -:  728: * Função void
+        -:  729: ***************************************************************************/
+    #####:  730:void destroyBuildChecker(Troop* t, Base* b, Build* b1, Build* b2, Build* b3) {
+    #####:  731:    switch (troopChecker(t, 1)) {
+    #####:  732:    case 10:
+    #####:  733:        if (b->defense > 0) {
+    #####:  734:            b->defense += (-t->damage);
+    #####:  735:            if (b->defense < 0)
+    #####:  736:                b->defense = 0;
+        -:  737:        }
+    #####:  738:        else if (b->defense == 0 && b->hp > 0) {
+    #####:  739:            b->hp += (-t->damage);
+    #####:  740:            if (b->hp < 0)
+    #####:  741:                b->hp = 0;
+        -:  742:        }
+    #####:  743:        break;
+    #####:  744:    case 11:
+    #####:  745:        if (b1->defense > 0) {
+    #####:  746:            b1->defense += (-t->damage);
+    #####:  747:            if (b1->defense < 0)
+    #####:  748:                b1->defense = 0;
+        -:  749:        }
+    #####:  750:        else if (b1->defense == 0 && b1->hp > 0) {
+    #####:  751:            b1->hp += (-t->damage);
+    #####:  752:            if (b1->hp < 0)
+    #####:  753:                b1->hp = 0;
+        -:  754:        }
+    #####:  755:        break;
+    #####:  756:    case 13:
+    #####:  757:        if (b3->defense > 0) {
+    #####:  758:            b3->defense += (-t->damage);
+    #####:  759:            if (b3->defense < 0)
+    #####:  760:                b3->defense = 0;
+        -:  761:        }
+    #####:  762:        else if (b3->defense == 0 && b3->hp > 0) {
+    #####:  763:            b3->hp += (-t->damage);
+    #####:  764:            if (b3->hp < 0)
+    #####:  765:                b3->hp = 0;
+        -:  766:        }
+    #####:  767:        break;
+    #####:  768:    case 12:
+    #####:  769:        if (b2->defense > 0) {
+    #####:  770:            b2->defense += (-t->damage);
+    #####:  771:            if (b2->defense < 0)
+    #####:  772:                b2->defense = 0;
+        -:  773:        }
+    #####:  774:        else if (b2->defense == 0 && b2->hp > 0) {
+    #####:  775:                b2->hp += (-t->damage);
+    #####:  776:                if (b2->hp < 0)
+    #####:  777:                    b2->hp = 0;
+        -:  778:            }
+    #####:  779:        break;
+        -:  780:    }
+    #####:  781:}

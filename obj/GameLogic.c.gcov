@@ -1,0 +1,518 @@
+        -:    0:Source:GameLogic.c
+        -:    0:Programs:5
+        -:    1:#include "WinManager.h"
+        -:    2:
+        -:    3:/** Janela do jogo*/
+        -:    4:WINDOW* gameWin;
+        -:    5:
+        -:    6:/** Janela dos status*/
+        -:    7:WINDOW* statusWin;
+        -:    8:
+        -:    9:/** Flag para identificar se o jogo está pausado ou rodando*/
+        -:   10:int gameState;
+        -:   11:
+        -:   12:/**
+        -:   13: **************************************************************************
+        -:   14: * @brief Função: Inicia e determina o que acontece no jogo
+        -:   15: *
+        -:   16: * Descrição:
+        -:   17: * A Função é responsável por alocar tudo que o jogo vai usar, atualizar a tela, verificar se o jogo está em Play ou em Pause. É onde o loop do jogo acontece. Quando a vida da base de um dos jogadores se torna 0, a função encerra o jogo e finaliza tudo.
+        -:   18: *
+        -:   19: * Parâmetros:
+        -:   20: * @param sem parâmetros
+        -:   21: *
+        -:   22: * Valor retornado:
+        -:   23: * @return função void - a função não retorna nada
+        -:   24: *
+        -:   25: * Assertiva de entrada:
+        -:   26: * Sem parâmetros
+        -:   27: *
+        -:   28: * Assertiva de saída:
+        -:   29: * Função void
+        -:   30: ***************************************************************************/
+    #####:   31:void startNewGame()
+        -:   32:{
+    #####:   33:    allocGame();
+    #####:   34:    refreshGame();
+    #####:   35:    gameState = GAME_STATE_PLAY;
+        -:   36:
+    #####:   37:    while(Base_p.hp > 0 && Base_e.hp > 0)
+        -:   38:    {
+    #####:   39:        switch(gameState)
+        -:   40:        {
+        -:   41:
+    #####:   42:        case GAME_STATE_PLAY:
+        -:   43:
+    #####:   44:            onGameRoutine();
+    #####:   45:            break;
+        -:   46:
+    #####:   47:        case GAME_STATE_PAUSE:
+        -:   48:
+    #####:   49:            pauseGameRoutine();
+    #####:   50:            break;
+        -:   51:        }
+    #####:   52:    }
+        -:   53:
+    #####:   54:    gameEnd(&Base_p, &Base_e);
+        -:   55:
+    #####:   56:   destroyGame();
+    #####:   57:}
+        -:   58:
+        -:   59:/**
+        -:   60: **************************************************************************
+        -:   61: * @brief Função: Verificar Status das Estruturas e tropas do Player
+        -:   62: *
+        -:   63: * Descrição:
+        -:   64: * A Função chama as funções para verificar se há batalhas entre tropas, se alguma tropa está atacando algum prédio ou base inimiga, qual a vida dos prédios do player e a quantidade de tropas que o player possui.
+        -:   65: *
+        -:   66: * Parâmetros:
+        -:   67: * @param sem parâmetros
+        -:   68: *
+        -:   69: * Valor retornado:
+        -:   70: * @return função void - A função não retorna nada
+        -:   71: *
+        -:   72: * Assertiva de entrada:
+        -:   73: * Sem parâmetros
+        -:   74: *
+        -:   75: * Assertiva de saída:
+        -:   76: * Função void
+        -:   77: ***************************************************************************/
+    #####:   78:void playerCheckers()
+        -:   79:{
+    #####:   80:    battleChecker(&T1_p, &T1_e, &T2_e, &T3_e);
+    #####:   81:    battleChecker(&T2_p, &T1_e, &T2_e, &T3_e);
+    #####:   82:    battleChecker(&T3_p, &T1_e, &T2_e, &T3_e);
+    #####:   83:    destroyBuildChecker(&T1_p, &Base_e, &B1_e, &B2_e, &B3_e);
+    #####:   84:    destroyBuildChecker(&T2_p, &Base_e, &B1_e, &B2_e, &B3_e);
+    #####:   85:    destroyBuildChecker(&T3_p, &Base_e, &B1_e, &B2_e, &B3_e);
+    #####:   86:    buildHPChecker(&B1_p, &B2_p, &B3_p, map1);
+    #####:   87:    troopAmountChecker(&T1_p, &T2_p, &T3_p, map1);
+    #####:   88:}
+        -:   89:
+        -:   90:/**
+        -:   91: **************************************************************************
+        -:   92: * @brief Função: Chama as Funções Para Atualizar o Jogo
+        -:   93: *
+        -:   94: * Descrição:
+        -:   95: * A Função chama funções de atualizar a tela, mover tropas, verificar recursos e tropas. Ou seja, atualiza tudo dentro do jogo.
+        -:   96: *
+        -:   97: * Parâmetros:
+        -:   98: * @param sem parâmetros
+        -:   99: *
+        -:  100: * Valor retornado:
+        -:  101: * @return função void - A função não retorna nada
+        -:  102: *
+        -:  103: * Assertiva de entrada:
+        -:  104: * Sem parâmetros
+        -:  105: *
+        -:  106: * Assertiva de saída:
+        -:  107: * Função void
+        -:  108: ***************************************************************************/
+    #####:  109:void onGameRoutine()
+        -:  110:{
+    #####:  111:    refreshGame();
+    #####:  112:    moveTroop(gameWin, map1);
+    #####:  113:    enemyMove(&T1_e, &T2_e, &T3_e);
+    #####:  114:    gameControllers();
+    #####:  115:    gameCheckers();
+        -:  116:
+    #####:  117:}
+        -:  118:
+        -:  119:/**
+        -:  120: **************************************************************************
+        -:  121: * @brief Função: Verificar Status dos Prédios e Tropas do PC
+        -:  122: *
+        -:  123: * Descrição:
+        -:  124: * A Função chama funções para verificar a vida dos prédios e a quantidade de tropas do PC.
+        -:  125: *
+        -:  126: * Parâmetros:
+        -:  127: * @param sem parâmetros
+        -:  128: *
+        -:  129: * Valor retornado:
+        -:  130: * @return função void - A função não retorna nada
+        -:  131: *
+        -:  132: * Assertiva de entrada:
+        -:  133: * Sem parâmetros
+        -:  134: *
+        -:  135: * Assertiva de saída:
+        -:  136: * Função void
+        -:  137: ***************************************************************************/
+    #####:  138:void enemyCheckers()
+        -:  139:{
+    #####:  140:    enemyHitControl(&T1_e, &Base_p, &B1_p, &B2_p, &B3_p);
+    #####:  141:    enemyHitControl(&T2_e, &Base_p, &B1_p, &B2_p, &B3_p);
+    #####:  142:    enemyHitControl(&T3_e, &Base_p, &B1_p, &B2_p, &B3_p);
+    #####:  143:    buildHPChecker(&B1_e, &B2_e, &B3_e, map1);
+    #####:  144:    troopAmountChecker(&T1_e, &T2_e, &T3_e, map1);
+    #####:  145:}
+        -:  146:
+        -:  147:/**
+        -:  148: **************************************************************************
+        -:  149: * @brief Função: Atualizar Status Gerais
+        -:  150: *
+        -:  151: * Descrição:
+        -:  152: * A Função chama funções de checagem de mudança de status em tropas e prédios do player e do PC.
+        -:  153: *
+        -:  154: * Parâmetros:
+        -:  155: * @param sem parâmetros
+        -:  156: *
+        -:  157: * Valor retornado:
+        -:  158: * @return função void - A função não retorna nada
+        -:  159: *
+        -:  160: * Assertiva de entrada:
+        -:  161: * Sem parâmetros
+        -:  162: *
+        -:  163: * Assertiva de saída:
+        -:  164: * Função void
+        -:  165: ***************************************************************************/
+    #####:  166:void gameCheckers()
+        -:  167:{
+    #####:  168:    playerCheckers();
+    #####:  169:    enemyCheckers();
+    #####:  170:}
+        -:  171:
+        -:  172:/**
+        -:  173: **************************************************************************
+        -:  174: * @brief Função: Verificar Criação de Recursos e Tropas do Player
+        -:  175: *
+        -:  176: * Descrição:
+        -:  177: * A Função chama funções para verificar a mineração de recursos e a criação de tropas do player.
+        -:  178: *
+        -:  179: * Parâmetros:
+        -:  180: * @param sem parâmetros
+        -:  181: *
+        -:  182: * Valor retornado:
+        -:  183: * @return função void - A função não retorna nada
+        -:  184: *
+        -:  185: * Assertiva de entrada:
+        -:  186: * Sem parâmetros
+        -:  187: *
+        -:  188: * Assertiva de saída:
+        -:  189: * Função void
+        -:  190: ***************************************************************************/
+    #####:  191:void playerControllers()
+        -:  192:{
+    #####:  193:    resourceController(&Base_p, &B1_p, &B2_p);
+    #####:  194:    troopController(&T1_p, &T2_p, &T3_p, &B3_p, &Base_p);
+    #####:  195:}
+        -:  196:
+        -:  197:/**
+        -:  198: **************************************************************************
+        -:  199: * @brief Função: Verificar Criação de Recursos e Tropas do PC
+        -:  200: *
+        -:  201: * Descrição:
+        -:  202: * A Função chama funções para verificar a mineração de recursos e a criação de tropas do PC.
+        -:  203: *
+        -:  204: * Parâmetros:
+        -:  205: * @param sem parâmetros
+        -:  206: *
+        -:  207: * Valor retornado:
+        -:  208: * @return função void - A função não retorna nada
+        -:  209: *
+        -:  210: * Assertiva de entrada:
+        -:  211: * Sem parâmetros
+        -:  212: *
+        -:  213: * Assertiva de saída:
+        -:  214: * Função void
+        -:  215: ***************************************************************************/
+    #####:  216:void enemyControllers()
+        -:  217:{
+    #####:  218:    resourceController(&Base_e, &B1_e, &B2_e);
+    #####:  219:    enemyTroopController(&T1_e, &T2_e, &T3_e, &B3_e, &Base_e);
+    #####:  220:}
+        -:  221:
+        -:  222:/**
+        -:  223: **************************************************************************
+        -:  224: * @brief Função: Atualizar Recursos e Tropas Gerais
+        -:  225: *
+        -:  226: * Descrição:
+        -:  227: * A Função chama funções de verificação da mineração de recursos e da criação de tropas.
+        -:  228: *
+        -:  229: * Parâmetros:
+        -:  230: * @param sem parâmetros
+        -:  231: *
+        -:  232: * Valor retornado:
+        -:  233: * @return função void - A função não retorna nada
+        -:  234: *
+        -:  235: * Assertiva de entrada:
+        -:  236: * Sem parâmetros
+        -:  237: *
+        -:  238: * Assertiva de saída:
+        -:  239: * Função void
+        -:  240: ***************************************************************************/
+    #####:  241:void gameControllers()
+        -:  242:{
+    #####:  243:    playerControllers();
+    #####:  244:    enemyControllers();
+    #####:  245:}
+        -:  246:
+        -:  247:/**
+        -:  248: **************************************************************************
+        -:  249: * @brief Função: Atualizar a Tela
+        -:  250: *
+        -:  251: * Descrição:
+        -:  252: * A Função atualiza a tela do jogo e dá um refresh.
+        -:  253: *
+        -:  254: * Parâmetros:
+        -:  255: * @param sem parâmetros
+        -:  256: *
+        -:  257: * Valor retornado:
+        -:  258: * @return função void - A função apenas imprime o jogo na tela
+        -:  259: *
+        -:  260: * Assertiva de entrada:
+        -:  261: * Sem parâmetros
+        -:  262: *
+        -:  263: * Assertiva de saída:
+        -:  264: * Função void
+        -:  265: ***************************************************************************/
+    #####:  266:void refreshGame()
+        -:  267:{
+        -:  268:    /* Atualiza windows */
+    #####:  269:    printGame();
+    #####:  270:    refreshWindows(gameWin, statusWin);
+    #####:  271:}
+        -:  272:
+        -:  273:/**
+        -:  274: **************************************************************************
+        -:  275: * @brief Função: Controlar as Opções no Menu de Pause
+        -:  276: *
+        -:  277: * Descrição:
+        -:  278: * A Função volta ao jogo, salva o jogo ou saí do jogo de acordo com a opção selecionada no menu de Pause.
+        -:  279: *
+        -:  280: * Parâmetros:
+        -:  281: * @param sem parâmetros
+        -:  282: *
+        -:  283: * Valor retornado:
+        -:  284: * @return função void - A função não retorna nada
+        -:  285: *
+        -:  286: * Assertiva de entrada:
+        -:  287: * Sem parâmetros
+        -:  288: *
+        -:  289: * Assertiva de saída:
+        -:  290: * Função void
+        -:  291: ***************************************************************************/
+    #####:  292:void pauseGameRoutine()
+        -:  293:{
+    #####:  294:    switch(pauseGameMenu())
+        -:  295:    {
+    #####:  296:        case 0:
+        -:  297:
+    #####:  298:            gameState = GAME_STATE_PLAY;
+    #####:  299:            break;
+        -:  300:
+    #####:  301:        case 1:
+    #####:  302:            saveGame();
+    #####:  303:            gameState = GAME_STATE_PLAY;
+    #####:  304:            break;
+        -:  305:
+    #####:  306:        case 2:
+        -:  307:
+    #####:  308:            Base_p.hp = -1;
+    #####:  309:            Base_e.hp = -1;
+    #####:  310:            break;
+        -:  311:    }
+    #####:  312:}
+        -:  313:
+        -:  314:/**
+        -:  315: **************************************************************************
+        -:  316: * @brief Função: Printar na Tela o Jogo
+        -:  317: *
+        -:  318: * Descrição:
+        -:  319: * A Função imprime os status do player, do PC e o mapa do jogo.
+        -:  320: *
+        -:  321: * Parâmetros:
+        -:  322: * @param sem parâmetros
+        -:  323: *
+        -:  324: * Valor retornado:
+        -:  325: * @return função void - A função não retorna nada
+        -:  326: *
+        -:  327: * Assertiva de entrada:
+        -:  328: * Sem parâmetros
+        -:  329: *
+        -:  330: * Assertiva de saída:
+        -:  331: * Função void
+        -:  332: ***************************************************************************/
+    #####:  333:void printGame()
+        -:  334:{
+    #####:  335:    printPlayerStatus(statusWin, &Base_p, &B1_p, &B3_p, &B2_p, &T1_p, &T2_p, &T3_p);
+    #####:  336:    printEnemyStatus(statusWin, &Base_e, &B1_e, &B3_e, &B2_e, &T1_e, &T2_e, &T3_e);
+    #####:  337:    printMap(gameWin, map1);
+    #####:  338:}
+        -:  339:
+        -:  340:/**
+        -:  341: **************************************************************************
+        -:  342: * @brief Função: Iniciar e Alocar Pré-Requisitos para o Jogo
+        -:  343: *
+        -:  344: * Descrição:
+        -:  345: * A Função aloca e cria as janelas do jogo e do status, aloca o mapa do jogo e o inicializa.
+        -:  346: *
+        -:  347: * Parâmetros:
+        -:  348: * @param sem parâmetros
+        -:  349: *
+        -:  350: * Valor retornado:
+        -:  351: * @return função void - A função não retorna nada
+        -:  352: *
+        -:  353: * Assertiva de entrada:
+        -:  354: * Sem parâmetros
+        -:  355: *
+        -:  356: * Assertiva de saída:
+        -:  357: * Função void
+        -:  358: ***************************************************************************/
+    #####:  359:void allocGame()
+        -:  360:{
+        -:  361:    /* Alocação de windows e mapa */
+    #####:  362:    gameWin = gameWindow(termLines, termCols);
+    #####:  363:    statusWin = createWin(termLines-(termLines-6), termCols, 0, 0);
+    #####:  364:    keypad(statusWin, FALSE);
+    #####:  365:    box(statusWin, 0, 0);
+    #####:  366:    map1 = allocMap(map1, termLines, termCols);
+    #####:  367:    InitializePathfinder();
+    #####:  368:    setMap(map1,save);
+    #####:  369:    srand(time(NULL));
+    #####:  370:}
+        -:  371:
+        -:  372:/**
+        -:  373: **************************************************************************
+        -:  374: * @brief Função: Desaloca e Finaliza as Janelas
+        -:  375: *
+        -:  376: * Descrição:
+        -:  377: * A Função desaloca a janela utilizada para o jogo e para o status e desaloca o mapa do jogo. Então limpa o terminal e atualiza a tela.
+        -:  378: *
+        -:  379: * Parâmetros:
+        -:  380: * @param sem parâmetros
+        -:  381: *
+        -:  382: * Valor retornado:
+        -:  383: * @return função void - A função não retorna nada
+        -:  384: *
+        -:  385: * Assertiva de entrada:
+        -:  386: * Sem parâmetros
+        -:  387: *
+        -:  388: * Assertiva de saída:
+        -:  389: * Função void
+        -:  390: ***************************************************************************/
+    #####:  391:void destroyGame()
+        -:  392:{
+        -:  393:     /* Desalocando windows e mapa */
+    #####:  394:    destroyWin(&gameWin);
+    #####:  395:    destroyWin(&statusWin);
+    #####:  396:    map1 = deallocMap(map1);
+    #####:  397:    EndPathfinder();
+        -:  398:    /* limpando terminal */
+    #####:  399:    erase();
+    #####:  400:    refresh();
+    #####:  401:}
+        -:  402:
+        -:  403:/**
+        -:  404: **************************************************************************
+        -:  405: * @brief Função: Salvar o Jogo
+        -:  406: *
+        -:  407: * Descrição:
+        -:  408: * A Função cria um arquivo binário e salva todos os dados da base, dos prédios e das tropas do player e do PC nele.
+        -:  409: *
+        -:  410: * Parâmetros:
+        -:  411: * @param sem parâmetros
+        -:  412: *
+        -:  413: * Valor retornado:
+        -:  414: * @return função void - A função não retorna nada
+        -:  415: *
+        -:  416: * Assertiva de entrada:
+        -:  417: * Sem parâmetros
+        -:  418: *
+        -:  419: * Assertiva de saída:
+        -:  420: * Função void
+        -:  421: ***************************************************************************/
+    #####:  422:void saveGame(){
+        -:  423:
+        -:  424:    FILE* fp;
+        -:  425:
+    #####:  426:    fp = fopen("save.bin", "wb");
+        -:  427:
+    #####:  428:    if (fp == NULL) {
+    #####:  429:        fclose(fp);
+    #####:  430:        fp = fopen("Relatório_Erros.txt", "a");
+    #####:  431:        fprintf(fp, "Erro na saveGame (arquivo LogicaJogo.c)\n");
+    #####:  432:        fclose(fp);
+        -:  433:    }
+        -:  434:
+        -:  435:    /*Dados do player*/
+    #####:  436:    fwrite(&Base_p, sizeof(Base),1,fp);
+    #####:  437:    fwrite(&B1_p, sizeof(Build),1,fp);
+    #####:  438:    fwrite(&B2_p, sizeof(Build),1,fp);
+    #####:  439:    fwrite(&B3_p, sizeof(Build),1,fp);
+    #####:  440:    fwrite(&T1_p, sizeof(Troop),1,fp);
+    #####:  441:    fwrite(&T2_p, sizeof(Troop),1,fp);
+    #####:  442:    fwrite(&T3_p, sizeof(Troop),1,fp);
+        -:  443:
+        -:  444:    /*Dados do PC*/
+    #####:  445:    fwrite(&Base_e, sizeof(Base),1,fp);
+    #####:  446:    fwrite(&B1_e, sizeof(Build),1,fp);
+    #####:  447:    fwrite(&B2_e, sizeof(Build),1,fp);
+    #####:  448:    fwrite(&B3_e, sizeof(Build),1,fp);
+    #####:  449:    fwrite(&T1_e, sizeof(Troop),1,fp);
+    #####:  450:    fwrite(&T2_e, sizeof(Troop),1,fp);
+    #####:  451:    fwrite(&T3_e, sizeof(Troop),1,fp);
+        -:  452:
+    #####:  453:    fclose(fp);
+        -:  454:
+    #####:  455:}
+        -:  456:
+        -:  457:/**
+        -:  458: **************************************************************************
+        -:  459: * @brief Função: Carregar um Jogo Salvo
+        -:  460: *
+        -:  461: * Descrição:
+        -:  462: * A Função abre o arquivo de save e lê todos os dados da base, prédios e tropas do player e do PC. Caso não exista um save, é mostrado uma mensagem na tela.
+        -:  463: *
+        -:  464: * Parâmetros:
+        -:  465: * @param sem parâmetros
+        -:  466: *
+        -:  467: * Valor retornado:
+        -:  468: * @return 0 - se não existir um arquivo de save válido
+        -:  469: * @return 1 - se o load ocorrer sem problemas
+        -:  470: *
+        -:  471: * Assertiva de entrada:
+        -:  472: * Sem parâmetros
+        -:  473: *
+        -:  474: * Assertiva de saída:
+        -:  475: * A função retorna valores fixos.
+        -:  476: ***************************************************************************/
+    #####:  477:int loadGame(){
+        -:  478:
+        -:  479:    FILE* fp;
+        -:  480:
+    #####:  481:    fp = fopen("save.bin","rb");
+        -:  482:
+    #####:  483:    if(fp == NULL)
+        -:  484:    {
+    #####:  485:        mvprintw(LINES - 6, 0, "Nao ha jogo salvo!");
+    #####:  486:        refresh();
+        -:  487:
+    #####:  488:        return 0;
+        -:  489:    }
+        -:  490:
+        -:  491:    else
+        -:  492:    {
+        -:  493:        /*Dados do playes*/
+    #####:  494:        fread(&Base_p, sizeof(Base),1,fp);
+    #####:  495:        fread(&B1_p, sizeof(Build),1,fp);
+    #####:  496:        fread(&B2_p, sizeof(Build),1,fp);
+    #####:  497:        fread(&B3_p, sizeof(Build),1,fp);
+    #####:  498:        fread(&T1_p, sizeof(Troop),1,fp);
+    #####:  499:        fread(&T2_p, sizeof(Troop),1,fp);
+    #####:  500:        fread(&T3_p, sizeof(Troop),1,fp);
+        -:  501:
+        -:  502:            /*Dados do PC*/
+    #####:  503:        fread(&Base_e, sizeof(Base),1,fp);
+    #####:  504:        fread(&B1_e, sizeof(Build),1,fp);
+    #####:  505:        fread(&B2_e, sizeof(Build),1,fp);
+    #####:  506:        fread(&B3_e, sizeof(Build),1,fp);
+    #####:  507:        fread(&T1_e, sizeof(Troop),1,fp);
+    #####:  508:        fread(&T2_e, sizeof(Troop),1,fp);
+    #####:  509:        fread(&T3_e, sizeof(Troop),1,fp);
+        -:  510:
+    #####:  511:        fclose(fp);
+        -:  512:
+    #####:  513:        return 1;
+        -:  514:    }
+        -:  515:    return 0;
+        -:  516:}
